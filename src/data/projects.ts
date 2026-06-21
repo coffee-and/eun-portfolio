@@ -17,21 +17,22 @@ export const projects: Project[] = [
     category: "Personal Project",
     title: "Relationship Analyzer",
     description:
-      "질문 기반 진단을 통해 관계의 감정 소모, 안정성, 갈등 위험을 점검하고 응답 결과를 점수와 " +
-      "유형별 리포트로 제공하는 React 기반 관계 분석 웹서비스입니다." +
-      "\n\n분석 로직 분리부터 결과 이미지 저장·공유, 배포까지 전체 서비스 흐름을 직접 구현했습니다.",
-
+      "질문 기반 진단을 통해 관계의 감정 상태, 안정성, 갈등 패턴, 미래 방향성을 분석하고 " +
+      "무료 결과와 프리미엄 리포트 형태로 제공하는 React 기반 관계 분석 웹서비스입니다." +
+      "\n\n분석 로직 분리, 리포트형 UI 설계, 프리미엄 콘텐츠 구조, 결과 이미지 저장·공유, " +
+      "GitHub Pages 배포까지 전체 서비스 흐름을 직접 구현했습니다.",
     stack: ["React", "Vite", "JavaScript", "html2canvas", "GitHub Pages"],
     points: [
-      "질문 기반 관계 진단 플로우와 점수 계산 로직을 구현했습니다.",
-      "퀴즈 진행 상태와 분석 로직을 Custom Hook으로 분리했습니다.",
-      "결과 리포트와 이미지 저장·공유 기능을 구현했습니다.",
+      "질문 기반 관계 진단 플로우와 점수·위험도 계산 로직을 구현했습니다.",
+      "감정 상태, 관계 안정성, 갈등 패턴, 미래 방향성 기준의 리포트 구조를 설계했습니다.",
+      "무료 결과와 프리미엄 리포트 영역을 분리하고, 상세 분석·대화 가이드·7일 회복 가이드를 구성했습니다.",
+      "결과 리포트 PNG 저장, Web Share API 공유, 클립보드 복사 대체 동작을 구현했습니다.",
       "GitHub Pages를 통해 실제 접근 가능한 서비스로 배포했습니다.",
     ],
     demo: "https://coffee-and.github.io/relationship-analyzer/",
     github: "https://github.com/coffee-and/relationship-analyzer",
     image: `${import.meta.env.BASE_URL}projects/relationship-analyzer.png`,
-    imageAlt: "Relationship Analyzer 서비스 화면",
+    imageAlt: "Relationship Analyzer 관계 리포트 서비스 화면",
   },
   {
     id: "news-monitor",
