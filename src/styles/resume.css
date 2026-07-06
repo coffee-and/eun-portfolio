@@ -201,7 +201,7 @@
 }
 
 .resume-panel--profile {
-  min-height: 290px;
+  min-height: 252px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -210,9 +210,10 @@
 .resume-panel h2 {
   margin-top: 10px;
   color: var(--text-primary);
-  font-size: clamp(2.1rem, 4vw, 3.25rem);
-  line-height: 0.96;
-  letter-spacing: -0.09em;
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.03;
+  letter-spacing: -0.075em;
+  word-break: keep-all;
 }
 
 .resume-panel p {
@@ -221,6 +222,7 @@
   font-size: 0.95rem;
   font-weight: 800;
   line-height: 1.55;
+  word-break: keep-all;
 }
 
 .resume-keywords,
@@ -251,6 +253,7 @@
 }
 
 .resume-check-list,
+.resume-card-points,
 .resume-project-card ul {
   display: grid;
   gap: 9px;
@@ -282,9 +285,17 @@
   gap: 12px;
 }
 
+.resume-card-grid--career {
+  grid-template-columns: 1fr;
+}
+
 .resume-info-card,
 .resume-skill-card {
   padding: 20px;
+}
+
+.resume-info-card--career {
+  min-height: auto;
 }
 
 .resume-info-card h3,
@@ -338,6 +349,15 @@
   background: var(--bg-muted);
 }
 
+.resume-tech-icon__mark {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .resume-tech-icon strong {
   width: 38px;
   height: 38px;
@@ -353,13 +373,17 @@
 }
 
 .resume-tech-icon img {
-  width: 38px;
-  height: 38px;
+  position: absolute;
+  inset: 0;
+  width: 40px;
+  height: 40px;
   display: block;
   object-fit: contain;
+  border-radius: 12px;
+  background: var(--bg-muted);
 }
 
-.resume-tech-icon span {
+.resume-tech-icon span:not(.resume-tech-icon__mark) {
   color: var(--text-secondary);
   font-size: 0.72rem;
   font-weight: 800;
