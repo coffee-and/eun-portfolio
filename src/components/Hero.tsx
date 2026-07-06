@@ -21,26 +21,10 @@ const Hero = () => {
       </div>
 
       <div className="hero-actions">
-        <a className="pill-button pill-button--primary" href="#projects">
-          view projects
-        </a>
-
-        <a className="pill-button" href="#resume">
-          web resume
-        </a>
-
-        <a className="pill-button" href="#skills">
-          skills
-        </a>
-
-        <a
-          className="pill-button"
-          href="https://github.com/coffee-and"
-          target="_blank"
-          rel="noreferrer"
-        >
-          github
-        </a>
+        <a className="pill-button pill-button--primary" href="#projects">view projects</a>
+        <a className="pill-button" href="#/resume">web resume</a>
+        <a className="pill-button" href="#skills">skills</a>
+        <a className="pill-button" href="https://github.com/coffee-and" target="_blank" rel="noreferrer">github</a>
       </div>
     </section>
   );
