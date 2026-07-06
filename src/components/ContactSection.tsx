@@ -1,8 +1,6 @@
 import SectionHeader from "./SectionHeader";
 
 const ContactSection = () => {
-  const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
-
   return (
     <section id="contact">
       <SectionHeader
@@ -13,29 +11,16 @@ const ContactSection = () => {
       />
 
       <div className="contact-actions">
-        <a
-          className="pill-button pill-button--primary"
-          href="mailto:annn@kakao.com"
-        >
+        <a className="pill-button pill-button--primary" href="mailto:annn@kakao.com">
           email
         </a>
 
-        <a
-          className="pill-button"
-          href="https://github.com/coffee-and"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a className="pill-button" href="https://github.com/coffee-and" target="_blank" rel="noreferrer">
           github
         </a>
 
-        <a
-          className="pill-button"
-          href={resumeUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          resume pdf
+        <a className="pill-button" href="#resume">
+          web resume
         </a>
       </div>
     </section>
