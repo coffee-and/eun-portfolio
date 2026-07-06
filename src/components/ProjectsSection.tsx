@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { projects } from "../data/projects";
+import "../styles/projects.css";
 import SectionHeader from "./SectionHeader";
 
 const ProjectsSection = () => {
