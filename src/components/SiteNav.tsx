@@ -2,6 +2,7 @@ const navItems = [
   { label: "home", href: "#home" },
   { label: "projects", href: "#projects" },
   { label: "about", href: "#about" },
+  { label: "resume", href: "#resume" },
   { label: "skills", href: "#skills" },
   { label: "contact", href: "#contact" },
 ];
@@ -21,8 +22,8 @@ const SiteNav = () => {
         ))}
       </nav>
 
-      <a className="site-nav__mode" href="#contact">
-        available
+      <a className="site-nav__mode" href="#resume">
+        web resume
       </a>
     </header>
   );
