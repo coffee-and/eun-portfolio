@@ -2,7 +2,6 @@ const navItems = [
   { label: "home", href: "#home" },
   { label: "projects", href: "#projects" },
   { label: "about", href: "#about" },
-  { label: "resume", href: "#resume" },
   { label: "skills", href: "#skills" },
   { label: "contact", href: "#contact" },
 ];
@@ -10,7 +9,7 @@ const navItems = [
 const SiteNav = () => {
   return (
     <header className="site-nav">
-      <a className="site-nav__brand" href="#home" aria-label="Eun portfolio home">
+      <a className="site-nav__brand" href="#home" aria-label="portfolio home">
         eun.
       </a>
 
@@ -22,7 +21,7 @@ const SiteNav = () => {
         ))}
       </nav>
 
-      <a className="site-nav__mode" href="#resume">
+      <a className="site-nav__mode" href="#/resume">
         web resume
       </a>
     </header>
