@@ -29,9 +29,11 @@ const ResumeSection = () => {
         </div>
 
         <div className="resume-hero__summary">
-          <div className="resume-avatar-placeholder">
-            <span>photo</span>
-            <em>put image at {`public/resume/profile.jpg`}</em>
+          <div className="resume-avatar-placeholder resume-avatar-placeholder--image">
+            <img
+              src={`${import.meta.env.BASE_URL}resume/profile.jpg`}
+              alt={`${resumeProfile.name} profile`}
+            />
           </div>
 
           <p>{resumeProfile.summary}</p>
