@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { projects } from "../data/projects";
+import "../styles/projects.css";
 import SectionHeader from "./SectionHeader";
 
 const ProjectsSection = () => {
@@ -13,7 +14,7 @@ const ProjectsSection = () => {
     <section id="projects">
       <SectionHeader
         eyebrow="Projects"
-        title="직접 기획하고 배포한 프로젝트"
+        title="personal projects"
         description={`개인 프로젝트를 통해 React 기반 웹서비스의 기획, UI 설계, API 연동,
 상태 로직 분리, 정적 배포까지 직접 경험했습니다.`}
       />
@@ -56,28 +57,39 @@ const ProjectsSection = () => {
                   </div>
 
                   <div className="project-card__links">
-                    <a href={project.demo} target="_blank" rel="noreferrer">
-                      View Site
-                    </a>
+                    {project.demo && (
+                      <a href={project.demo} target="_blank" rel="noreferrer">
+                        View Site
+                      </a>
+                    )}
 
-                    <a href={project.github} target="_blank" rel="noreferrer">
-                      GitHub
-                    </a>
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noreferrer">
+                        GitHub
+                      </a>
+                    )}
                   </div>
                 </div>
 
                 <a
                   className="project-card__preview"
-                  href={project.demo}
-                  target="_blank"
-                  rel="noreferrer"
+                  href={project.demo ?? project.github ?? "#projects"}
+                  target={project.demo || project.github ? "_blank" : undefined}
+                  rel={project.demo || project.github ? "noreferrer" : undefined}
                   aria-label={`${project.title} 사이트 열기`}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.imageAlt}
-                    loading="lazy"
-                  />
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.imageAlt ?? `${project.title} preview`}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="project-card__preview-placeholder">
+                      <span>{project.title}</span>
+                      <em>{project.previewLabel ?? "Screenshot placeholder"}</em>
+                    </div>
+                  )}
                 </a>
               </div>
 
