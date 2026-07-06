@@ -1,6 +1,4 @@
 const Hero = () => {
-  const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
-
   return (
     <section className="hero-section" id="home">
       <p className="eyebrow">portfolio / frontend</p>
@@ -27,17 +25,12 @@ const Hero = () => {
           view projects
         </a>
 
-        <a className="pill-button" href="#skills">
-          skills
+        <a className="pill-button" href="#resume">
+          web resume
         </a>
 
-        <a
-          className="pill-button"
-          href={resumeUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          resume pdf
+        <a className="pill-button" href="#skills">
+          skills
         </a>
 
         <a
