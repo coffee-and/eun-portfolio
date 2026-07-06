@@ -27,7 +27,6 @@ export const projects: Project[] = [
       "로딩 화면, 결과 모달, 글래스모피즘 카드, 모바일 반응형 레이아웃 등 공통 UI 시스템을 정리했습니다.",
       "향후 결제, 결과 저장, 랭킹, 초대 링크 기능을 붙일 수 있도록 데이터와 화면 책임을 분리하고 있습니다.",
     ],
-    demo: "https://coffee-and.github.io/relationship-analyzer/",
     github: "https://github.com/coffee-and/eun-contents",
     previewLabel: "Screenshot placeholder · public/projects/eun-contents.png",
   },
