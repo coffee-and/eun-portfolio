@@ -1,3 +1,4 @@
+import SiteNav from "./components/SiteNav";
 import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection";
 import AskEunSection from "./components/AskEunSection";
@@ -9,16 +10,17 @@ import ContactSection from "./components/ContactSection";
 function App() {
   return (
     <main>
+      <SiteNav />
       <Hero />
+      <ProjectsSection />
       <AboutSection />
-      <AskEunSection />
       <SkillsSection />
       <CareerHighlightsSection />
-      <ProjectsSection />
+      <AskEunSection />
       <ContactSection />
 
       <footer className="site-footer">
-        <p>© 2026 Eun Jeongan · Built with React & TypeScript</p>
+        <p>2026 Eun Jeongan · design and coding by me</p>
       </footer>
     </main>
   );
