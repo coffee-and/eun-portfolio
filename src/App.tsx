@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const handleHashChange = () => {
       setRoute(getRoute());
-      window.scrollTo({ top: 0, behavior: "instant" });
+      window.scrollTo({ top: 0, behavior: "auto" });
     };
 
     window.addEventListener("hashchange", handleHashChange);
