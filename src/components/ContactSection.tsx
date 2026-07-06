@@ -11,17 +11,9 @@ const ContactSection = () => {
       />
 
       <div className="contact-actions">
-        <a className="pill-button pill-button--primary" href="mailto:annn@kakao.com">
-          email
-        </a>
-
-        <a className="pill-button" href="https://github.com/coffee-and" target="_blank" rel="noreferrer">
-          github
-        </a>
-
-        <a className="pill-button" href="#resume">
-          web resume
-        </a>
+        <a className="pill-button pill-button--primary" href="mailto:annn@kakao.com">email</a>
+        <a className="pill-button" href="https://github.com/coffee-and" target="_blank" rel="noreferrer">github</a>
+        <a className="pill-button" href="#/resume">web resume</a>
       </div>
     </section>
   );
