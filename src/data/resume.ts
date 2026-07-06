@@ -10,6 +10,7 @@ export type ResumeCard = {
   meta?: string;
   tags: string[];
   description: string;
+  points?: string[];
 };
 
 export type ResumeProject = {
@@ -32,7 +33,7 @@ export const resumeProfile = {
   email: "annn@kakao.com",
   github: "https://github.com/coffee-and",
   summary:
-    "8년 이상의 개발 경력을 바탕으로 복잡한 제품을 더 쉽게 쓰이게 만드는 프론트엔드 개발자입니다. WPF 기반 대규모 애플리케이션 개발, AI 머신비전 플랫폼 UI/UX 리뉴얼, Migration, 운영 환경 개선 경험을 바탕으로 제품 구조와 사용자 흐름을 함께 설계합니다.",
+    "8년 이상의 개발 경력을 바탕으로 복잡한 제품을 더 쉽게 쓰이게 만드는 프론트엔드 개발자입니다. WPF 기반 대규모 애플리케이션 개발, AI 머신비전 플랫폼 UI/UX 리뉴얼, Migration, 운영 환경 개선 경험을 바탕으로 제품 구조와 사용자 흐름을 함께 설계합니다. 최근에는 Eun Contents, Omok Play, Code Bridge, News Monitor를 통해 React 기반 서비스 기획과 구현 경험을 확장하고 있습니다.",
   keywords: ["8+ Years", "WPF / MVVM", "React", "Product UI", "Service Planning"],
 };
 
@@ -56,7 +57,14 @@ export const profileCards: ResumeCard[] = [
     meta: "기획부터 배포까지 직접 진행",
     tags: ["react", "supabase", "github pages"],
     description:
-      "최근에는 Eun Contents, Omok Play, News Monitor, Code Bridge 같은 개인 프로젝트를 통해 기획, UI 설계, 상태 로직 분리, API 연동, 배포까지 직접 경험하며 웹 제품화 역량을 넓히고 있습니다.",
+      "Eun Contents, Omok Play, News Monitor, Code Bridge 같은 개인 프로젝트를 통해 기획, UI 설계, 상태 로직 분리, API 연동, 배포까지 직접 경험하며 웹 제품화 역량을 넓히고 있습니다.",
+  },
+  {
+    title: "운영과 확장을 고려한 구현",
+    meta: "데이터 저장 · 배포 · 유지보수 구조",
+    tags: ["deployment", "data flow", "maintainability"],
+    description:
+      "기능이 화면에서 끝나지 않고 실제로 유지될 수 있도록 데이터 흐름, 저장 구조, 배포 방식, 추후 결제·랭킹·초대 링크 같은 확장 가능성까지 함께 고려해 구현합니다.",
   },
 ];
 
@@ -66,21 +74,23 @@ export const resumeHighlights = [
   "Migration Plugin 개발로 기존 SuaKit 프로젝트의 VPDL 전환 자동화",
   "Easy UI Plugin, 사용자 활동 로그 추적, Excel 리포트 기능 개발",
   "TeamCity, AWS EC2, InstallShield 기반 테스트·배포 환경 개선",
+  "Eun Contents에서 관계 분석, 테스트, 운세형 콘텐츠, 미니게임 허브 구조 설계",
+  "Omok Play, Code Bridge, News Monitor를 통해 게임·학습·뉴스 도메인의 React 프로젝트 확장",
 ];
 
 export const skillIcons: SkillIcon[] = [
-  { name: "C#", label: "C#" },
-  { name: "WPF", label: "WPF" },
-  { name: "React", label: "React" },
-  { name: "TypeScript", label: "TS" },
-  { name: "JavaScript", label: "JS" },
-  { name: "HTML5", label: "H5" },
-  { name: "CSS3", label: "CSS" },
-  { name: "Supabase", label: "SB" },
-  { name: "PostgreSQL", label: "PG" },
-  { name: "Git", label: "Git" },
-  { name: "Figma", label: "Fg" },
-  { name: "AWS EC2", label: "AWS" },
+  { name: "C#", label: "C#", icon: `${import.meta.env.BASE_URL}icons/csharp.svg` },
+  { name: "WPF", label: "WPF", icon: `${import.meta.env.BASE_URL}icons/wpf.svg` },
+  { name: "React", label: "React", icon: `${import.meta.env.BASE_URL}icons/react.svg` },
+  { name: "TypeScript", label: "TS", icon: `${import.meta.env.BASE_URL}icons/typescript.svg` },
+  { name: "JavaScript", label: "JS", icon: `${import.meta.env.BASE_URL}icons/javascript.svg` },
+  { name: "HTML5", label: "H5", icon: `${import.meta.env.BASE_URL}icons/html5.svg` },
+  { name: "CSS3", label: "CSS", icon: `${import.meta.env.BASE_URL}icons/css3.svg` },
+  { name: "Supabase", label: "SB", icon: `${import.meta.env.BASE_URL}icons/supabase.svg` },
+  { name: "PostgreSQL", label: "PG", icon: `${import.meta.env.BASE_URL}icons/postgresql.svg` },
+  { name: "Git", label: "Git", icon: `${import.meta.env.BASE_URL}icons/git.svg` },
+  { name: "Figma", label: "Fg", icon: `${import.meta.env.BASE_URL}icons/figma.svg` },
+  { name: "AWS EC2", label: "AWS", icon: `${import.meta.env.BASE_URL}icons/aws.svg` },
 ];
 
 export const resumeSkills = [
@@ -109,7 +119,16 @@ export const careerCards: ResumeCard[] = [
     meta: "Front-end Engineer · AI 머신비전 플랫폼 VPDL",
     tags: ["WPF", "MVVM", "AI Platform", "Migration", "DevOps"],
     description:
-      "VPDL AI 머신비전 플랫폼의 Front-end 개발을 담당했습니다. UI/UX 전면 리뉴얼, VIDI-SuaKit-VPDL 통합 대응, SuaKit 프로젝트 Migration Plugin, Easy UI Plugin, 사용자 로그 분석, CI/CD와 설치 패키지 자동화까지 제품 사용성과 운영 안정성을 함께 개선했습니다.",
+      "VPDL AI 머신비전 플랫폼의 Front-end 개발을 담당하며 제품 UI 구조, 사용자 흐름, 운영 안정성을 함께 개선했습니다.",
+    points: [
+      "WPF(MVVM) 기반 대규모 애플리케이션 화면 개발과 복잡한 상태·인터랙션 처리",
+      "VIDI-SuaKit-VPDL 통합 대응 및 플랫폼 간 UI 일관성 개선",
+      "SuaKit 프로젝트를 VPDL에서 사용할 수 있도록 Migration Plugin 설계·개발",
+      "사용자 워크플로우 기반 UI/UX 전면 리뉴얼로 UI 관련 고객 문의 20% 이상 감소에 기여",
+      "Easy UI Plugin 개발로 초보 사용자의 진입 장벽 완화",
+      "사용자 활동 로그 추적과 Excel 리포트 기능으로 QA·CS 원인 분석 흐름 개선",
+      "TeamCity CI/CD, AWS EC2 테스트 환경, InstallShield·NSIS 설치 패키지 자동화 경험",
+    ],
   },
   {
     title: "아티프렌즈",
@@ -117,15 +136,38 @@ export const careerCards: ResumeCard[] = [
     meta: "Technical Content Creator",
     tags: ["blockchain", "technical writing", "content"],
     description:
-      "블록체인 기술 콘텐츠 제작, 기술 문서 작성 및 검수, 기술 입문 도서 집필에 참여했습니다.",
+      "블록체인 기술을 초보자가 이해할 수 있는 콘텐츠와 문서로 정리했습니다.",
+    points: [
+      "블록체인 기술 콘텐츠 제작과 기술 문서 작성·검수",
+      "기술 개념을 입문자 관점의 설명 구조로 재정리",
+      "기술 입문 도서 집필 참여",
+    ],
   },
   {
-    title: "퓨전데이타 / 핸디에이치아이에스 / 핑거",
-    period: "2016.04 ~ 2019.07",
+    title: "퓨전데이타",
+    period: "2018.11 ~ 2019.07",
     meta: "Software Engineer",
-    tags: ["enterprise", "finance", "document security", "ui"],
+    tags: ["enterprise", "admin ui", "active directory"],
     description:
-      "금융기관 데이터 연동, 계좌통합 서비스, Active Directory 관리 솔루션, DevExpress 기반 관리자 UI, 문서 보안 솔루션과 파일 변환 시스템 개발을 경험했습니다.",
+      "Active Directory 관리 솔루션과 관리자 UI 개발을 수행했습니다.",
+    points: [
+      "DevExpress 기반 관리자 화면 개발",
+      "계정·조직 관리 흐름을 고려한 기업용 UI 구현",
+      "운영자가 반복적으로 사용하는 기능의 사용성과 안정성 개선",
+    ],
+  },
+  {
+    title: "핸디에이치아이에스 / 핑거",
+    period: "2016.04 ~ 2018.11",
+    meta: "Software Engineer",
+    tags: ["finance", "document security", "data integration"],
+    description:
+      "금융기관 데이터 연동, 계좌통합 서비스, 문서 보안 솔루션과 파일 변환 시스템 개발을 경험했습니다.",
+    points: [
+      "금융기관 데이터 연동과 계좌통합 서비스 개발",
+      "문서 보안 솔루션 개발 및 파일 변환 시스템 구현",
+      "기업용 솔루션 환경에서 안정성과 예외 처리를 고려한 개발 경험",
+    ],
   },
 ];
 
