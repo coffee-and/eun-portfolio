@@ -4,6 +4,7 @@ import {
   resumeProjects,
   resumeSkills,
 } from "../data/resume";
+import "../styles/resume.css";
 import SectionHeader from "./SectionHeader";
 
 const ResumeSection = () => {
