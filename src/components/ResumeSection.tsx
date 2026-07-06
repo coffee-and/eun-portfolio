@@ -101,11 +101,19 @@ const ResumeSection = () => {
             <div className="resume-icon-grid">
               {skillIcons.map((skill) => (
                 <div className="resume-tech-icon" key={skill.name}>
-                  {skill.icon ? (
-                    <img src={skill.icon} alt="" aria-hidden="true" />
-                  ) : (
+                  <span className="resume-tech-icon__mark">
+                    {skill.icon && (
+                      <img
+                        src={skill.icon}
+                        alt=""
+                        aria-hidden="true"
+                        onError={(event) => {
+                          event.currentTarget.remove();
+                        }}
+                      />
+                    )}
                     <strong>{skill.label}</strong>
-                  )}
+                  </span>
                   <span>{skill.name}</span>
                 </div>
               ))}
