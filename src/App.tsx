@@ -1,6 +1,7 @@
 import SiteNav from "./components/SiteNav";
 import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection";
+import ResumeSection from "./components/ResumeSection";
 import AskEunSection from "./components/AskEunSection";
 import SkillsSection from "./components/SkillsSection";
 import CareerHighlightsSection from "./components/CareerHighlightsSection";
@@ -14,6 +15,7 @@ function App() {
       <Hero />
       <ProjectsSection />
       <AboutSection />
+      <ResumeSection />
       <SkillsSection />
       <CareerHighlightsSection />
       <AskEunSection />
