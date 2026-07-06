@@ -84,11 +84,15 @@ export const skillIcons: SkillIcon[] = [
   { name: "React", label: "React", icon: `${import.meta.env.BASE_URL}icons/react.svg` },
   { name: "TypeScript", label: "TS", icon: `${import.meta.env.BASE_URL}icons/typescript.svg` },
   { name: "JavaScript", label: "JS", icon: `${import.meta.env.BASE_URL}icons/javascript.svg` },
+  { name: "Python", label: "PY", icon: `${import.meta.env.BASE_URL}icons/python.svg` },
+  { name: "FastAPI", label: "API", icon: `${import.meta.env.BASE_URL}icons/fastapi.svg` },
   { name: "HTML5", label: "H5", icon: `${import.meta.env.BASE_URL}icons/html5.svg` },
   { name: "CSS3", label: "CSS", icon: `${import.meta.env.BASE_URL}icons/css3.svg` },
   { name: "Supabase", label: "SB", icon: `${import.meta.env.BASE_URL}icons/supabase.svg` },
   { name: "PostgreSQL", label: "PG", icon: `${import.meta.env.BASE_URL}icons/postgresql.svg` },
   { name: "Git", label: "Git", icon: `${import.meta.env.BASE_URL}icons/git.svg` },
+  { name: "GitHub", label: "GH", icon: `${import.meta.env.BASE_URL}icons/github.svg` },
+  { name: "Jira", label: "Jira", icon: `${import.meta.env.BASE_URL}icons/jira.svg` },
   { name: "Figma", label: "Fg", icon: `${import.meta.env.BASE_URL}icons/figma.svg` },
   { name: "AWS EC2", label: "AWS", icon: `${import.meta.env.BASE_URL}icons/aws.svg` },
 ];
@@ -104,11 +108,11 @@ export const resumeSkills = [
   },
   {
     title: "Backend & Data",
-    items: [".NET Framework", "ASP.NET", "REST API", "JSON", "Supabase", "PostgreSQL", "MSSQL"],
+    items: ["Python", "FastAPI", ".NET Framework", "ASP.NET", "REST API", "JSON", "Supabase", "PostgreSQL", "MSSQL"],
   },
   {
     title: "Build & Collaboration",
-    items: ["Git", "Vite", "TeamCity", "AWS EC2", "InstallShield", "NSIS", "Figma", "Jira"],
+    items: ["Git", "GitHub", "Vite", "TeamCity", "AWS EC2", "InstallShield", "NSIS", "Figma", "Jira"],
   },
 ];
 
