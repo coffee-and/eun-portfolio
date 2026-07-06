@@ -48,9 +48,9 @@ const ResumeSection = () => {
       <div className="resume-layout">
         <aside className="resume-left-column">
           <section className="resume-panel resume-panel--profile">
-            <span className="resume-panel__eyebrow">profile</span>
-            <h2>{resumeProfile.name}</h2>
-            <p>{resumeProfile.role}</p>
+            <span className="resume-panel__eyebrow">at a glance</span>
+            <h2>Product UI Developer</h2>
+            <p>WPF 기반 제품 개발 경험을 React 기반 개인 서비스 제작으로 확장하고 있습니다.</p>
 
             <div className="resume-keywords">
               {resumeProfile.keywords.map((keyword) => (
@@ -60,7 +60,7 @@ const ResumeSection = () => {
           </section>
 
           <section className="resume-panel">
-            <span className="resume-panel__eyebrow">key achievements</span>
+            <span className="resume-panel__eyebrow">career & projects</span>
             <ul className="resume-check-list">
               {resumeHighlights.map((highlight) => (
                 <li key={highlight}>{highlight}</li>
@@ -73,7 +73,7 @@ const ResumeSection = () => {
           <section className="resume-section-block">
             <div className="resume-section-title">
               <span>about me</span>
-              <h2>제가 강점으로 가져가는 것</h2>
+              <h2>Strengths & Focus</h2>
             </div>
 
             <div className="resume-card-grid">
@@ -138,13 +138,20 @@ const ResumeSection = () => {
               <h2>Career</h2>
             </div>
 
-            <div className="resume-card-grid">
+            <div className="resume-card-grid resume-card-grid--career">
               {careerCards.map((card) => (
-                <article className="resume-info-card" key={card.title}>
+                <article className="resume-info-card resume-info-card--career" key={card.title}>
                   <span>{card.period}</span>
                   <h3>{card.title}</h3>
                   <strong>{card.meta}</strong>
                   <p>{card.description}</p>
+                  {card.points && (
+                    <ul className="resume-card-points">
+                      {card.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  )}
                   <div className="resume-tag-row">
                     {card.tags.map((tag) => (
                       <em key={tag}>#{tag}</em>
