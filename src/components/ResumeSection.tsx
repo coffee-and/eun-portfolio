@@ -9,6 +9,29 @@ import {
 } from "../data/resume";
 import "../styles/resume.css";
 
+const PhotoshopIcon = () => (
+  <svg
+    className="resume-tech-icon__svg resume-tech-icon__svg--photoshop"
+    viewBox="0 0 48 48"
+    role="img"
+    aria-label="Photoshop"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect className="resume-tech-icon__svg-fill" x="5" y="5" width="38" height="38" rx="10" />
+    <rect className="resume-tech-icon__svg-rim" x="8" y="8" width="32" height="32" rx="8" />
+    <text
+      x="24"
+      y="30"
+      textAnchor="middle"
+      fontSize="16"
+      fontWeight="700"
+      fontFamily="Arial, sans-serif"
+    >
+      Ps
+    </text>
+  </svg>
+);
+
 const ResumeSection = () => {
   return (
     <main className="resume-page" id="resume">
@@ -104,15 +127,19 @@ const ResumeSection = () => {
               {skillIcons.map((skill) => (
                 <div className="resume-tech-icon" key={skill.name}>
                   <span className="resume-tech-icon__mark">
-                    {skill.icon && (
-                      <img
-                        src={skill.icon}
-                        alt=""
-                        aria-hidden="true"
-                        onError={(event) => {
-                          event.currentTarget.remove();
-                        }}
-                      />
+                    {skill.iconVariant === "photoshop" ? (
+                      <PhotoshopIcon />
+                    ) : (
+                      skill.icon && (
+                        <img
+                          src={skill.icon}
+                          alt=""
+                          aria-hidden="true"
+                          onError={(event) => {
+                            event.currentTarget.remove();
+                          }}
+                        />
+                      )
                     )}
                     <strong>{skill.label}</strong>
                   </span>
