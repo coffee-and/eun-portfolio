@@ -130,18 +130,20 @@ const ResumeSection = () => {
                     {skill.iconVariant === "photoshop" ? (
                       <PhotoshopIcon />
                     ) : (
-                      skill.icon && (
-                        <img
-                          src={skill.icon}
-                          alt=""
-                          aria-hidden="true"
-                          onError={(event) => {
-                            event.currentTarget.remove();
-                          }}
-                        />
-                      )
+                      <>
+                        {skill.icon && (
+                          <img
+                            src={skill.icon}
+                            alt=""
+                            aria-hidden="true"
+                            onError={(event) => {
+                              event.currentTarget.remove();
+                            }}
+                          />
+                        )}
+                        <strong>{skill.label}</strong>
+                      </>
                     )}
-                    <strong>{skill.label}</strong>
                   </span>
                   <span>{skill.name}</span>
                 </div>
