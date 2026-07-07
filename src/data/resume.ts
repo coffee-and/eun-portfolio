@@ -2,6 +2,7 @@ export type SkillIcon = {
   name: string;
   label: string;
   icon?: string;
+  iconVariant?: "photoshop";
 };
 
 export type ResumeCard = {
@@ -94,6 +95,7 @@ export const skillIcons: SkillIcon[] = [
   { name: "GitHub", label: "GH", icon: `${import.meta.env.BASE_URL}icons/github.svg` },
   { name: "Jira", label: "Jira", icon: `${import.meta.env.BASE_URL}icons/jira.svg` },
   { name: "Figma", label: "Fg", icon: `${import.meta.env.BASE_URL}icons/figma.svg` },
+  { name: "Photoshop", label: "Ps", iconVariant: "photoshop" },
   { name: "AWS EC2", label: "AWS", icon: `${import.meta.env.BASE_URL}icons/aws.svg` },
 ];
 
@@ -112,7 +114,7 @@ export const resumeSkills = [
   },
   {
     title: "Build & Collaboration",
-    items: ["Git", "GitHub", "Vite", "TeamCity", "AWS EC2", "InstallShield", "NSIS", "Figma", "Jira"],
+    items: ["Git", "GitHub", "Vite", "TeamCity", "AWS EC2", "InstallShield", "NSIS", "Figma", "Jira", "Photoshop"],
   },
 ];
 
@@ -187,63 +189,65 @@ export const resumeProjects: ResumeProject[] = [
       "관계 분석 시스템은 질문 기반 진단, 점수·리스크 계산, 카테고리별 결과, 결과 리포트, 이미지 저장·공유 흐름을 포함합니다.",
       "문답형 테스트, 심리·관계 콘텐츠, 운세형 콘텐츠, 미니게임 목록을 하나의 허브에서 탐색할 수 있도록 구조를 설계하고 있습니다.",
       "결제, 결과 저장, 랭킹, 초대 링크 등 서비스 기능을 추가할 수 있도록 데이터와 UI 책임을 분리하고 있습니다.",
-      "로딩 화면, 결과 모달, 글래스 카드, 모바일 반응형 레이아웃을 공통 시스템처럼 정리하고 있습니다.",
+      "로딩 화면, 결과 모달, 글래스 카드, 모바일 반응형 레이아웃을 공통 컴포넌트와 스타일로 정리하고 있습니다.",
     ],
     links: [
       { label: "GitHub", href: "https://github.com/coffee-and/eun-contents" },
     ],
-    imageSlot: "public/resume/eun-contents.png",
+    imageSlot: "hub / test / result screens",
   },
   {
     id: "omok-play",
     title: "Omok Play",
-    status: "Standalone Game Service",
+    status: "Real-time Game Project",
     summary:
-      "온라인 오목을 별도 서비스로 개발하고 있으며, 초대 링크 기반 실시간 웹 대전, PWA, 앱 전환까지 고려한 모바일 반응형 게임 프로젝트입니다. Eun Contents의 게임 목록에서도 진입할 수 있도록 연동 예정입니다.",
-    stack: ["React", "TypeScript", "Realtime Game", "Responsive UI", "PWA Planning"],
+      "초대 링크 기반 온라인 오목을 목표로 개발 중인 React 게임 프로젝트입니다. 로컬 2인, 컴퓨터 대전, 온라인 대기실, 모바일 중심 UI를 단계적으로 구현하고 있습니다.",
+    stack: ["React", "TypeScript", "Supabase", "Game Logic", "Mobile UI"],
     points: [
-      "게임 방식 선택, 이번 판 설정, 대국 화면으로 이어지는 진입 플로우를 설계하고 있습니다.",
-      "유리감 있는 글래스 UI와 우주 배경을 활용해 일반 웹 화면보다 게임 앱에 가까운 몰입감을 목표로 하고 있습니다.",
-      "초대 링크 기반 대전, 모바일 대응, 추후 앱 링크와 PWA 전환을 고려해 단계적으로 확장할 계획입니다.",
+      "오목 규칙, 금수 판정, 승리 라인 계산 등 핵심 게임 로직을 도메인 함수로 분리했습니다.",
+      "로컬 2인과 컴퓨터 대전 화면을 구성하고, 난이도별 AI 수 선택 구조를 추가했습니다.",
+      "온라인 방 생성, 초대 링크, 준비 상태, 게임 시작 흐름을 Supabase와 연결하고 있습니다.",
+      "모바일 화면에서도 보드와 조작 영역이 안정적으로 보이도록 레이아웃을 조정했습니다.",
     ],
     links: [
       { label: "GitHub", href: "https://github.com/coffee-and/omok-play" },
     ],
-    imageSlot: "public/resume/omok-play.png",
-  },
-  {
-    id: "news-monitor",
-    title: "News Monitor",
-    status: "Released",
-    summary:
-      "Guardian API를 활용해 AI 및 기술 트렌드를 검색하고, 관심 기사를 북마크하거나 최근 본 기사로 다시 확인할 수 있는 뉴스 모니터링 웹앱입니다.",
-    stack: ["React", "TypeScript", "Vite", "Guardian API", "LocalStorage"],
-    points: [
-      "키워드 검색, 카테고리 필터, 북마크, 최근 본 기사 기능을 구성했습니다.",
-      "API 요청과 사용자 상태 로직을 Custom Hook으로 분리했습니다.",
-      "LocalStorage를 활용해 사용자 데이터가 브라우저에 유지되도록 구현했습니다.",
-    ],
-    links: [
-      { label: "View Site", href: "https://coffee-and.github.io/news-monitor/" },
-      { label: "GitHub", href: "https://github.com/coffee-and/news-monitor" },
-    ],
-    imageSlot: "public/resume/news-monitor.png",
+    imageSlot: "lobby / board / mobile play",
   },
   {
     id: "code-bridge",
     title: "Code Bridge",
-    status: "In Progress / Data Ready",
+    status: "Visual Coding Tool",
     summary:
-      "도형을 쌓고 움직이며 JavaScript 코드 개념을 시각적으로 익히는 초보자용 비주얼 코딩 학습 도구입니다. 완성 스크린샷과 배포 링크는 추후 교체할 수 있게 데이터 구조에 미리 포함했습니다.",
-    stack: ["React", "TypeScript", "Zustand", "dnd-kit", "Konva", "Zod"],
+      "초보자가 블록을 조합하며 도형 움직임과 JavaScript 코드 개념을 연결해 볼 수 있는 비주얼 코딩 학습 도구입니다.",
+    stack: ["React", "TypeScript", "Zustand", "Konva", "dnd-kit", "Code Generation"],
     points: [
-      "도형 생성·선택·삭제, 이동·회전·반복 블록, 실행·스텝 실행·초기화 흐름을 설계했습니다.",
-      "블록 조작 결과를 코드 개념과 연결해 초보자가 프로그래밍 흐름을 시각적으로 이해하도록 구성하고 있습니다.",
-      "추가 데이터는 src/data/resume.ts의 resumeProjects 배열과 src/data/projects.ts의 projects 배열에 같은 id로 확장하면 됩니다.",
+      "도형 생성, 블록 조합, 실행·스텝 실행, 초기화 흐름을 분리된 store와 engine 구조로 설계했습니다.",
+      "이동, 회전, 반복 블록을 쌓아 실행하고 결과를 캔버스에서 바로 확인할 수 있도록 구성했습니다.",
+      "사용자가 선택한 도형과 명령 흐름을 명확히 이해할 수 있도록 패널, 워크스페이스, 실행 컨트롤을 분리했습니다.",
+      "교육용 도구로 확장할 수 있도록 코드 생성기와 인터프리터 책임을 분리했습니다.",
     ],
     links: [
       { label: "GitHub", href: "https://github.com/coffee-and/code-bridge" },
     ],
-    imageSlot: "public/resume/code-bridge.png",
+    imageSlot: "block workspace / canvas",
+  },
+  {
+    id: "news-monitor",
+    title: "News Monitor",
+    status: "API Data Project",
+    summary:
+      "The Guardian API를 연동해 AI·IT 뉴스 흐름을 검색하고 모니터링하는 React 기반 프로젝트입니다.",
+    stack: ["React", "TypeScript", "External API", "LocalStorage", "News UX"],
+    points: [
+      "검색, 카테고리 필터, 기사 목록, 상세 링크, 저장 기능을 분리된 hook과 API 모듈로 구성했습니다.",
+      "로딩, 빈 결과, 에러 상태를 명확히 분리해 API 기반 UI의 안정성을 높였습니다.",
+      "관심 기사와 최근 본 기사 정보를 LocalStorage에 저장해 개인화된 탐색 흐름을 만들었습니다.",
+      "뉴스 카드, 필터, 검색 영역을 컴포넌트 단위로 나누어 재사용성과 유지보수성을 고려했습니다.",
+    ],
+    links: [
+      { label: "GitHub", href: "https://github.com/coffee-and/news-monitor" },
+    ],
+    imageSlot: "search / article list",
   },
 ];
