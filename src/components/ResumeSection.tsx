@@ -8,6 +8,7 @@ import {
   skillIcons,
 } from "../data/resume";
 import "../styles/resume.css";
+import "../styles/resume-icons.css";
 
 const PhotoshopIcon = () => (
   <svg
