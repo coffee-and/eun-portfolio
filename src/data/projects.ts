@@ -36,14 +36,7 @@ export const projects: Project[] = [
       "타로 선택·공개·정역방향 결과, 캘린더·다이어리와 결과 재열람 흐름을 통합했습니다.",
       "결과 Snapshot, Schema Validation, 중복 저장 방지와 기존 데이터 Migration 구조를 구현했습니다.",
     ],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/coffee-and/moment-on",
-        type: "github",
-      },
-    ],
-    previewLabel: "Screenshot coming soon · Moment ON",
+    previewLabel: "Demo video ready · URL pending",
   },
   {
     id: "local-job-match",
