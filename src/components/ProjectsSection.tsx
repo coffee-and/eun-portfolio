@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+  type MouseEvent as ReactMouseEvent,
+} from "react";
 import { projects, type ProjectLink } from "../data/projects";
 import "../styles/projects.css";
 import SectionHeader from "./SectionHeader";
@@ -70,6 +74,12 @@ const ProjectsSection = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [activeVideo]);
+
+  const handleModalMouseDown = (event: ReactMouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      setActiveVideo(null);
+    }
+  };
 
   return (
     <>
@@ -214,11 +224,7 @@ const ProjectsSection = () => {
         <div
           className="project-video-modal"
           role="presentation"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              setActiveVideo(null);
-            }
-          }}
+          onMouseDown={handleModalMouseDown}
         >
           <div
             className="project-video-modal__dialog"
