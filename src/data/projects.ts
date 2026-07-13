@@ -70,7 +70,14 @@ export const projects: Project[] = [
       "공통 App Layout, 반응형 Sidebar와 Mobile Menu를 구현했습니다.",
       "API와 데이터 계층을 단계적으로 연결할 수 있도록 Page Module과 Route 책임을 분리했습니다.",
     ],
-    previewLabel: "Demo video ready · URL pending",
+    links: [
+      {
+        label: "Demo Video",
+        href: "https://youtu.be/Vp_j5ju4pHQ",
+        type: "video",
+      },
+    ],
+    previewLabel: "Watch B2B coaching platform demo",
   },
   {
     id: "moment-play",
