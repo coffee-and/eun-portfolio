@@ -21,6 +21,10 @@
 }
 
 .resume-page__brand {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   font-size: 1.7rem;
   font-weight: 900;
   letter-spacing: -0.08em;
@@ -28,6 +32,9 @@
 
 .resume-page__back {
   position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: var(--text-primary);
   font-size: 0.82rem;
   font-weight: 900;
@@ -174,6 +181,9 @@
 .resume-contact-row a,
 .resume-project-card__links a {
   position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   color: var(--text-primary);
   font-size: 0.82rem;
   font-weight: 900;
@@ -418,7 +428,70 @@
 }
 
 .resume-project-card__image-slot {
-  min-height: 100%;
+  min-width: 0;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  padding: 10px;
+  align-self: start;
+  overflow: hidden;
+  justify-content: stretch;
+  border-style: solid;
+}
+
+.resume-project-card__image-slot > img,
+.resume-project-card__image-slot > .youtube-thumbnail-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  display: block;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.resume-project-card__image-slot > img {
+  object-position: top center;
+}
+
+.resume-project-card__placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px dashed rgba(17, 17, 17, 0.24);
+  border-radius: 9px;
+  background:
+    linear-gradient(135deg, rgba(17, 17, 17, 0.06), transparent 55%),
+    rgba(255, 255, 255, 0.58);
+}
+
+.resume-project-card__placeholder > span {
+  margin-bottom: auto;
+}
+
+.resume-project-card__placeholder strong {
+  color: var(--text-primary);
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  letter-spacing: -0.06em;
+}
+
+.resume-project-card__placeholder em {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 1.45;
+  word-break: break-word;
 }
 
 .resume-project-card__body {
@@ -450,8 +523,26 @@
   margin-top: 16px;
 }
 
+.resume-project-card__badges {
+  margin: 16px 0 0;
+}
+
 .resume-project-card__links {
   justify-content: flex-end;
+}
+
+.resume-contact-row a:focus-visible,
+.resume-project-card__links a:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+
+.resume-project-card .resume-project-card__repository-note {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 @media (max-width: 980px) {
@@ -503,9 +594,12 @@
     padding: 18px;
   }
 
-  .resume-avatar-placeholder,
-  .resume-project-card__image-slot {
+  .resume-avatar-placeholder {
     min-height: 210px;
+  }
+
+  .resume-project-card__image-slot {
+    min-height: 0;
   }
 
   .resume-avatar-placeholder--image img {

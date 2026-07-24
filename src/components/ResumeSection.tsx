@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   careerCards,
   profileCards,
@@ -7,15 +8,18 @@ import {
   resumeSkills,
   skillIcons,
 } from "../data/resume";
+import type { ResumeProject } from "../data/resume";
 import "../styles/resume.css";
 import "../styles/resume-icons.css";
+import ExternalLink from "./ExternalLink";
+import YouTubeThumbnail from "./YouTubeThumbnail";
 
 const PhotoshopIcon = () => (
   <svg
     className="resume-tech-icon__svg resume-tech-icon__svg--photoshop"
     viewBox="0 0 48 48"
-    role="img"
-    aria-label="Photoshop"
+    aria-hidden="true"
+    focusable="false"
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect className="resume-tech-icon__svg-fill" x="5" y="5" width="38" height="38" rx="10" />
@@ -32,6 +36,41 @@ const PhotoshopIcon = () => (
     </text>
   </svg>
 );
+
+const ResumeProjectVisual = ({ project }: { project: ResumeProject }) => {
+  const [hasImageFailed, setHasImageFailed] = useState(false);
+
+  if (project.youtubeId) {
+    return (
+      <YouTubeThumbnail
+        videoId={project.youtubeId}
+        alt={`${project.title} 프로젝트 YouTube 데모 영상 썸네일`}
+      />
+    );
+  }
+
+  if (project.image && !hasImageFailed) {
+    return (
+      <img
+        src={project.image}
+        alt={project.imageAlt ?? `${project.title} 프로젝트 화면`}
+        width="1600"
+        height="1000"
+        loading="lazy"
+        decoding="async"
+        onError={() => setHasImageFailed(true)}
+      />
+    );
+  }
+
+  return (
+    <span className="resume-project-card__placeholder">
+      <span>{project.presentationLabel}</span>
+      <strong>{project.title}</strong>
+      <em>{project.previewLabel}</em>
+    </span>
+  );
+};
 
 const ResumeSection = () => {
   return (
@@ -64,9 +103,18 @@ const ResumeSection = () => {
 
           <div className="resume-contact-row">
             <a href={`mailto:${resumeProfile.email}`}>{resumeProfile.email}</a>
-            <a href={resumeProfile.github} target="_blank" rel="noreferrer">
+            <ExternalLink
+              href={resumeProfile.github}
+              ariaLabel="은정안 GitHub 프로필 새 탭에서 열기"
+            >
               GitHub
-            </a>
+            </ExternalLink>
+            <ExternalLink
+              href={resumeProfile.youtube}
+              ariaLabel="은정안 YouTube 개발 기록 채널 새 탭에서 열기"
+            >
+              YouTube
+            </ExternalLink>
           </div>
         </div>
       </section>
@@ -76,7 +124,7 @@ const ResumeSection = () => {
           <section className="resume-panel resume-panel--profile">
             <span className="resume-panel__eyebrow">at a glance</span>
             <h2>Product UI Developer</h2>
-            <p>WPF 기반 제품 개발 경험을 React 기반 개인 서비스 제작으로 확장하고 있습니다.</p>
+            <p>WPF 기반 제품 개발 경험을 React 서비스와 역할별 기능형 프로토타입으로 확장했습니다.</p>
 
             <div className="resume-keywords">
               {resumeProfile.keywords.map((keyword) => (
@@ -129,7 +177,7 @@ const ResumeSection = () => {
                 <div className="resume-tech-icon" key={skill.name}>
                   <span className="resume-tech-icon__mark">
                     {skill.iconVariant === "photoshop" ? (
-                      <PhotoshopIcon />
+                        <PhotoshopIcon />
                     ) : (
                       <>
                         {skill.icon && (
@@ -204,39 +252,45 @@ const ResumeSection = () => {
 
           <section className="resume-section-block">
             <div className="resume-section-title">
-              <span>personal projects</span>
-              <h2>Current Projects</h2>
+              <span>featured · prototypes · earlier work</span>
+              <h2>Selected Product Work</h2>
             </div>
 
             <div className="resume-project-list">
               {resumeProjects.map((project) => (
                 <article className="resume-project-card" key={project.id}>
                   <div className="resume-project-card__image-slot">
-                    <span>screenshot</span>
-                    <em>{project.imageSlot}</em>
+                    <ResumeProjectVisual project={project} />
                   </div>
 
                   <div className="resume-project-card__body">
                     <div className="resume-project-card__head">
                       <div>
-                        <span>{project.status}</span>
+                        <span>{project.presentationLabel}</span>
                         <h3>{project.title}</h3>
                       </div>
 
                       {project.links && (
                         <div className="resume-project-card__links">
                           {project.links.map((link) => (
-                            <a
+                            <ExternalLink
                               key={link.href}
                               href={link.href}
-                              target="_blank"
-                              rel="noreferrer"
+                              ariaLabel={`${project.title} ${link.label} 새 탭에서 열기`}
                             >
                               {link.label}
-                            </a>
+                            </ExternalLink>
                           ))}
                         </div>
                       )}
+                    </div>
+
+                    <div
+                      className="resume-project-card__badges"
+                      aria-label="프로젝트 상태"
+                    >
+                      <span>{project.statusLabel}</span>
+                      <span>{project.scopeLabel}</span>
                     </div>
 
                     <p>{project.summary}</p>
@@ -252,6 +306,12 @@ const ResumeSection = () => {
                         <li key={point}>{point}</li>
                       ))}
                     </ul>
+
+                    {project.repositoryNote && (
+                      <p className="resume-project-card__repository-note">
+                        {project.repositoryNote}
+                      </p>
+                    )}
                   </div>
                 </article>
               ))}

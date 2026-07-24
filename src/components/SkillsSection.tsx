@@ -2,21 +2,23 @@ import SectionHeader from "./SectionHeader";
 
 const skillGroups = [
   {
-    title: "Frontend",
+    title: "Frontend & Platform",
     skills: [
       "C#",
       "WPF",
       "WinForms",
-      "JavaScript",
-      "TypeScript",
       "Angular",
       "React",
+      "TypeScript",
+      "JavaScript",
+      "React Native",
+      "Expo",
       "HTML5",
       "CSS3",
     ],
   },
   {
-    title: "Architecture & Product",
+    title: "State & Interaction",
     skills: [
       "MVVM",
       "UI Architecture",
@@ -24,22 +26,39 @@ const skillGroups = [
       "Migration",
       "Workflow Design",
       "UI/UX Improvement",
+      "React Router",
+      "Zustand",
+      "dnd-kit",
+      "Konva",
+      "React Konva",
     ],
   },
   {
-    title: "API & Data",
+    title: "Data & Backend",
     skills: [
       ".NET Framework",
       "ASP.NET",
       "REST API",
       "JSON",
       "MSSQL",
+      "Supabase",
       "PostgreSQL",
+      "LocalStorage",
     ],
   },
   {
-    title: "DevOps & Collaboration",
+    title: "Quality & Delivery",
     skills: [
+      "Vitest",
+      "React Testing Library",
+      "Playwright",
+      "ESLint",
+      "Vite",
+      "npm workspaces",
+      "pnpm monorepo",
+      "GitHub Actions",
+      "GitHub Pages",
+      "Capacitor",
       "AWS EC2",
       "TeamCity",
       "InstallShield",
@@ -58,7 +77,7 @@ const SkillsSection = () => {
       <SectionHeader
         eyebrow="Skills"
         title="기술보다 문제 해결 흐름을 먼저 봅니다"
-        description={`제품의 구조와 사용자 흐름을 이해하고, 필요한 기술을 선택해 안정적으로 구현하는 데 집중합니다.`}
+        description="제품의 구조와 사용자 흐름을 이해하고, 반복해서 사용해 검증한 기술과 프로젝트 범위에 필요한 도구를 구분해 적용합니다."
       />
 
       <div className="skill-grid">

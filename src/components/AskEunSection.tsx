@@ -91,8 +91,8 @@ const AskEunSection = () => {
                       <div className="ask-eun-card__answer">
                         <span className="ask-eun-card__label">Answer</span>
 
-                        {item.answer.map((paragraph, index) => (
-                          <p key={`${item.id}-${index}`}>{paragraph}</p>
+                        {item.answer.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
                         ))}
                       </div>
                     </div>

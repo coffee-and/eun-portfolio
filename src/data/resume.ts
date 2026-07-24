@@ -1,3 +1,8 @@
+import {
+  projects,
+  type ProjectPresentation,
+} from "./projects";
+
 export type SkillIcon = {
   name: string;
   label: string;
@@ -17,7 +22,9 @@ export type ResumeCard = {
 export type ResumeProject = {
   id: string;
   title: string;
-  status: string;
+  statusLabel: string;
+  scopeLabel: string;
+  presentationLabel: string;
   summary: string;
   stack: string[];
   points: string[];
@@ -25,7 +32,11 @@ export type ResumeProject = {
     label: string;
     href: string;
   }[];
-  imageSlot: string;
+  repositoryNote?: string;
+  image?: string;
+  imageAlt?: string;
+  youtubeId?: string;
+  previewLabel: string;
 };
 
 export const resumeProfile = {
@@ -33,9 +44,17 @@ export const resumeProfile = {
   role: "Front-end Engineer / Product UI Developer",
   email: "annn@kakao.com",
   github: "https://github.com/coffee-and",
+  youtube: "https://www.youtube.com/channel/UCpxd-LVHF2ImmVCxRpSx2SA",
   summary:
-    "8년 이상의 개발 경력을 바탕으로 복잡한 제품을 더 쉽게 쓰이게 만드는 프론트엔드 개발자입니다. WPF 기반 대규모 애플리케이션 개발, AI 머신비전 플랫폼 UI/UX 리뉴얼, Migration, 운영 환경 개선 경험을 바탕으로 제품 구조와 사용자 흐름을 함께 설계합니다. 최근에는 Eun Contents, Omok Play, Code Bridge, News Monitor를 통해 React 기반 서비스 기획과 구현 경험을 확장하고 있습니다.",
-  keywords: ["8+ Years", "WPF / MVVM", "React", "Product UI", "Service Planning"],
+    "8년 이상의 개발 경력을 바탕으로 복잡한 제품을 더 쉽게 사용할 수 있도록 만드는 프론트엔드 개발자입니다. WPF 기반 대규모 애플리케이션 개발과 AI 머신비전 플랫폼 UI/UX 개선 경험을 React 기반 서비스 구현으로 확장했습니다. 최근에는 Moment ON과 Moment Play의 핵심 서비스 흐름을 구현하고, Local Job Match·CoachHub·Classory·Code Bridge의 역할별 사용자 경험을 기능형 프로토타입과 YouTube 데모로 공개했습니다.",
+  keywords: [
+    "8+ Years",
+    "WPF / MVVM",
+    "React",
+    "Product UI",
+    "Service Architecture",
+    "Functional Prototype",
+  ],
 };
 
 export const profileCards: ResumeCard[] = [
@@ -54,18 +73,18 @@ export const profileCards: ResumeCard[] = [
       "코그넥스 VPDL 개발에서 WPF 기반 대규모 UI, Migration Plugin, Easy UI Plugin, 사용자 로그 분석 기능을 개발했습니다. 레거시 구조와 신규 플랫폼 사이의 전환 부담을 줄이는 작업을 주도적으로 수행했습니다.",
   },
   {
-    title: "React 기반 개인 서비스 제작",
-    meta: "기획부터 배포까지 직접 진행",
-    tags: ["react", "supabase", "github pages"],
+    title: "React 기반 서비스와 프로토타입 구현",
+    meta: "기획부터 사용자 흐름·상태·검증까지",
+    tags: ["react", "service flow", "functional prototype"],
     description:
-      "Eun Contents, Omok Play, News Monitor, Code Bridge 같은 개인 프로젝트를 통해 기획, UI 설계, 상태 로직 분리, API 연동, 배포까지 직접 경험하며 웹 제품화 역량을 넓히고 있습니다.",
+      "Moment ON과 Moment Play에서는 계정, 저장, 콘텐츠와 게임 흐름을 서비스 형태로 구현했습니다. Local Job Match, CoachHub, Classory와 Code Bridge에서는 서로 다른 역할의 사용자 흐름을 기능형 프로토타입으로 완성하고 영상으로 공개했습니다.",
   },
   {
     title: "운영과 확장을 고려한 구현",
     meta: "데이터 저장 · 배포 · 유지보수 구조",
     tags: ["deployment", "data flow", "maintainability"],
     description:
-      "기능이 화면에서 끝나지 않고 실제로 유지될 수 있도록 데이터 흐름, 저장 구조, 배포 방식, 추후 결제·랭킹·초대 링크 같은 확장 가능성까지 함께 고려해 구현합니다.",
+      "기능이 화면에서 끝나지 않도록 데이터 흐름, 저장 구조, 검증과 배포 방식을 함께 설계합니다. 구현 완료 범위와 실제 결제·운영 DB처럼 연결하지 않은 범위를 명확히 구분합니다.",
   },
 ];
 
@@ -75,8 +94,13 @@ export const resumeHighlights = [
   "Migration Plugin 개발로 기존 SuaKit 프로젝트의 VPDL 전환 자동화",
   "Easy UI Plugin, 사용자 활동 로그 추적, Excel 리포트 기능 개발",
   "TeamCity, AWS EC2, InstallShield 기반 테스트·배포 환경 개선",
-  "Eun Contents에서 관계 분석, 테스트, 운세형 콘텐츠, 미니게임 허브 구조 설계",
-  "Omok Play, Code Bridge, News Monitor를 통해 게임·학습·뉴스 도메인의 React 프로젝트 확장",
+  "Moment ON의 콘텐츠·계정·결과 저장·리포트 흐름 구현",
+  "Moment Play의 14종 미니게임·랭킹·친구·초대 흐름 구현",
+  "Local Job Match에서 모바일 구직자·고용주와 관리자 웹 흐름 설계",
+  "CoachHub에서 목표·실행·피드백·성과로 이어지는 기업 코칭 운영 흐름 설계",
+  "Classory에서 원장·강사·학부모·학생별 학원 운영 화면 설계",
+  "Code Bridge에서 블록·JavaScript 코드·실행 결과를 연결한 학습 흐름 구현",
+  "4개 프로젝트 데모 영상 YouTube 공개",
 ];
 
 export const skillIcons: SkillIcon[] = [
@@ -101,20 +125,20 @@ export const skillIcons: SkillIcon[] = [
 
 export const resumeSkills = [
   {
-    title: "Frontend",
-    items: ["C#", "WPF(MVVM)", "WinForms", "React", "TypeScript", "JavaScript", "HTML5", "CSS3"],
+    title: "Frontend & Platform",
+    items: ["C#", "WPF(MVVM)", "WinForms", "React", "TypeScript", "JavaScript", "React Native", "Expo", "HTML5", "CSS3"],
   },
   {
-    title: "Architecture & Product",
-    items: ["UI Architecture", "Plugin Architecture", "Workflow Design", "Design System", "Migration"],
+    title: "State & Interaction",
+    items: ["UI Architecture", "Plugin Architecture", "Workflow Design", "Migration", "React Router", "Zustand", "dnd-kit", "Konva"],
   },
   {
-    title: "Backend & Data",
-    items: ["Python", "FastAPI", ".NET Framework", "ASP.NET", "REST API", "JSON", "Supabase", "PostgreSQL", "MSSQL"],
+    title: "Data & Backend",
+    items: ["Python", "FastAPI", ".NET Framework", "ASP.NET", "REST API", "JSON", "Supabase", "PostgreSQL", "MSSQL", "LocalStorage"],
   },
   {
-    title: "Build & Collaboration",
-    items: ["Git", "GitHub", "Vite", "TeamCity", "AWS EC2", "InstallShield", "NSIS", "Figma", "Jira", "Photoshop"],
+    title: "Quality & Delivery",
+    items: ["Vitest", "React Testing Library", "Playwright", "ESLint", "Vite", "npm workspaces", "pnpm monorepo", "GitHub Actions", "GitHub Pages", "Capacitor", "TeamCity", "AWS EC2", "Git", "Figma", "Jira"],
   },
 ];
 
@@ -177,77 +201,39 @@ export const careerCards: ResumeCard[] = [
   },
 ];
 
-export const resumeProjects: ResumeProject[] = [
-  {
-    id: "eun-contents",
-    title: "Eun Contents",
-    status: "Main Personal Service",
-    summary:
-      "심리 테스트, 관계 분석, 미니게임, 운세형 콘텐츠를 하나의 허브에서 제공하는 개인 콘텐츠 플랫폼입니다. Relationship Analyzer는 독립 항목으로 빼지 않고 Eun Contents 안의 대표 콘텐츠로 정리했습니다.",
-    stack: ["React", "TypeScript", "Supabase", "Content Hub", "Mobile UI", "Glass UI"],
-    points: [
-      "관계 분석 시스템은 질문 기반 진단, 점수·리스크 계산, 카테고리별 결과, 결과 리포트, 이미지 저장·공유 흐름을 포함합니다.",
-      "문답형 테스트, 심리·관계 콘텐츠, 운세형 콘텐츠, 미니게임 목록을 하나의 허브에서 탐색할 수 있도록 구조를 설계하고 있습니다.",
-      "결제, 결과 저장, 랭킹, 초대 링크 등 서비스 기능을 추가할 수 있도록 데이터와 UI 책임을 분리하고 있습니다.",
-      "로딩 화면, 결과 모달, 글래스 카드, 모바일 반응형 레이아웃을 공통 컴포넌트와 스타일로 정리하고 있습니다.",
-    ],
-    links: [
-      { label: "GitHub", href: "https://github.com/coffee-and/eun-contents" },
-    ],
-    imageSlot: "hub / test / result screens",
-  },
-  {
-    id: "omok-play",
-    title: "Omok Play",
-    status: "Real-time Game Project",
-    summary:
-      "초대 링크 기반 온라인 오목을 목표로 개발 중인 React 게임 프로젝트입니다. 로컬 2인, 컴퓨터 대전, 온라인 대기실, 모바일 중심 UI를 단계적으로 구현하고 있습니다.",
-    stack: ["React", "TypeScript", "Supabase", "Game Logic", "Mobile UI"],
-    points: [
-      "오목 규칙, 금수 판정, 승리 라인 계산 등 핵심 게임 로직을 도메인 함수로 분리했습니다.",
-      "로컬 2인과 컴퓨터 대전 화면을 구성하고, 난이도별 AI 수 선택 구조를 추가했습니다.",
-      "온라인 방 생성, 초대 링크, 준비 상태, 게임 시작 흐름을 Supabase와 연결하고 있습니다.",
-      "모바일 화면에서도 보드와 조작 영역이 안정적으로 보이도록 레이아웃을 조정했습니다.",
-    ],
-    links: [
-      { label: "GitHub", href: "https://github.com/coffee-and/omok-play" },
-    ],
-    imageSlot: "lobby / board / mobile play",
-  },
-  {
-    id: "code-bridge",
-    title: "Code Bridge",
-    status: "Visual Coding Tool",
-    summary:
-      "초보자가 블록을 조합하며 도형 움직임과 JavaScript 코드 개념을 연결해 볼 수 있는 비주얼 코딩 학습 도구입니다.",
-    stack: ["React", "TypeScript", "Zustand", "Konva", "dnd-kit", "Code Generation"],
-    points: [
-      "도형 생성, 블록 조합, 실행·스텝 실행, 초기화 흐름을 분리된 store와 engine 구조로 설계했습니다.",
-      "이동, 회전, 반복 블록을 쌓아 실행하고 결과를 캔버스에서 바로 확인할 수 있도록 구성했습니다.",
-      "사용자가 선택한 도형과 명령 흐름을 명확히 이해할 수 있도록 패널, 워크스페이스, 실행 컨트롤을 분리했습니다.",
-      "교육용 도구로 확장할 수 있도록 코드 생성기와 인터프리터 책임을 분리했습니다.",
-    ],
-    links: [
-      { label: "GitHub", href: "https://github.com/coffee-and/code-bridge" },
-    ],
-    imageSlot: "block workspace / canvas",
-  },
-  {
-    id: "news-monitor",
-    title: "News Monitor",
-    status: "API Data Project",
-    summary:
-      "The Guardian API를 연동해 AI·IT 뉴스 흐름을 검색하고 모니터링하는 React 기반 프로젝트입니다.",
-    stack: ["React", "TypeScript", "External API", "LocalStorage", "News UX"],
-    points: [
-      "검색, 카테고리 필터, 기사 목록, 상세 링크, 저장 기능을 분리된 hook과 API 모듈로 구성했습니다.",
-      "로딩, 빈 결과, 에러 상태를 명확히 분리해 API 기반 UI의 안정성을 높였습니다.",
-      "관심 기사와 최근 본 기사 정보를 LocalStorage에 저장해 개인화된 탐색 흐름을 만들었습니다.",
-      "뉴스 카드, 필터, 검색 영역을 컴포넌트 단위로 나누어 재사용성과 유지보수성을 고려했습니다.",
-    ],
-    links: [
-      { label: "GitHub", href: "https://github.com/coffee-and/news-monitor" },
-    ],
-    imageSlot: "search / article list",
-  },
-];
+const presentationLabels: Record<ProjectPresentation, string> = {
+  featured: "Featured",
+  "video-demo": "Selected Prototype",
+  archive: "Earlier Work",
+};
+
+export const resumeProjects: ResumeProject[] = projects.map((project) => {
+  const links = [
+    ...(project.demo
+      ? [{ label: "View Site", href: project.demo }]
+      : []),
+    ...(project.youtubeUrl
+      ? [{ label: "YouTube Demo", href: project.youtubeUrl }]
+      : []),
+    ...(project.github
+      ? [{ label: "GitHub", href: project.github }]
+      : []),
+  ];
+
+  return {
+    id: project.id,
+    title: project.title,
+    statusLabel: project.statusLabel,
+    scopeLabel: project.scopeLabel,
+    presentationLabel: presentationLabels[project.presentation],
+    summary: project.description,
+    stack: project.stack,
+    points: project.points.slice(0, 4),
+    links: links.length > 0 ? links : undefined,
+    repositoryNote: project.repositoryNote,
+    image: project.image,
+    imageAlt: project.imageAlt,
+    youtubeId: project.youtubeId,
+    previewLabel: project.previewLabel,
+  };
+});

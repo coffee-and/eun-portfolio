@@ -7,6 +7,7 @@ import AskEunSection from "./components/AskEunSection";
 import SkillsSection from "./components/SkillsSection";
 import CareerHighlightsSection from "./components/CareerHighlightsSection";
 import ProjectsSection from "./components/ProjectsSection";
+import YouTubeSection from "./components/YouTubeSection";
 import ContactSection from "./components/ContactSection";
 
 const getRoute = () => (window.location.hash === "#/resume" ? "resume" : "portfolio");
@@ -36,6 +37,7 @@ function App() {
       <SiteNav />
       <Hero />
       <ProjectsSection />
+      <YouTubeSection />
       <AboutSection />
       <SkillsSection />
       <CareerHighlightsSection />
