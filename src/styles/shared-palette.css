@@ -19,7 +19,7 @@
   --color-border: var(--color-charcoal-line);
   --color-border-strong: var(--color-charcoal-900);
 
-  /* Shared legacy aliases used across portfolio and resume styles */
+  /* Shared aliases used by portfolio and resume styles */
   --white: var(--color-white);
   --black: var(--color-charcoal-950);
   --palette-cream: var(--color-white);
@@ -52,45 +52,4 @@
   --shadow-lg: none;
 
   --font-weight-accent: 500;
-}
-
-/* The wordmark follows the same shared palette in both routes. */
-.brand-mark__word {
-  fill: var(--brand-text) !important;
-}
-
-.brand-mark__dot {
-  fill: var(--brand-primary) !important;
-  stroke: var(--white) !important;
-}
-
-/* Small wine labels stay intentional instead of looking like errors. */
-.section-header .eyebrow,
-.editorial-number,
-.youtube-card__korean-title,
-.youtube-card__status strong,
-.project-editorial__status dt,
-.career-index span,
-.career-story__header p,
-.career-chapter__heading > span,
-.career-project__title > span,
-.skill-ledger__row span,
-.ask-eun-questions > p,
-.ask-eun-answer > span,
-.resume-panel__eyebrow,
-.resume-section-title > span,
-.resume-career-card__header > span,
-.resume-career-card__label,
-.resume-project-card__badges span:first-child,
-.resume-tag-row em,
-.text-accent {
-  font-weight: var(--font-weight-accent) !important;
-}
-
-.project-editorial__links a,
-.youtube-card__link,
-.hero-text-link,
-.ask-eun-answer__links a,
-.resume-info-card--career .resume-career-card__technology p {
-  font-weight: var(--font-weight-accent) !important;
 }
