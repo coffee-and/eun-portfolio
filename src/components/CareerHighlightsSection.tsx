@@ -6,8 +6,8 @@ const CareerHighlightsSection = () => {
     <section className="career-editorial" id="career">
       <SectionHeader
         eyebrow="Career"
-        title="회사에서 맡았던 제품과 문제 해결"
-        description={`회사명과 기술만 나열하지 않고, 어떤 제품에서 무엇을 맡았고 어떤 문제를 어떻게 해결했는지 상세하게 정리했습니다.`}
+        title="실무에서 맡은 제품과 개선 경험"
+        description="회사별로 담당한 제품과 역할, 직접 개선한 기능과 그 결과를 빠짐없이 정리했습니다."
       />
 
       <nav className="career-index" aria-label="회사별 경력 바로가기">
@@ -62,7 +62,7 @@ const CareerHighlightsSection = () => {
             <section className="career-chapter">
               <div className="career-chapter__heading">
                 <span>02</span>
-                <h4>주요 프로젝트와 해결 과정</h4>
+                <h4>주요 프로젝트와 개선 내용</h4>
               </div>
 
               <div className="career-projects">
