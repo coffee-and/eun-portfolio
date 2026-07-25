@@ -11,6 +11,7 @@ import {
 import type { ResumeProject } from "../data/resume";
 import "../styles/resume.css";
 import "../styles/resume-icons.css";
+import BrandMark from "./BrandMark";
 import ExternalLink from "./ExternalLink";
 import YouTubeThumbnail from "./YouTubeThumbnail";
 
@@ -76,8 +77,8 @@ const ResumeSection = () => {
   return (
     <main className="resume-page" id="resume">
       <header className="resume-page__nav">
-        <a className="resume-page__brand" href="#/">
-          eun.
+        <a className="resume-page__brand" href="#/" aria-label="portfolio home">
+          <BrandMark />
         </a>
         <a className="resume-page__back" href="#/">
           back to portfolio
