@@ -1,0 +1,36 @@
+:root {
+  --white: #ffffff;
+  --palette-cream: #fef0d5;
+  --ink: #002f49;
+  --navy: #002f49;
+  --surface: #ffffff;
+  --silver: rgba(0, 47, 73, 0.18);
+  --slate: #669bbb;
+  --blue: #669bbb;
+  --red: #c1121f;
+  --wine: #780001;
+  --burgundy: #780001;
+  --gold: #c1121f;
+  --cream: #ffffff;
+
+  --bg-primary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-muted: #ffffff;
+  --bg-pill: transparent;
+  --border-light: rgba(0, 47, 73, 0.18);
+  --border-strong: #002f49;
+  --text-primary: #002f49;
+  --text-secondary: rgba(0, 47, 73, 0.78);
+  --text-muted: rgba(0, 47, 73, 0.58);
+  --brand-primary: #780001;
+  --brand-text: #002f49;
+}
+
+.brand-mark__word {
+  fill: var(--navy) !important;
+}
+
+.brand-mark__dot {
+  fill: var(--red) !important;
+  stroke: var(--palette-cream) !important;
+}
