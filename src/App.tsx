@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import SiteNav from "./components/SiteNav";
-import Hero from "./components/Hero";
 import AboutSection from "./components/AboutSection";
-import ResumeSection from "./components/ResumeSection";
 import AskEunSection from "./components/AskEunSection";
-import SkillsSection from "./components/SkillsSection";
 import CareerHighlightsSection from "./components/CareerHighlightsSection";
-import ProjectsSection from "./components/ProjectsSection";
-import YouTubeSection from "./components/YouTubeSection";
 import ContactSection from "./components/ContactSection";
+import Hero from "./components/Hero";
+import ProjectsSection from "./components/ProjectsSection";
+import ResumeSection from "./components/ResumeSection";
+import SiteNav from "./components/SiteNav";
+import SkillsSection from "./components/SkillsSection";
+import YouTubeSection from "./components/YouTubeSection";
+import "./styles/editorial.css";
 
 const getRoute = () => (window.location.hash === "#/resume" ? "resume" : "portfolio");
 
@@ -36,16 +37,16 @@ function App() {
     <main>
       <SiteNav />
       <Hero />
+      <AboutSection />
       <ProjectsSection />
       <YouTubeSection />
-      <AboutSection />
-      <SkillsSection />
       <CareerHighlightsSection />
+      <SkillsSection />
       <AskEunSection />
       <ContactSection />
 
       <footer className="site-footer">
-        <p>2026 은정안 · design and coding by me</p>
+        <p>2026 은정안 · product, design and coding by me</p>
       </footer>
     </main>
   );
