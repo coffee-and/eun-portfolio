@@ -3,9 +3,55 @@ import {
   askEunCategories,
   askEunItems,
   type AskEunCategoryId,
+  type AskEunItem,
 } from "../data/askEun";
+import { careers } from "../data/careers";
 import ExternalLink from "./ExternalLink";
 import SectionHeader from "./SectionHeader";
+
+const careerOverviewQuestion: AskEunItem = {
+  id: "career-overview",
+  category: "career",
+  question: "전체 경력을 회사별로 소개해주세요.",
+  summary: `${careers.length}개의 경력에서 제품 개발, 데이터 처리, 운영과 기술 콘텐츠 제작을 경험했습니다.`,
+  answer: careers.map(
+    (career) => `${career.company} (${career.period}) — ${career.overview}`,
+  ),
+  relatedLinks: [{ label: "회사별 상세 경력", href: "#career" }],
+};
+
+const companyCareerQuestions: AskEunItem[] = careers
+  .filter((career) => career.id !== "cognex")
+  .map((career) => ({
+    id: `career-${career.id}`,
+    category: "career" as const,
+    question: `${career.company}에서는 무엇을 했나요?`,
+    summary: career.overview,
+    answer: [
+      career.overview,
+      ...career.responsibilities,
+      ...career.projects.flatMap((project) => [
+        `${project.title} — ${project.context}`,
+        ...project.work,
+        ...project.result.map((result) => `${project.title} 결과 — ${result}`),
+      ]),
+    ],
+    relatedLinks: [
+      { label: `${career.company} 상세 보기`, href: `#career-${career.id}` },
+    ],
+  }));
+
+const currentAskEunItems = askEunItems.flatMap((item) => {
+  if (item.id === "career-overview") {
+    return [careerOverviewQuestion];
+  }
+
+  if (item.id === "early-career") {
+    return companyCareerQuestions;
+  }
+
+  return [item];
+});
 
 const AskEunSection = () => {
   const [activeCategory, setActiveCategory] =
@@ -13,16 +59,16 @@ const AskEunSection = () => {
   const [activeQuestionId, setActiveQuestionId] = useState("profile");
 
   const categoryQuestions = useMemo(
-    () => askEunItems.filter((item) => item.category === activeCategory),
+    () => currentAskEunItems.filter((item) => item.category === activeCategory),
     [activeCategory],
   );
 
   const activeQuestion =
-    askEunItems.find((item) => item.id === activeQuestionId) ??
+    currentAskEunItems.find((item) => item.id === activeQuestionId) ??
     categoryQuestions[0];
 
   const handleCategoryChange = (categoryId: AskEunCategoryId) => {
-    const firstQuestion = askEunItems.find(
+    const firstQuestion = currentAskEunItems.find(
       (item) => item.category === categoryId,
     );
 
@@ -88,8 +134,8 @@ const AskEunSection = () => {
             <strong>{activeQuestion.summary}</strong>
 
             <div className="ask-eun-answer__copy">
-              {activeQuestion.answer.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+              {activeQuestion.answer.map((paragraph, index) => (
+                <p key={`${activeQuestion.id}-${index}`}>{paragraph}</p>
               ))}
             </div>
 
