@@ -1,0 +1,278 @@
+:root {
+  --dusty-rose: #d8aeb9;
+  --dusty-rose-soft: #f5e9ec;
+  --dusty-rose-border: #e7cdd4;
+  --dusty-rose-ink: #9b4f63;
+}
+
+::selection {
+  background: var(--dusty-rose-soft);
+  color: var(--ink);
+}
+
+/* Remove the old page grid completely. */
+html,
+body,
+main,
+.site-nav,
+.resume-page {
+  background-image: none !important;
+}
+
+html,
+body {
+  background-color: var(--white) !important;
+}
+
+main,
+.site-nav,
+.resume-page,
+.resume-page__nav {
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+/* Korean and English copy should wrap by meaning, not by isolated words. */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-wrap: balance;
+}
+
+p,
+li,
+.ask-eun-question,
+.ask-eun-category em {
+  text-wrap: pretty;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+/* Keep the hierarchy compact: headings lead, copy remains visually related. */
+.section-header p:not(.eyebrow),
+.project-editorial__description,
+.youtube-card__body > p:not(.youtube-card__status),
+.contact-copy {
+  font-size: 0.96rem !important;
+  line-height: 1.72 !important;
+}
+
+.about-editorial__statement {
+  gap: 20px;
+}
+
+.about-editorial__statement p,
+.about-editorial__statement p + p {
+  max-width: 760px;
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.78 !important;
+  letter-spacing: -0.015em !important;
+}
+
+.about-editorial__statement p:first-child {
+  padding: 18px 20px;
+  border-left: 3px solid var(--dusty-rose);
+  background: var(--dusty-rose-soft);
+  color: var(--ink);
+  font-weight: 500 !important;
+}
+
+.text-accent {
+  display: inline;
+  color: var(--wine);
+  font: inherit;
+  font-weight: 650 !important;
+}
+
+.about-grid--editorial .info-card p {
+  font-size: 0.9rem !important;
+  line-height: 1.65 !important;
+}
+
+.about-grid--editorial .info-card > span,
+.project-editorial__category,
+.youtube-card__korean-title,
+.resume-panel__eyebrow,
+.resume-section-title > span {
+  color: var(--dusty-rose-ink) !important;
+}
+
+.career-story__lead > p {
+  font-size: clamp(0.98rem, 1.3vw, 1.08rem) !important;
+  font-weight: 450 !important;
+  line-height: 1.75 !important;
+}
+
+.editorial-list li,
+.career-project__context p,
+.career-project__columns li {
+  font-size: 0.9rem !important;
+  line-height: 1.68 !important;
+}
+
+.skill-ledger header p,
+.skill-ledger__row p {
+  font-size: 0.88rem !important;
+  line-height: 1.62 !important;
+}
+
+.ask-eun-answer__copy p {
+  font-size: 0.94rem !important;
+  line-height: 1.72 !important;
+}
+
+/* Use rose as a surface accent instead of making supporting copy oversized. */
+.project-editorial__badges span,
+.youtube-card__status strong,
+.resume-project-card__badges span:first-child,
+.resume-tag-row em {
+  border-color: var(--dusty-rose-border) !important;
+  background: var(--dusty-rose-soft) !important;
+  color: var(--wine) !important;
+}
+
+.ask-eun-category--active {
+  background: var(--dusty-rose-soft) !important;
+  box-shadow: inset 3px 0 0 var(--dusty-rose);
+}
+
+.ask-eun-question--active {
+  background: linear-gradient(90deg, var(--dusty-rose-soft), transparent 88%);
+}
+
+.ask-eun-answer > strong {
+  padding: 12px 14px;
+  border-left: 3px solid var(--dusty-rose);
+  background: var(--dusty-rose-soft);
+  color: var(--wine);
+}
+
+.ask-eun-editorial .section-header {
+  margin-bottom: 28px;
+}
+
+/* Tablets and narrow desktop panes need a true one-column question layout. */
+@media (max-width: 900px) {
+  .ask-eun-editorial .section-header {
+    grid-template-columns: 1fr !important;
+    row-gap: 10px;
+  }
+
+  .ask-eun-editorial .section-header .eyebrow,
+  .ask-eun-editorial .section-header h2 {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  .ask-eun-explorer {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr) !important;
+    overflow: visible;
+  }
+
+  .ask-eun-categories,
+  .ask-eun-questions,
+  .ask-eun-answer {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    grid-column: 1 !important;
+    border-right: 0 !important;
+  }
+
+  .ask-eun-categories {
+    padding: 12px 0 16px !important;
+    display: flex !important;
+    gap: 10px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 1px;
+    scrollbar-width: none;
+  }
+
+  .ask-eun-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ask-eun-category,
+  .ask-eun-category:nth-child(2n) {
+    width: auto !important;
+    min-width: min(78vw, 260px);
+    flex: 0 0 min(78vw, 320px) !important;
+    padding: 14px !important;
+    border: 1px solid var(--border-light) !important;
+    scroll-snap-align: start;
+  }
+
+  .ask-eun-questions {
+    padding: 18px 0 !important;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .ask-eun-question {
+    width: 100%;
+    max-width: none;
+    padding: 16px 14px 16px 20px !important;
+    font-size: 0.96rem !important;
+    line-height: 1.58 !important;
+    white-space: normal;
+    text-align: left;
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .ask-eun-question > span {
+    top: 1.55rem;
+  }
+
+  .ask-eun-answer {
+    padding: 22px 0 !important;
+    background: transparent;
+  }
+
+  .ask-eun-answer h3 {
+    max-width: none;
+    font-size: clamp(1.5rem, 5.8vw, 2.05rem) !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .section-header p:not(.eyebrow),
+  .project-editorial__description,
+  .youtube-card__body > p:not(.youtube-card__status),
+  .career-story__lead > p,
+  .about-editorial__statement p,
+  .about-editorial__statement p + p,
+  .ask-eun-answer__copy p {
+    font-size: 0.94rem !important;
+    line-height: 1.72 !important;
+  }
+
+  .about-editorial__statement {
+    margin: 0 !important;
+  }
+
+  .about-editorial__statement p:first-child {
+    padding: 15px 16px;
+  }
+
+  .ask-eun-editorial .section-header {
+    margin-bottom: 22px;
+  }
+
+  .ask-eun-category,
+  .ask-eun-category:nth-child(2n) {
+    min-width: min(82vw, 250px);
+    flex-basis: min(82vw, 290px) !important;
+  }
+
+  .ask-eun-question {
+    font-size: 0.94rem !important;
+  }
+}
