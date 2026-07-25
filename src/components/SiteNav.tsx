@@ -1,3 +1,5 @@
+import BrandMark from "./BrandMark";
+
 const navItems = [
   { label: "home", href: "#home" },
   { label: "work", href: "#projects" },
@@ -12,7 +14,7 @@ const SiteNav = () => {
   return (
     <header className="site-nav">
       <a className="site-nav__brand" href="#home" aria-label="portfolio home">
-        eun.
+        <BrandMark />
       </a>
 
       <nav className="site-nav__links" aria-label="portfolio navigation">
