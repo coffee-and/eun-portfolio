@@ -1,0 +1,96 @@
+:root {
+  /* Core palette */
+  --color-white: #ffffff;
+  --color-charcoal-950: #111214;
+  --color-charcoal-900: #191b1e;
+  --color-charcoal-700: #3f444a;
+  --color-charcoal-500: #70767d;
+  --color-charcoal-line: rgba(25, 27, 30, 0.18);
+  --color-wine-700: #76283b;
+  --color-wine-800: #652131;
+
+  /* Semantic palette */
+  --color-heading: var(--color-charcoal-950);
+  --color-text: var(--color-charcoal-900);
+  --color-text-secondary: var(--color-charcoal-700);
+  --color-text-muted: var(--color-charcoal-500);
+  --color-accent: var(--color-wine-700);
+  --color-accent-hover: var(--color-wine-800);
+  --color-border: var(--color-charcoal-line);
+  --color-border-strong: var(--color-charcoal-900);
+
+  /* Shared legacy aliases used across portfolio and resume styles */
+  --white: var(--color-white);
+  --black: var(--color-charcoal-950);
+  --palette-cream: var(--color-white);
+  --ink: var(--color-heading);
+  --navy: var(--color-heading);
+  --surface: var(--color-white);
+  --silver: var(--color-border);
+  --slate: var(--color-text-muted);
+  --blue: var(--color-accent);
+  --red: var(--color-accent);
+  --wine: var(--color-accent);
+  --burgundy: var(--color-accent);
+  --gold: var(--color-accent);
+  --cream: var(--color-white);
+
+  --bg-primary: var(--color-white);
+  --bg-card: var(--color-white);
+  --bg-muted: var(--color-white);
+  --bg-pill: transparent;
+  --border-light: var(--color-border);
+  --border-strong: var(--color-border-strong);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --brand-primary: var(--color-accent);
+  --brand-text: var(--color-heading);
+
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+
+  --font-weight-accent: 500;
+}
+
+/* The wordmark follows the same shared palette in both routes. */
+.brand-mark__word {
+  fill: var(--brand-text) !important;
+}
+
+.brand-mark__dot {
+  fill: var(--brand-primary) !important;
+  stroke: var(--white) !important;
+}
+
+/* Small wine labels stay intentional instead of looking like errors. */
+.section-header .eyebrow,
+.editorial-number,
+.youtube-card__korean-title,
+.youtube-card__status strong,
+.project-editorial__status dt,
+.career-index span,
+.career-story__header p,
+.career-chapter__heading > span,
+.career-project__title > span,
+.skill-ledger__row span,
+.ask-eun-questions > p,
+.ask-eun-answer > span,
+.resume-panel__eyebrow,
+.resume-section-title > span,
+.resume-career-card__header > span,
+.resume-career-card__label,
+.resume-project-card__badges span:first-child,
+.resume-tag-row em,
+.text-accent {
+  font-weight: var(--font-weight-accent) !important;
+}
+
+.project-editorial__links a,
+.youtube-card__link,
+.hero-text-link,
+.ask-eun-answer__links a,
+.resume-info-card--career .resume-career-card__technology p {
+  font-weight: var(--font-weight-accent) !important;
+}
