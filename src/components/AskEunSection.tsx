@@ -5,9 +5,8 @@ import {
   type AskEunCategoryId,
   type AskEunItem,
 } from "../data/askEun";
-import { careers } from "../data/careers";
+import { careerCards } from "../data/resume";
 import {
-  getCompanyDisplayName,
   normalizeCompanyNames,
 } from "../utils/companyNames";
 import ExternalLink from "./ExternalLink";
@@ -17,38 +16,30 @@ const careerOverviewQuestion: AskEunItem = {
   id: "career-overview",
   category: "career",
   question: "전체 경력을 회사별로 소개해주세요.",
-  summary: `${careers.length}개의 경력에서 제품 개발, 데이터 처리, 운영과 기술 콘텐츠 제작을 경험했습니다.`,
-  answer: careers.map(
-    (career) =>
-      `${getCompanyDisplayName(career)} (${career.period}) — ${career.overview}`,
+  summary: `${careerCards.length}개의 경력에서 제품 개발, 데이터 처리, 운영과 기술 콘텐츠 제작을 경험했습니다.`,
+  answer: careerCards.map(
+    (career) => `${career.title} (${career.period}) — ${career.description}`,
   ),
   relatedLinks: [{ label: "회사별 상세 경력", href: "#career" }],
 };
 
-const companyCareerQuestions: AskEunItem[] = careers
+const companyCareerQuestions: AskEunItem[] = careerCards
   .filter((career) => career.id !== "cognex")
-  .map((career) => {
-    const companyName = getCompanyDisplayName(career);
-
-    return {
-      id: `career-${career.id}`,
-      category: "career" as const,
-      question: `${companyName}에서는 무엇을 했나요?`,
-      summary: career.overview,
-      answer: [
-        career.overview,
-        ...career.responsibilities,
-        ...career.projects.flatMap((project) => [
-          `${project.title} — ${project.context}`,
-          ...project.work,
-          ...project.result.map((result) => `${project.title} 결과 — ${result}`),
-        ]),
-      ],
-      relatedLinks: [
-        { label: `${companyName} 상세 보기`, href: `#career-${career.id}` },
-      ],
-    };
-  });
+  .map((career) => ({
+    id: `career-${career.id}`,
+    category: "career" as const,
+    question: `${career.title}에서는 무엇을 했나요?`,
+    summary: career.description,
+    answer: [
+      ...career.highlights.map(
+        (highlight) => `${highlight.title} — ${highlight.description}`,
+      ),
+      `사용 기술 — ${career.tags.join(" · ")}`,
+    ],
+    relatedLinks: [
+      { label: `${career.title} 상세 보기`, href: `#career-${career.id}` },
+    ],
+  }));
 
 const normalizedAskEunItems = askEunItems.map((item) => ({
   ...item,
