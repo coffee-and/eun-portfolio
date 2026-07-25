@@ -48,7 +48,7 @@ export const resumeProfile = {
   github: "https://github.com/coffee-and",
   youtube: "https://www.youtube.com/channel/UCpxd-LVHF2ImmVCxRpSx2SA",
   summary:
-    "8년 이상의 제품 UI 개발 경험을 바탕으로 제품의 사용성과 기술 구조를 함께 설계하는 풀스택 개발자입니다. WPF·MVVM 기반 대규모 애플리케이션과 AI 머신비전 플랫폼을 개발했고, 최근에는 React·TypeScript·Supabase로 화면 구성, 인증, 데이터 저장, 검증과 배포까지 직접 연결한 서비스를 만들었습니다. Moment ON과 Moment Play의 핵심 기능을 구현했으며 Local Job Match·CoachHub·Classory·Code Bridge의 실제 조작 과정을 영상으로 공개했습니다.",
+    "8년 이상의 개발 경력 동안 금융 자산관리와 스크래핑, 은행 데이터 관리, 문서 뷰어와 파일 변환, Active Directory 관리자 솔루션, AI 머신비전 플랫폼을 개발했습니다. WPF·MVVM 기반 대규모 제품 UI와 C++ Native DLL 연동, 비동기 처리, 설치·배포 환경을 경험했고, 최근에는 React·TypeScript·Supabase로 화면 구성, 인증, 데이터 저장, 검증과 배포까지 직접 연결한 서비스를 만들고 있습니다.",
   keywords: [
     "8+ Years",
     "Product Full-stack",
@@ -72,7 +72,14 @@ export const profileCards: ResumeCard[] = [
     meta: "AI 머신비전 플랫폼 · MVVM · Plugin",
     tags: ["wpf", "mvvm", "plugin architecture"],
     description:
-      "코그넥스 VPDL에서 UI/UX 리뉴얼, VIDI·SuaKit·VPDL 통합, Migration·Easy UI Plugin, 작업 기록과 Excel 리포트를 개발했습니다.",
+      "코그넥스 VPDL에서 Native 엔진 연동, UI/UX 리뉴얼, 제품 통합, Migration·Easy UI Plugin, 로그·분석 도구와 배포 환경을 개발했습니다.",
+  },
+  {
+    title: "기업용·금융 제품 개발 경험",
+    meta: "금융 데이터 · 문서 처리 · 관리자 솔루션",
+    tags: ["enterprise", "finance", "system integration"],
+    description:
+      "핑거, 스탠다드차타드은행, 핸디에이치아이에스와 퓨전데이타에서 금융 데이터 연동, 문서 뷰어·파일 변환, AD 관리와 프로세스 모니터링 솔루션을 개발했습니다.",
   },
   {
     title: "React 기반 제품 서비스 구현",
@@ -81,25 +88,23 @@ export const profileCards: ResumeCard[] = [
     description:
       "Moment ON과 Moment Play에서는 계정, 콘텐츠·게임, 사용자별 저장, 검증과 배포를 구현했습니다. 역할별 프로젝트 네 편은 Functional Prototype과 영상으로 공개했습니다.",
   },
-  {
-    title: "운영과 확장을 고려한 구현",
-    meta: "호환성 · 복구 · CI/CD · 패키징",
-    tags: ["maintainability", "testing", "deployment"],
-    description:
-      "레거시 프로젝트 변환, 손상 데이터 검증, 저장 실패 복구, 테스트 자동화와 설치·배포 환경까지 제품이 반복해서 검증될 수 있는 기반을 만듭니다.",
-  },
 ];
 
 export const resumeHighlights = [
+  "딥러닝 머신비전 엔진(C++ Native DLL)과 WPF UI 연동 구조 설계",
   "AI 플랫폼 UI/UX 전면 리뉴얼과 공통 디자인 체계 구축",
   "UI 관련 고객 문의 20% 이상 감소에 기여",
   "SuaKit 프로젝트의 VPDL 전환을 자동화한 Migration Plugin 개발",
-  "Easy UI Plugin, 사용자 작업 기록과 Excel 리포트 구현",
-  "TeamCity·AWS EC2·InstallShield·NSIS 기반 검증·설치·배포 환경 개선",
-  "Moment ON의 콘텐츠·계정·회원·비회원 저장·리포트 구현",
-  "Moment Play의 14종 게임·랭킹·친구·초대 기능 구현",
-  "채용·코칭·학원 운영·코딩 학습 프로젝트의 역할별 작업 과정 구현",
-  "4개 프로젝트 데모 영상 YouTube 공개",
+  "Quick HDM GUI·HDM Red 가이드·Easy UI Plugin 개발",
+  "딥러닝 파라미터 복원, 작업 기록·Excel 리포트와 워크스페이스 분석 도구 구현",
+  "TeamCity·AWS EC2·InstallShield·NSIS 기반 검증·설치·배포 환경 운영",
+  "ADAgent·ProcessWatchdog와 NSIS 통합 설치 프로그램 개발·유지보수",
+  "PDF 보안 뷰어와 Office·압축파일 이미지 변환 시스템 개발",
+  "스탠다드차타드은행 여신 거래 데이터와 Excel·Oracle 업무 도구 관리",
+  "신한은행 머니멘토·국민은행 가계부·myFingerCM 자산관리 솔루션 개발",
+  "은행·카드·통신사·증권사·공공기관 스크래핑 스크립트 개발·유지보수",
+  "블록체인 입문 도서 집필과 아키텍처 다이어그램·개념 시각화 제작",
+  "Moment ON·Moment Play 핵심 서비스와 프로젝트 데모 영상 4편 공개",
 ];
 
 export const skillIcons: SkillIcon[] = [
