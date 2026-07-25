@@ -1,52 +1,110 @@
 # Eun Portfolio
 
-8년 이상의 제품 UI 개발 경험과 React 기반 서비스·기능형 프로토타입을 정리한 프론트엔드 개발자 은정안의 포트폴리오입니다.
+> 제품의 사용성과 기술 구조를 함께 설계하고, 화면부터 데이터와 배포까지 연결해 실제 제품으로 완성하는 풀스택 개발자 은정안의 포트폴리오입니다.
 
 ## Live Demo
 
 [포트폴리오 보기](https://coffee-and.github.io/eun-portfolio/)
 
-## 핵심 메시지
+## 소개
 
-- WPF 기반 대규모 제품 UI 경험을 React 웹 서비스와 크로스플랫폼 프로젝트로 확장했습니다.
-- Moment ON과 Moment Play는 계정·저장·콘텐츠 또는 게임 흐름을 포함한 핵심 서비스 구현을 완료했습니다.
-- 두 대표 서비스에서 실제 결제 또는 수익화 시스템은 아직 연결하지 않았으며, 완료 범위와 미연동 범위를 UI에서 구분합니다.
-- Local Job Match, CoachHub, Classory와 Code Bridge는 역할별 사용자 흐름과 상태 변화를 구현한 Mock Data 기반 Functional Prototype입니다.
-- 네 기능형 프로토타입의 전체 흐름은 YouTube 데모로 공개했습니다.
+8년 이상의 제품 UI 개발 경험을 기반으로 금융 서비스, 기업용 솔루션과 AI 머신비전 플랫폼을 개발했습니다. 최근에는 React·TypeScript·Supabase를 이용해 화면 구성, 인증, 사용자별 데이터 저장, 검증, 테스트와 배포까지 직접 연결한 서비스를 만들고 있습니다.
 
-## Featured Projects
+이번 개편은 단순한 카드형 프로젝트 목록을 벗어나 다음 두 가지를 함께 보여주는 것을 목표로 합니다.
+
+1. 실제 화면과 영상으로 확인하는 프로젝트 구현 결과
+2. 회사별 역할, 문제, 구현 방법과 결과를 생략하지 않은 경력 기록
+
+## 디자인 방향
+
+- 대형 프로젝트 화면과 16:9 영상 썸네일 중심의 쇼케이스
+- 번호가 있는 에디토리얼 형식의 경력·기술·프로젝트 상세 설명
+- 굵은 검은 왼쪽 세로선과 카드 안의 중첩 카드 제거
+- 활성 질문과 섹션 제목에는 짧은 레드 포인트만 사용
+- 순백색·크림·딥 네이비를 기본으로 레드·버건디·더스티 블루를 제한적으로 사용
+
+### Color palette
+
+| 역할 | 색상 |
+| --- | --- |
+| White | `#FFFFFF` |
+| Cream | `#FEF0D5` |
+| Deep Navy | `#002F49` |
+| Dusty Blue | `#669BBB` |
+| Red | `#C1121F` |
+| Burgundy | `#780001` |
+
+## Featured Services
 
 ### Moment ON
 
-사주·타로·관계분석·함께 질문·다이어리·캘린더를 하나의 감성 콘텐츠 허브로 연결한 React·Supabase 기반 서비스입니다.
+사주·타로·관계분석·함께 질문·다이어리·캘린더를 하나의 콘텐츠 플랫폼으로 구성한 React·Supabase 기반 서비스입니다.
 
 - 상태: **핵심 서비스 구현 완료**
 - 현재 범위: **결제 연동 예정**
-- 구현: 회원·비회원 저장, Supabase 인증, 결과 다시 보기, PNG·PDF 리포트, 관리자 콘텐츠 관리, 저장 데이터 검증
+- 구현: 회원·비회원 저장, Supabase 인증, 결과 다시 보기, PNG·PDF 리포트, 관리자 콘텐츠 관리, 저장 데이터 검증·복구
 - [View Site](https://moment-on.vercel.app/)
 - 저장소: Private Repository · Source available on request
 
 ### Moment Play
 
-2048, Memory Sequence, Sudoku, Omok 등 14종 미니게임과 랭킹·친구·초대 흐름을 제공하는 React·Supabase 기반 게임 서비스입니다.
+2048, Memory Sequence, Sudoku, Omok 등 14종 미니게임과 기록·랭킹·친구·초대를 제공하는 React·Supabase 기반 게임 서비스입니다.
 
 - 상태: **핵심 서비스 구현 완료**
 - 현재 범위: **결제·수익화 연동 예정**
-- 구현: 14종 게임, 키보드·터치 입력, 기록, 랭킹, 인증·온보딩, 친구, 오목 초대·알림, 테마·오디오
+- 구현: 14종 게임, 키보드·터치 입력, 결과 기록, 랭킹, 인증·온보딩, 친구, 오목 초대·알림, 테마·오디오
 - 기반 언어: JavaScript
 - [View Site](https://coffee-and.github.io/moment-play/)
 - [GitHub](https://github.com/coffee-and/moment-play)
 
-## Functional Prototypes & YouTube Demos
+## Project Films
 
-아래 프로젝트는 실제 인증과 운영 데이터베이스가 연결된 상용 서비스가 아니라, 역할별 전체 사용자 흐름을 확인할 수 있는 기능형 프로토타입입니다.
+아래 프로젝트는 역할이 다른 사용자의 처음부터 끝까지의 작업 과정을 구현한 기능형 프로토타입입니다. 실제 인증과 운영 데이터베이스가 연결된 상용 서비스라고 과장하지 않고 현재 범위를 명확히 표시합니다.
 
 | 프로젝트 | 구현 범위 | Demo |
 | --- | --- | --- |
-| Local Job Match | 구직자·고용주 모바일 앱과 운영 관리자 웹을 연결한 채용 흐름 | [YouTube](https://youtu.be/KdzZpGbRIEc) |
-| CoachHub | 관리자·PM·코치·참여자의 목표·실행·피드백·성과 흐름 | [YouTube](https://youtu.be/i5ytN54c1AE) |
-| Classory | 원장·관리자·강사·학부모·학생의 학원 운영 흐름 | [YouTube](https://youtu.be/cjDAYArjCys) |
-| Code Bridge | 블록·JavaScript 코드·도형 실행 결과를 연결한 코딩 학습 흐름 | [YouTube](https://youtu.be/pV1YFJQPUEg) |
+| Local Job Match | 구직자·고용주 모바일 앱과 운영 관리자 웹 | [YouTube](https://youtu.be/KdzZpGbRIEc) |
+| CoachHub | 관리자·PM·코치·참여자의 목표·실행·피드백·성과 관리 | [YouTube](https://youtu.be/i5ytN54c1AE) |
+| Classory | 원장·관리자·강사·학부모·학생의 학원 운영 기능 | [YouTube](https://youtu.be/cjDAYArjCys) |
+| Code Bridge | 블록·JavaScript 코드·도형 실행 결과를 연결한 코딩 학습 | [YouTube](https://youtu.be/pV1YFJQPUEg) |
+
+## Career
+
+회사별 경력은 `src/data/careers.ts`에서 단일 데이터로 관리합니다.
+
+- **코그넥스(구 수아랩), 2019.08—2024.06**  
+  VPDL WPF·MVVM 제품 UI, VIDI·SuaKit·VPDL 통합, UI/UX 리뉴얼, WPF 디자인 체계, Migration·Easy UI Plugin, 사용자 작업 기록·Excel 리포트, TeamCity·AWS EC2·InstallShield·NSIS
+- **아티프렌즈, 2025.04—2025.10**  
+  블록체인 기술 콘텐츠, 기술 문서 작성·검수, 입문자 중심 설명 구성, 기술 입문 도서 집필 참여
+- **퓨전데이타, 2018.11—2019.07**  
+  Active Directory 관리 솔루션, DevExpress 기반 계정·조직 관리자 UI
+- **핸디에이치아이에스 / 핑거, 2016.04—2018.11**  
+  금융기관 데이터 연동, 계좌통합 서비스, 문서 보안, 파일 변환 시스템과 기업 환경의 예외 대응
+
+## Skills
+
+기술 이름만 나열하지 않고 사용 범위를 함께 표시합니다.
+
+- Core Product Engineering
+- Web & Cross-platform
+- Backend & Data
+- State & Interaction
+- Quality & Delivery
+- Collaboration & Design
+
+각 기술은 `Professional Experience`, `Product Project`, `Functional Prototype`, `Supporting Tool`로 구분됩니다.
+
+## Ask Eun
+
+독립 프로젝트 [Ask Eun](https://coffee-and.github.io/ask-eun/)의 질문형 탐색 방식을 현재 경력과 프로젝트에 맞게 다시 구성했습니다.
+
+- About & Positioning
+- Career
+- Full-stack & Architecture
+- Projects
+- Work Style
+
+데스크톱에서는 카테고리, 질문 목록과 답변을 나란히 확인하며 모바일에서는 같은 정보 순서를 세로로 제공합니다. 답변 영역 전체를 따라가는 굵은 세로선은 사용하지 않습니다.
 
 ## Earlier Work
 
@@ -58,78 +116,30 @@ Guardian API를 활용해 AI와 기술 뉴스를 검색하고 북마크와 최�
 - [View Site](https://coffee-and.github.io/news-monitor/)
 - [GitHub](https://github.com/coffee-and/news-monitor)
 
-## 주요 구현 내용
+## 데이터 구조
 
-1. `src/data/projects.ts`를 프로젝트 정보의 단일 소스로 사용합니다. 메인 프로젝트 카드, Development Logs와 웹 이력서가 동일한 상태·설명·링크를 사용합니다.
-2. 대표 서비스의 `statusLabel`과 `scopeLabel`을 분리해 구현 완료 범위와 결제·수익화 미연동 범위를 함께 표시합니다.
-3. YouTube iframe을 초기 로드하지 않고 16:9 썸네일 카드를 렌더링합니다. 고해상도 썸네일 실패 시 `hqdefault`로 한 번 fallback합니다.
-4. 네 기능형 프로토타입을 프로젝트 데이터와 YouTube 데이터로 연결하고 영상 링크를 주요 CTA로 사용합니다.
-5. 기존 `#/resume` 해시 라우팅을 유지하면서 최신 7개 프로젝트를 같은 데이터에서 변환해 렌더링합니다.
-6. 외부 링크는 새 탭, `noopener noreferrer`와 목적이 드러나는 `aria-label`을 사용합니다.
-7. 데스크톱·태블릿·모바일 레이아웃, `focus-visible`과 `prefers-reduced-motion`을 지원합니다.
+```text
+src/data/
+├── askEun.ts      # 질문 카테고리와 최신 경력·프로젝트 답변
+├── careers.ts     # 회사별 역할, 프로젝트, 구현과 결과
+├── projects.ts    # 대표 서비스·프로토타입·이전 작업
+├── resume.ts      # 경력·프로젝트 데이터를 웹 이력서로 변환
+├── skills.ts      # 기술과 실제 사용 근거
+└── youtubeVideos.ts
+```
+
+Home, Career, Skills, Ask Eun과 Web Resume가 같은 데이터 원본을 사용해 설명과 상태가 서로 달라지지 않도록 구성했습니다.
 
 ## 기술 스택
-
-### Portfolio
 
 - React 19
 - TypeScript
 - Vite
 - CSS
 - ESLint
-- npm
 - GitHub Pages
 
-### Project Experience
-
-- Frontend & Platform: WPF, C#, React, TypeScript, JavaScript, React Native, Expo
-- State & Interaction: MVVM, React Router, Zustand, dnd-kit, Konva
-- Data: Supabase, PostgreSQL, LocalStorage, REST API
-- Quality & Delivery: Vitest, React Testing Library, Playwright, GitHub Actions, npm workspaces, pnpm monorepo, Capacitor
-
-## 프로젝트 구조
-
-```text
-src/
-├── components/
-│   ├── AboutSection.tsx
-│   ├── AskEunSection.tsx
-│   ├── CareerHighlightsSection.tsx
-│   ├── ContactSection.tsx
-│   ├── ExternalLink.tsx
-│   ├── Hero.tsx
-│   ├── ProjectsSection.tsx
-│   ├── ResumeSection.tsx
-│   ├── SectionHeader.tsx
-│   ├── SiteNav.tsx
-│   ├── SkillsSection.tsx
-│   ├── YouTubeSection.tsx
-│   └── YouTubeThumbnail.tsx
-├── data/
-│   ├── askEun.ts
-│   ├── projects.ts
-│   ├── resume.ts
-│   └── youtubeVideos.ts
-├── styles/
-│   ├── global.css
-│   ├── projects.css
-│   ├── resume-icons.css
-│   ├── resume.css
-│   └── youtube.css
-├── utils/
-│   └── youtube.ts
-├── App.tsx
-└── main.tsx
-
-public/
-├── icons/
-├── projects/
-├── resume/
-├── eun-icon.svg
-└── resume.pdf
-```
-
-## 로컬 실행
+## 실행 방법
 
 ```bash
 git clone https://github.com/coffee-and/eun-portfolio.git
@@ -143,19 +153,11 @@ npm run dev
 ```bash
 npm run lint
 npm run build
-npm run preview
 ```
-
-## 배포
-
-```bash
-npm run deploy
-```
-
-`predeploy`가 프로덕션 빌드를 생성한 뒤 `dist` 디렉터리를 GitHub Pages에 배포합니다.
 
 ## 링크
 
-- [Live Demo](https://coffee-and.github.io/eun-portfolio/)
+- [Live Portfolio](https://coffee-and.github.io/eun-portfolio/)
 - [GitHub](https://github.com/coffee-and)
-- [YouTube Development Logs](https://www.youtube.com/channel/UCpxd-LVHF2ImmVCxRpSx2SA)
+- [YouTube](https://www.youtube.com/channel/UCpxd-LVHF2ImmVCxRpSx2SA)
+- [Ask Eun](https://coffee-and.github.io/ask-eun/)
