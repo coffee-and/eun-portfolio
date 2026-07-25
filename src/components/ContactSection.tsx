@@ -6,8 +6,8 @@ const ContactSection = () => {
     <section id="contact">
       <SectionHeader
         eyebrow="Contact"
-        title="제품의 사용성과 기술 구조를 함께 고민할 팀을 찾고 있습니다"
-        description="복잡한 요구사항을 사용하기 좋은 화면과 안정적인 데이터 구조로 정리하고, 검증과 배포까지 책임지는 제품 중심 풀스택 개발자로 새로운 기회를 기다리고 있습니다."
+        title="제품 개발과 기획, 디자인 의뢰를 받고 있습니다"
+        description="웹 서비스와 관리자 화면, WPF 기반 제품 UI, 기능형 프로토타입, 기존 서비스 개선과 화면 디자인까지 프로젝트 단위로 협의합니다. 이메일로 편하게 문의해 주세요."
       />
 
       <div className="contact-actions">
