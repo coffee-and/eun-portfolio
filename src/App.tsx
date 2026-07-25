@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AboutSection from "./components/AboutSection";
 import AskEunSection from "./components/AskEunSection";
 import BackToTop from "./components/BackToTop";
@@ -19,30 +19,11 @@ import "./styles/final-polish.css";
 import "./styles/follow-up-fixes.css";
 import "./styles/type-brand-refresh.css";
 import "./styles/rose-mobile-type-polish.css";
-import "./styles/joey-readability-theme.css";
 
 const getRoute = () => (window.location.hash === "#/resume" ? "resume" : "portfolio");
 
-const getInitialTheme = () => {
-  const savedTheme = window.localStorage.getItem("eun-portfolio-theme");
-
-  if (savedTheme === "light" || savedTheme === "dark") {
-    return savedTheme;
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-};
-
 function App() {
   const [route, setRoute] = useState(getRoute);
-
-  useLayoutEffect(() => {
-    const theme = getInitialTheme();
-    document.documentElement.dataset.theme = theme;
-    document.documentElement.style.colorScheme = theme;
-  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
