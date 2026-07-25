@@ -88,8 +88,8 @@ const ProjectsSection = () => {
     <section className="projects-editorial" id="projects">
       <SectionHeader
         eyebrow="Selected Work"
-        title="실제 화면과 구현 근거로 보여드리는 대표 작업"
-        description={`홈에서는 핵심 내용을 빠르게 확인하고, 상세 영역에서는 목적·담당 범위·기능·기술과 현재 미연동 범위를 빠짐없이 볼 수 있습니다.`}
+        title="현재 운영 중인 대표 프로젝트"
+        description="실제 배포된 화면과 주요 기능을 확인할 수 있습니다. 상세 보기에서는 프로젝트 목적, 담당 범위, 구현 내용과 현재 상태를 모두 확인할 수 있습니다."
       />
 
       <div className="projects-editorial__list">
