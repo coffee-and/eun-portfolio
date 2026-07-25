@@ -229,23 +229,35 @@ const ResumeSection = () => {
 
             <div className="resume-card-grid resume-card-grid--career">
               {careerCards.map((card) => (
-                <article className="resume-info-card resume-info-card--career" key={card.title}>
-                  <span>{card.period}</span>
-                  <h3>{card.title}</h3>
-                  <strong>{card.meta}</strong>
-                  <p>{card.description}</p>
-                  {card.points && (
-                    <ul className="resume-card-points">
-                      {card.points.map((point) => (
-                        <li key={point}>{point}</li>
+                <article
+                  className="resume-info-card resume-info-card--career"
+                  id={`resume-career-${card.id}`}
+                  key={card.id}
+                >
+                  <header className="resume-career-card__header">
+                    <span>{card.period}</span>
+                    <h3>{card.title}</h3>
+                    <strong>{card.meta}</strong>
+                  </header>
+
+                  <p className="resume-career-card__overview">{card.description}</p>
+
+                  <section className="resume-career-card__work" aria-label={`${card.title} 주요 업무와 성과`}>
+                    <span className="resume-career-card__label">work & impact</span>
+                    <ol>
+                      {card.highlights.map((highlight) => (
+                        <li key={highlight.title}>
+                          <strong>{highlight.title}</strong>
+                          <p>{highlight.description}</p>
+                        </li>
                       ))}
-                    </ul>
-                  )}
-                  <div className="resume-tag-row">
-                    {card.tags.map((tag) => (
-                      <em key={tag}>#{tag}</em>
-                    ))}
-                  </div>
+                    </ol>
+                  </section>
+
+                  <section className="resume-career-card__technology" aria-label={`${card.title} 사용 기술`}>
+                    <span className="resume-career-card__label">technology</span>
+                    <p>{card.tags.join(" · ")}</p>
+                  </section>
                 </article>
               ))}
             </div>
