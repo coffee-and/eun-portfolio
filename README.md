@@ -20,19 +20,21 @@
 - 대형 프로젝트 화면과 16:9 영상 썸네일 중심의 쇼케이스
 - 번호가 있는 에디토리얼 형식의 경력·기술·프로젝트 상세 설명
 - 굵은 검은 왼쪽 세로선과 카드 안의 중첩 카드 제거
-- 활성 질문과 섹션 제목에는 짧은 레드 포인트만 사용
-- 순백색·크림·딥 네이비를 기본으로 레드·버건디·더스티 블루를 제한적으로 사용
+- 포트폴리오와 Web Resume에 동일한 공용 색상 토큰 적용
+- 거의 블랙에 가까운 차콜을 제목과 본문에 사용하고, 저채도 와인은 작은 라벨·상태·선에만 제한적으로 사용
 
 ### Color palette
 
 | 역할 | 색상 |
 | --- | --- |
 | White | `#FFFFFF` |
-| Cream | `#FEF0D5` |
-| Deep Navy | `#002F49` |
-| Dusty Blue | `#669BBB` |
-| Red | `#C1121F` |
-| Burgundy | `#780001` |
+| Heading Charcoal | `#111214` |
+| Body Charcoal | `#191B1E` |
+| Secondary Charcoal | `#3F444A` |
+| Muted Charcoal | `#70767D` |
+| Wine Accent | `#76283B` |
+
+색상은 `src/styles/shared-palette.css`에서 공용 토큰으로 관리하며 포트폴리오와 Web Resume가 같은 값을 상속합니다.
 
 ## Featured Services
 
