@@ -156,10 +156,7 @@ main,
   line-height: 1;
 }
 
-:root[data-theme="dark"] .site-nav {
-  background: rgba(9, 9, 9, 0.94) !important;
-}
-
+:root[data-theme="dark"] .site-nav,
 :root[data-theme="dark"] .resume-page__nav {
   background: rgba(9, 9, 9, 0.94) !important;
 }
@@ -176,167 +173,17 @@ main,
   filter: brightness(0.96);
 }
 
-/* Joey reference: one clear reading column instead of three competing columns. */
-.ask-eun-editorial .section-header {
-  margin-bottom: clamp(30px, 4vw, 52px) !important;
-}
-
-.ask-eun-explorer {
-  width: 100%;
-  max-width: none;
-  display: block !important;
-  border: 0 !important;
-}
-
-.ask-eun-categories {
-  width: 100%;
-  padding: 0 0 28px !important;
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 8px;
-  border: 0 !important;
-  overflow: visible !important;
-}
-
+/* Keep the approved category / question / answer layout intact. */
 .ask-eun-category,
-.ask-eun-category:nth-child(2n) {
-  width: auto !important;
-  min-width: 0 !important;
-  padding: 10px 15px !important;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border-light) !important;
-  border-radius: 999px !important;
-  background: transparent !important;
-  color: var(--text-secondary) !important;
-  box-shadow: none !important;
-}
-
-.ask-eun-category strong {
-  font-size: 0.78rem !important;
-  font-weight: 600 !important;
-  line-height: 1.2;
-  white-space: nowrap;
-}
-
-.ask-eun-category--active,
-.ask-eun-category--active:nth-child(2n) {
-  border-color: var(--theme-inverse) !important;
-  background: var(--theme-inverse) !important;
-  color: var(--theme-inverse-text) !important;
-}
-
-.ask-eun-accordion {
-  border-top: 1px solid var(--border-strong);
-}
-
-.ask-eun-item {
-  border-bottom: 1px solid var(--border-light);
-}
-
-.ask-eun-item > h3 {
-  margin: 0;
-}
-
-.ask-eun-question {
-  width: 100% !important;
-  max-width: none !important;
-  min-width: 0 !important;
-  padding: clamp(19px, 2.6vw, 28px) 0 !important;
-  display: grid !important;
-  grid-template-columns: 42px minmax(0, 1fr) 28px;
-  gap: 14px;
-  align-items: center;
-  border: 0 !important;
-  background: transparent !important;
-  color: var(--text-primary) !important;
-  writing-mode: horizontal-tb !important;
-  text-orientation: mixed !important;
-  text-align: left !important;
-  white-space: normal !important;
-  word-break: keep-all !important;
-  overflow-wrap: break-word !important;
-  cursor: pointer;
-}
-
-.ask-eun-question__number {
-  color: var(--text-muted);
-  font-size: 0.7rem;
-  font-weight: 650;
-  letter-spacing: 0.06em;
-}
-
-.ask-eun-question__text {
-  font-size: clamp(1.05rem, 1.8vw, 1.42rem);
-  font-weight: 600;
-  line-height: 1.4;
-  letter-spacing: -0.025em;
-}
-
-.ask-eun-question__icon {
-  color: var(--text-muted);
-  font-size: 1.35rem;
-  font-weight: 400;
-  line-height: 1;
-  text-align: right;
-}
-
-.ask-eun-item--active .ask-eun-question__number,
-.ask-eun-item--active .ask-eun-question__icon {
-  color: var(--gold);
-}
-
+.ask-eun-question,
 .ask-eun-answer {
-  width: 100%;
-  max-width: 920px;
-  min-height: 0 !important;
-  margin: 0;
-  padding: 0 0 clamp(26px, 4vw, 46px) 56px !important;
-  border: 0 !important;
-  background: transparent !important;
-}
-
-.ask-eun-answer > strong {
-  max-width: 760px;
-  margin: 0;
-  padding: 0;
-  display: block;
-  border: 0;
-  color: var(--wine) !important;
-  font-size: clamp(1rem, 1.3vw, 1.12rem);
-  font-weight: 650;
-  line-height: 1.65;
-  word-break: keep-all;
-}
-
-.ask-eun-answer__copy {
-  max-width: 790px;
-  margin-top: 22px !important;
+  color: var(--text-primary);
 }
 
 .ask-eun-answer__copy p {
   color: var(--text-secondary) !important;
-  font-size: 0.98rem !important;
-  line-height: 1.82 !important;
 }
 
-.ask-eun-answer__copy p + p {
-  margin-top: 13px !important;
-}
-
-.ask-eun-answer__links {
-  max-width: 790px;
-  margin-top: 24px !important;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-light);
-}
-
-.ask-eun-answer__links a {
-  color: var(--wine) !important;
-}
-
-/* Slightly calmer reading rhythm across long portfolio copy. */
 .career-story__lead > p,
 .resume-career-card__overview,
 .resume-career-card__work li > p,
@@ -359,51 +206,17 @@ main,
   .theme-toggle > span:last-child {
     display: none;
   }
-
-  .ask-eun-categories {
-    flex-wrap: nowrap;
-    padding-bottom: 18px !important;
-    overflow-x: auto !important;
-    scrollbar-width: none;
-  }
-
-  .ask-eun-categories::-webkit-scrollbar {
-    display: none;
-  }
-
-  .ask-eun-category,
-  .ask-eun-category:nth-child(2n) {
-    flex: 0 0 auto !important;
-  }
 }
 
 @media (max-width: 620px) {
-  .site-nav__actions {
+  .site-nav__actions,
+  .resume-page__actions {
     gap: 6px;
   }
 
-  .site-nav__mode {
+  .site-nav__mode,
+  .resume-page__back {
     font-size: 0.72rem !important;
-  }
-
-  .ask-eun-question {
-    grid-template-columns: 30px minmax(0, 1fr) 24px;
-    gap: 10px;
-    padding: 18px 0 !important;
-  }
-
-  .ask-eun-question__text {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-
-  .ask-eun-answer {
-    padding: 0 0 28px 40px !important;
-  }
-
-  .ask-eun-answer__copy p {
-    font-size: 0.94rem !important;
-    line-height: 1.76 !important;
   }
 }
 
