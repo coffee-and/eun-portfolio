@@ -10,6 +10,7 @@ import SiteNav from "./components/SiteNav";
 import SkillsSection from "./components/SkillsSection";
 import YouTubeSection from "./components/YouTubeSection";
 import "./styles/editorial.css";
+import "./styles/editorial-fixes.css";
 
 const getRoute = () => (window.location.hash === "#/resume" ? "resume" : "portfolio");
 
