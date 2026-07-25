@@ -11,8 +11,8 @@ const YouTubeSection = () => (
   <section className="youtube-section" id="videos">
     <SectionHeader
       eyebrow="Project Films"
-      title="스크린샷으로 보이지 않는 실제 조작과 역할별 화면"
-      description="역할 전환, 기능 이용 순서와 상태 변화를 직접 확인할 수 있도록 네 개 프로젝트의 데스크톱·모바일 시연 영상을 공개했습니다."
+      title="영상으로 확인하는 프로젝트"
+      description="화면 이동, 기능 이용 순서와 상태 변화를 데스크톱·모바일 시연 영상으로 보여드립니다."
     />
 
     <div className="youtube-grid">
@@ -44,7 +44,7 @@ const YouTubeSection = () => (
             <h3>{video.title}</h3>
             <p className="youtube-card__status">
               <strong>{video.statusLabel}</strong>
-              <span>역할별 전체 사용 과정 구현</span>
+              <span>역할별 화면과 기능 시연</span>
             </p>
             <p>{video.description}</p>
 
@@ -69,7 +69,7 @@ const YouTubeSection = () => (
             </div>
 
             <details className="youtube-card__details">
-              <summary>프로젝트 설명 전체 보기</summary>
+              <summary>프로젝트 상세 보기</summary>
               <div>
                 {video.purpose && (
                   <section>
@@ -115,7 +115,7 @@ const YouTubeSection = () => (
     <div className="youtube-channel-cta">
       <div>
         <span>4 functional prototypes</span>
-        <p>각 프로젝트의 실제 조작과 역할별 화면을 채널에서 이어서 볼 수 있습니다.</p>
+        <p>네 개 프로젝트의 화면과 기능을 채널에서 이어서 볼 수 있습니다.</p>
       </div>
       <ExternalLink
         className="pill-button pill-button--primary"
