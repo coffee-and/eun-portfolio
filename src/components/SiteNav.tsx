@@ -1,0 +1,33 @@
+const navItems = [
+  { label: "home", href: "#home" },
+  { label: "work", href: "#projects" },
+  { label: "films", href: "#videos" },
+  { label: "career", href: "#career" },
+  { label: "skills", href: "#skills" },
+  { label: "ask eun", href: "#ask-eun" },
+  { label: "contact", href: "#contact" },
+];
+
+const SiteNav = () => {
+  return (
+    <header className="site-nav">
+      <a className="site-nav__brand" href="#home" aria-label="portfolio home">
+        eun.
+      </a>
+
+      <nav className="site-nav__links" aria-label="portfolio navigation">
+        {navItems.map((item) => (
+          <a key={item.href} href={item.href}>
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <a className="site-nav__mode" href="#/resume">
+        web resume
+      </a>
+    </header>
+  );
+};
+
+export default SiteNav;

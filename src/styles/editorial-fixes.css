@@ -1,0 +1,48 @@
+.hero-editorial {
+  flex-direction: column;
+}
+
+.youtube-card__status strong,
+.youtube-card__status span {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.youtube-card__status strong {
+  color: var(--navy);
+}
+
+.youtube-card__status span {
+  color: var(--text-muted);
+}
+
+.youtube-card__features li::before {
+  width: 8px;
+  height: 2px;
+  border-radius: 0;
+  background: var(--red);
+}
+
+.youtube-card__stack {
+  display: block;
+}
+
+.youtube-card__link {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.youtube-card__details ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.resume-page .resume-info-card--career {
+  grid-column: 1 / -1;
+}
+
+.resume-page .resume-card-points {
+  max-height: none;
+}
