@@ -1,4 +1,5 @@
 import BrandMark from "./BrandMark";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { label: "home", href: "#home" },
@@ -25,9 +26,12 @@ const SiteNav = () => {
         ))}
       </nav>
 
-      <a className="site-nav__mode" href="#/resume">
-        web resume
-      </a>
+      <div className="site-nav__actions">
+        <ThemeToggle />
+        <a className="site-nav__mode" href="#/resume">
+          web resume
+        </a>
+      </div>
     </header>
   );
 };
