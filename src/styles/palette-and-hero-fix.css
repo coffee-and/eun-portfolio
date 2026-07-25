@@ -1,0 +1,197 @@
+:root {
+  --white: #ffffff;
+  --ink: #17212e;
+  --wine: #6e081f;
+  --brick: #732b2e;
+  --blush: #e4ccc0;
+  --mist: #c5d5d6;
+
+  --navy: var(--ink);
+  --red: var(--wine);
+  --burgundy: var(--brick);
+  --blue: var(--mist);
+  --cream: var(--mist);
+
+  --bg-primary: var(--white);
+  --bg-card: var(--white);
+  --bg-muted: rgba(197, 213, 214, 0.34);
+  --bg-pill: rgba(23, 33, 46, 0.07);
+  --border-light: rgba(23, 33, 46, 0.17);
+  --border-strong: var(--ink);
+  --text-primary: var(--ink);
+  --text-secondary: rgba(23, 33, 46, 0.82);
+  --text-muted: rgba(23, 33, 46, 0.62);
+  --brand-primary: var(--wine);
+  --brand-text: var(--ink);
+  --shadow-sm: 0 1px 0 rgba(23, 33, 46, 0.08);
+  --shadow-md: 0 18px 50px rgba(23, 33, 46, 0.1);
+  --shadow-lg: 0 28px 80px rgba(23, 33, 46, 0.14);
+}
+
+html,
+body {
+  background: var(--white);
+  color: var(--ink);
+}
+
+.site-nav {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(23, 33, 46, 0.14);
+}
+
+.site-nav__brand,
+.section-header .eyebrow,
+.editorial-number {
+  color: var(--wine);
+}
+
+.site-nav__links a::after,
+.site-nav__mode::after,
+.section-header .eyebrow::before,
+.project-editorial__highlights li::before,
+.youtube-card__features li::before {
+  background: var(--wine);
+}
+
+.pill-button {
+  border-color: rgba(23, 33, 46, 0.26);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.pill-button--primary,
+.pill-button:hover {
+  border-color: var(--wine);
+  background: var(--wine);
+  color: var(--white);
+}
+
+.pill-button:focus-visible,
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline-color: var(--brick);
+}
+
+.hero-editorial {
+  min-height: clamp(620px, 78svh, 760px);
+  padding: clamp(52px, 6vw, 84px) clamp(24px, 5vw, 72px);
+  background: linear-gradient(
+    135deg,
+    rgba(197, 213, 214, 0.92) 0%,
+    rgba(255, 255, 255, 0.98) 68%
+  );
+}
+
+.hero-editorial h1 {
+  max-width: 1120px;
+  margin: clamp(64px, 9vh, 108px) 0 clamp(48px, 7vh, 82px);
+  gap: 0;
+  color: var(--ink);
+  font-size: clamp(2.25rem, 4.2vw, 4.4rem);
+  line-height: 1.1;
+  letter-spacing: -0.055em;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-wrap: pretty;
+}
+
+.hero-editorial h1 .hero-editorial__headline-line {
+  display: block;
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.hero-editorial h1 strong.hero-editorial__headline-line {
+  color: var(--wine);
+}
+
+.hero-editorial h1 .hero-editorial__role {
+  display: block;
+  margin-top: 24px;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  word-break: keep-all;
+}
+
+.hero-editorial .hero-description {
+  max-width: 700px;
+  color: rgba(23, 33, 46, 0.86);
+}
+
+.hero-editorial .hero-summary span {
+  border-bottom-color: rgba(23, 33, 46, 0.2);
+  color: var(--ink);
+}
+
+.about-grid--editorial .info-card:nth-child(2),
+.about-grid--editorial .info-card:nth-child(4) {
+  background: rgba(228, 204, 192, 0.28);
+}
+
+.project-editorial__visual,
+.archive-project-editorial__visual,
+.youtube-card__visual {
+  background: var(--mist);
+}
+
+.project-live-preview__bar > span:nth-child(3) {
+  background: var(--blush);
+  border-color: rgba(23, 33, 46, 0.18);
+}
+
+.project-editorial__links a,
+.career-index a:hover strong,
+.ask-eun-question--active {
+  color: var(--wine);
+}
+
+@media (min-width: 1180px) {
+  .hero-editorial h1 .hero-editorial__headline-line {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 820px) {
+  .hero-editorial {
+    min-height: auto;
+    padding: 44px 24px 52px;
+  }
+
+  .hero-editorial h1 {
+    margin: 52px 0 42px;
+    font-size: clamp(2.1rem, 7.5vw, 3.45rem);
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+  }
+
+  .hero-editorial h1 .hero-editorial__headline-line {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-editorial h1 {
+    margin: 42px 0 34px;
+    font-size: clamp(1.9rem, 9vw, 2.65rem);
+    line-height: 1.16;
+    word-break: keep-all;
+  }
+
+  .hero-editorial h1 .hero-editorial__role {
+    margin-top: 20px;
+    font-size: 0.7rem;
+  }
+}
