@@ -13,6 +13,10 @@ export type YouTubeVideo = Pick<
   | "scopeNote"
   | "stack"
   | "cardHighlights"
+  | "purpose"
+  | "role"
+  | "users"
+  | "points"
 > & {
   description: string;
   youtubeId: string;
@@ -40,6 +44,10 @@ export const youtubeVideos: YouTubeVideo[] = getProjectsByPresentation(
     scopeNote: project.scopeNote,
     stack: project.stack,
     cardHighlights: project.cardHighlights,
+    purpose: project.purpose,
+    role: project.role,
+    users: project.users,
+    points: project.points,
     youtubeId: project.youtubeId,
     youtubeUrl: project.youtubeUrl,
   };
