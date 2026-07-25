@@ -1,107 +1,119 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import {
+  askEunCategories,
+  askEunItems,
+  type AskEunCategoryId,
+} from "../data/askEun";
+import ExternalLink from "./ExternalLink";
 import SectionHeader from "./SectionHeader";
-import { askEunItems } from "../data/askEun";
 
 const AskEunSection = () => {
-  const [isSectionOpen, setIsSectionOpen] = useState(false);
-  const [openItemId, setOpenItemId] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] =
+    useState<AskEunCategoryId>("positioning");
+  const [activeQuestionId, setActiveQuestionId] = useState("profile");
 
-  const handleSectionToggle = () => {
-    setIsSectionOpen((currentState) => {
-      const nextState = !currentState;
+  const categoryQuestions = useMemo(
+    () => askEunItems.filter((item) => item.category === activeCategory),
+    [activeCategory],
+  );
 
-      if (!nextState) {
-        setOpenItemId(null);
-      }
+  const activeQuestion =
+    askEunItems.find((item) => item.id === activeQuestionId) ??
+    categoryQuestions[0];
 
-      return nextState;
-    });
-  };
+  const handleCategoryChange = (categoryId: AskEunCategoryId) => {
+    const firstQuestion = askEunItems.find(
+      (item) => item.category === categoryId,
+    );
 
-  const handleItemToggle = (id: string) => {
-    setOpenItemId((currentId) => (currentId === id ? null : id));
+    setActiveCategory(categoryId);
+    if (firstQuestion) {
+      setActiveQuestionId(firstQuestion.id);
+    }
   };
 
   return (
-    <section className="ask-eun-section" id="ask-eun">
+    <section className="ask-eun-editorial" id="ask-eun">
       <SectionHeader
-        eyebrow="Ask Me"
-        title="궁금한 내용을 질문처럼 열어볼 수 있어요"
-        description={`이력서에 담긴 프로젝트 경험과 일하는 방식을 질문과 답변 형식으로 조금 더 자세하게 풀어냈습니다.`}
+        eyebrow="Ask Eun"
+        title="궁금한 질문을 골라 경력과 프로젝트를 살펴보세요"
+        description="독립 프로젝트 Ask Eun의 질문형 탐색 방식을 현재 경력과 풀스택 프로젝트에 맞게 다시 구성했습니다."
       />
 
-      <div className="ask-eun-section__actions">
-        <button
-          type="button"
-          className="pill-button pill-button--primary"
-          onClick={handleSectionToggle}
-          aria-expanded={isSectionOpen}
-          aria-controls="ask-eun-question-list"
-        >
-          {isSectionOpen ? "Hide Questions" : "View Questions"}
-        </button>
-      </div>
-      <div
-        id="ask-eun-question-list"
-        className={`ask-eun-section__content ${
-          isSectionOpen ? "ask-eun-section__content--open" : ""
-        }`}
-      >
-        <div className="ask-eun-section__content-inner">
-          <div className="ask-eun-list">
-            {askEunItems.map((item) => {
-              const isOpen = openItemId === item.id;
-              const answerId = `ask-eun-answer-${item.id}`;
+      <div className="ask-eun-explorer">
+        <nav className="ask-eun-categories" aria-label="Ask Eun 질문 카테고리">
+          {askEunCategories.map((category, index) => (
+            <button
+              type="button"
+              key={category.id}
+              className={
+                activeCategory === category.id
+                  ? "ask-eun-category ask-eun-category--active"
+                  : "ask-eun-category"
+              }
+              onClick={() => handleCategoryChange(category.id)}
+              aria-pressed={activeCategory === category.id}
+            >
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{category.label}</strong>
+              <em>{category.description}</em>
+            </button>
+          ))}
+        </nav>
 
-              return (
-                <article
-                  key={item.id}
-                  className={`ask-eun-card ${
-                    isOpen ? "ask-eun-card--open" : ""
-                  }`}
-                >
-                  <button
-                    type="button"
-                    className="ask-eun-card__question"
-                    onClick={() => handleItemToggle(item.id)}
-                    aria-expanded={isOpen}
-                    aria-controls={answerId}
-                  >
-                    <div>
-                      <span>Question</span>
-                      <h3>{item.question}</h3>
-                    </div>
-
-                    <em aria-hidden="true">{isOpen ? "−" : "+"}</em>
-                  </button>
-
-                  <div className="ask-eun-card__tags">
-                    {item.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-
-                  <div
-                    id={answerId}
-                    className={`ask-eun-card__answer-wrap ${
-                      isOpen ? "ask-eun-card__answer-wrap--open" : ""
-                    }`}
-                  >
-                    <div className="ask-eun-card__answer-inner">
-                      <div className="ask-eun-card__answer">
-                        <span className="ask-eun-card__label">Answer</span>
-
-                        {item.answer.map((paragraph) => (
-                          <p key={paragraph}>{paragraph}</p>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+        <div className="ask-eun-questions" aria-label="질문 목록">
+          <p>Questions</p>
+          {categoryQuestions.map((item) => (
+            <button
+              type="button"
+              key={item.id}
+              className={
+                activeQuestion?.id === item.id
+                  ? "ask-eun-question ask-eun-question--active"
+                  : "ask-eun-question"
+              }
+              onClick={() => setActiveQuestionId(item.id)}
+              aria-pressed={activeQuestion?.id === item.id}
+            >
+              <span aria-hidden="true" />
+              {item.question}
+            </button>
+          ))}
         </div>
+
+        {activeQuestion && (
+          <article className="ask-eun-answer" aria-live="polite">
+            <span>Answer</span>
+            <h3>{activeQuestion.question}</h3>
+            <strong>{activeQuestion.summary}</strong>
+
+            <div className="ask-eun-answer__copy">
+              {activeQuestion.answer.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+
+            {activeQuestion.relatedLinks && (
+              <div className="ask-eun-answer__links">
+                {activeQuestion.relatedLinks.map((link) =>
+                  link.href.startsWith("http") ? (
+                    <ExternalLink
+                      key={link.href}
+                      href={link.href}
+                      ariaLabel={`${link.label} 새 탭에서 열기`}
+                    >
+                      {link.label}
+                    </ExternalLink>
+                  ) : (
+                    <a key={link.href} href={link.href}>
+                      {link.label}
+                    </a>
+                  ),
+                )}
+              </div>
+            )}
+          </article>
+        )}
       </div>
     </section>
   );
