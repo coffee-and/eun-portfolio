@@ -49,7 +49,8 @@ function App() {
       <ContactSection />
 
       <footer className="site-footer">
-        <p>2026 은정안 · product, design and coding by me</p>
+        <p>2026 · product, design and coding by me</p>
+        <strong>Eun Jeongan</strong>
       </footer>
     </main>
   );
