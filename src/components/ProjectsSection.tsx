@@ -83,7 +83,108 @@ const ProjectLinks = ({ project }: { project: Project }) => (
   </div>
 );
 
+const FeaturedProject = ({ project }: { project: Project }) => (
+  <article className="project-editorial">
+    <div className="project-editorial__intro">
+      <span className="editorial-number">
+        {String(project.order).padStart(2, "0")}
+      </span>
+      <p className="project-editorial__category">{project.category}</p>
+      <h3>{project.title}</h3>
+      <p className="project-editorial__description">{project.description}</p>
+
+      <dl className="project-editorial__status">
+        <div>
+          <dt>Status</dt>
+          <dd>{project.statusLabel}</dd>
+        </div>
+        <div>
+          <dt>Current scope</dt>
+          <dd>{project.scopeLabel}</dd>
+        </div>
+      </dl>
+
+      <ul className="project-editorial__highlights" aria-label="대표 기능">
+        {project.cardHighlights.map((highlight) => (
+          <li key={highlight}>{highlight}</li>
+        ))}
+      </ul>
+
+      <p className="project-editorial__stack">
+        {project.stack.slice(0, 7).join(" · ")}
+      </p>
+
+      <ProjectLinks project={project} />
+    </div>
+
+    <div className="project-editorial__visual">
+      <ProjectVisual project={project} />
+    </div>
+
+    <details className="project-case-study">
+      <summary>
+        <span>프로젝트 상세 보기</span>
+        <em>purpose · role · implementation · scope</em>
+      </summary>
+
+      <div className="project-case-study__content">
+        {project.detailDescription && (
+          <p className="project-case-study__lead">
+            {project.detailDescription}
+          </p>
+        )}
+
+        <div className="project-case-study__grid">
+          <section>
+            <span>01 / Purpose</span>
+            <h4>만든 이유</h4>
+            <p>{project.purpose}</p>
+          </section>
+          <section>
+            <span>02 / Role</span>
+            <h4>담당 범위</h4>
+            <p>{project.role}</p>
+          </section>
+          {project.users && (
+            <section>
+              <span>03 / Users</span>
+              <h4>주요 사용자</h4>
+              <p>{project.users.join(" · ")}</p>
+            </section>
+          )}
+          <section>
+            <span>04 / Current scope</span>
+            <h4>현재 구현 범위</h4>
+            <p>{project.scopeNote}</p>
+          </section>
+        </div>
+
+        <section className="project-case-study__implementation">
+          <span>05 / Implementation</span>
+          <h4>구현 내용</h4>
+          <ol>
+            {project.points.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="project-case-study__technology">
+          <span>06 / Technology</span>
+          <h4>사용 기술</h4>
+          <p>{project.stack.join(" · ")}</p>
+        </section>
+      </div>
+    </details>
+  </article>
+);
+
 const ProjectsSection = () => {
+  const projectColumns = [
+    featuredProjects.filter((_, index) => index % 2 === 0),
+    featuredProjects.filter((_, index) => index % 2 === 1),
+  ];
+
   return (
     <section className="projects-editorial" id="projects">
       <SectionHeader
@@ -93,103 +194,12 @@ const ProjectsSection = () => {
       />
 
       <div className="projects-editorial__list">
-        {featuredProjects.map((project, index) => (
-          <article
-            className={`project-editorial ${index % 2 === 1 ? "project-editorial--reverse" : ""}`}
-            key={project.id}
-          >
-            <div className="project-editorial__intro">
-              <span className="editorial-number">
-                {String(project.order).padStart(2, "0")}
-              </span>
-              <p className="project-editorial__category">{project.category}</p>
-              <h3>{project.title}</h3>
-              <p className="project-editorial__description">{project.description}</p>
-
-              <dl className="project-editorial__status">
-                <div>
-                  <dt>Status</dt>
-                  <dd>{project.statusLabel}</dd>
-                </div>
-                <div>
-                  <dt>Current scope</dt>
-                  <dd>{project.scopeLabel}</dd>
-                </div>
-              </dl>
-
-              <ul className="project-editorial__highlights" aria-label="대표 기능">
-                {project.cardHighlights.map((highlight) => (
-                  <li key={highlight}>{highlight}</li>
-                ))}
-              </ul>
-
-              <p className="project-editorial__stack">
-                {project.stack.slice(0, 7).join(" · ")}
-              </p>
-
-              <ProjectLinks project={project} />
-            </div>
-
-            <div className="project-editorial__visual">
-              <ProjectVisual project={project} />
-            </div>
-
-            <details className="project-case-study">
-              <summary>
-                <span>프로젝트 상세 보기</span>
-                <em>purpose · role · implementation · scope</em>
-              </summary>
-
-              <div className="project-case-study__content">
-                {project.detailDescription && (
-                  <p className="project-case-study__lead">
-                    {project.detailDescription}
-                  </p>
-                )}
-
-                <div className="project-case-study__grid">
-                  <section>
-                    <span>01 / Purpose</span>
-                    <h4>만든 이유</h4>
-                    <p>{project.purpose}</p>
-                  </section>
-                  <section>
-                    <span>02 / Role</span>
-                    <h4>담당 범위</h4>
-                    <p>{project.role}</p>
-                  </section>
-                  {project.users && (
-                    <section>
-                      <span>03 / Users</span>
-                      <h4>주요 사용자</h4>
-                      <p>{project.users.join(" · ")}</p>
-                    </section>
-                  )}
-                  <section>
-                    <span>04 / Current scope</span>
-                    <h4>현재 구현 범위</h4>
-                    <p>{project.scopeNote}</p>
-                  </section>
-                </div>
-
-                <section className="project-case-study__implementation">
-                  <span>05 / Implementation</span>
-                  <h4>구현 내용</h4>
-                  <ol>
-                    {project.points.map((point) => (
-                      <li key={point}>{point}</li>
-                    ))}
-                  </ol>
-                </section>
-
-                <section className="project-case-study__technology">
-                  <span>06 / Technology</span>
-                  <h4>사용 기술</h4>
-                  <p>{project.stack.join(" · ")}</p>
-                </section>
-              </div>
-            </details>
-          </article>
+        {projectColumns.map((projects, columnIndex) => (
+          <div className="projects-editorial__column" key={columnIndex}>
+            {projects.map((project) => (
+              <FeaturedProject project={project} key={project.id} />
+            ))}
+          </div>
         ))}
       </div>
 
