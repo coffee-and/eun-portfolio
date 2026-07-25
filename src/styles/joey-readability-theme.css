@@ -28,28 +28,30 @@
 }
 
 :root[data-theme="dark"] {
-  --ink: #f5f5f5;
-  --surface: #111111;
-  --silver: rgba(255, 255, 255, 0.2);
-  --slate: #a2a2a2;
+  --ink: #f7eedc;
+  --white: #ffffff;
+  --surface: #090909;
+  --silver: rgba(247, 238, 220, 0.22);
+  --slate: #aaa59c;
   --wine: #f7eedc;
   --gold: #d2a84c;
 
   --bg-primary: #090909;
-  --bg-card: #101010;
-  --bg-muted: #161616;
-  --border-light: rgba(255, 255, 255, 0.17);
-  --border-strong: #f5f5f5;
-  --text-primary: #f5f5f5;
-  --text-secondary: #c7c7c7;
-  --text-muted: #929292;
+  --bg-card: #090909;
+  --bg-muted: #111111;
+  --bg-pill: transparent;
+  --border-light: rgba(247, 238, 220, 0.2);
+  --border-strong: #f7eedc;
+  --text-primary: #f7eedc;
+  --text-secondary: #d8d3c9;
+  --text-muted: #aaa49a;
   --brand-primary: #d2a84c;
-  --brand-text: #f5f5f5;
+  --brand-text: #f7eedc;
 
   --theme-page: #090909;
-  --theme-panel: #101010;
-  --theme-soft: #161616;
-  --theme-inverse: #f5f5f5;
+  --theme-panel: #090909;
+  --theme-soft: #111111;
+  --theme-inverse: #f7eedc;
   --theme-inverse-text: #090909;
 }
 
@@ -85,7 +87,6 @@ main,
 .resume-section-block,
 .resume-tech-icon,
 .ask-eun-answer,
-.pill-button,
 .back-to-top {
   background-color: var(--theme-panel) !important;
 }
@@ -99,17 +100,18 @@ main,
   background-color: var(--theme-soft) !important;
 }
 
+/* Shared wordmark */
 .brand-mark__word {
   fill: var(--text-primary) !important;
 }
 
 .brand-mark__dot {
-  fill: var(--wine) !important;
+  fill: var(--gold) !important;
   stroke: var(--theme-page) !important;
 }
 
 .site-nav {
-  grid-template-columns: minmax(78px, auto) minmax(0, 1fr) auto !important;
+  grid-template-columns: minmax(88px, auto) minmax(0, 1fr) auto !important;
 }
 
 .site-nav__actions,
@@ -161,27 +163,183 @@ main,
   background: rgba(9, 9, 9, 0.94) !important;
 }
 
-:root[data-theme="dark"] .pill-button--primary,
-:root[data-theme="dark"] .pill-button:hover,
-:root[data-theme="dark"] .back-to-top:hover {
+:root[data-theme="dark"] img:not(.resume-tech-icon img) {
+  filter: brightness(0.96);
+}
+
+/* Hero actions: every label must remain visible in both themes. */
+.hero-actions .pill-button {
+  min-width: 94px;
+  border: 1px solid var(--border-strong) !important;
+  background: transparent !important;
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.hero-actions .pill-button--primary {
   border-color: var(--theme-inverse) !important;
   background: var(--theme-inverse) !important;
   color: var(--theme-inverse-text) !important;
 }
 
-:root[data-theme="dark"] img:not(.resume-tech-icon img) {
-  filter: brightness(0.96);
+.hero-actions .pill-button:hover {
+  border-color: var(--gold) !important;
+  background: transparent !important;
+  color: var(--gold) !important;
+}
+
+.hero-actions .pill-button--primary:hover {
+  border-color: var(--gold) !important;
+  background: var(--gold) !important;
+  color: #111111 !important;
+}
+
+.hero-text-link {
+  color: var(--wine) !important;
+}
+
+:root[data-theme="dark"] .hero-text-link {
+  color: var(--gold) !important;
 }
 
 /* Keep the approved category / question / answer layout intact. */
 .ask-eun-category,
 .ask-eun-question,
 .ask-eun-answer {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
+}
+
+.ask-eun-answer > strong {
+  color: var(--wine) !important;
 }
 
 .ask-eun-answer__copy p {
   color: var(--text-secondary) !important;
+}
+
+:root[data-theme="dark"] .ask-eun-category--active,
+:root[data-theme="dark"] .ask-eun-question--active,
+:root[data-theme="dark"] .ask-eun-answer > strong,
+:root[data-theme="dark"] .ask-eun-answer__links a {
+  color: var(--gold) !important;
+}
+
+/* Career rhythm: remove the empty gulf but retain readable separation. */
+.career-stories {
+  margin-top: clamp(32px, 4vw, 48px) !important;
+  gap: clamp(56px, 6vw, 82px) !important;
+}
+
+.career-story__lead {
+  margin-top: 24px !important;
+}
+
+.career-chapter {
+  margin-top: clamp(32px, 4vw, 48px) !important;
+}
+
+.career-projects {
+  gap: 24px !important;
+}
+
+.career-project {
+  padding: 20px 0 !important;
+  border-top: 1px solid var(--border-light) !important;
+  background: transparent !important;
+}
+
+.career-project:last-child {
+  border-bottom: 1px solid var(--border-light) !important;
+}
+
+.career-project__context {
+  margin-top: 16px !important;
+}
+
+.career-project__columns {
+  margin-top: 18px !important;
+}
+
+/* Explicit text contrast for long-form portfolio and resume content. */
+.section-header h2,
+.hero-editorial h1,
+.hero-editorial h1 > span,
+.hero-editorial h1 > strong,
+.project-editorial h3,
+.project-case-study h4,
+.youtube-card h3,
+.career-index strong,
+.career-story__header h3,
+.career-chapter__heading h4,
+.career-project__title h5,
+.skill-ledger h3,
+.skill-ledger__row strong,
+.ask-eun-answer h3,
+.resume-page h1,
+.resume-page h2,
+.resume-page h3,
+.resume-page h4,
+.resume-career-card__work li > strong {
+  color: var(--text-primary) !important;
+}
+
+.section-header p:not(.eyebrow),
+.hero-description,
+.project-editorial__description,
+.project-case-study p,
+.project-case-study li,
+.youtube-card__body > p:not(.youtube-card__status),
+.youtube-card__details p,
+.youtube-card__details li,
+.career-story__lead > p,
+.editorial-list li,
+.career-project__context p,
+.career-project__columns li,
+.career-chapter--technologies > p,
+.skill-ledger header p,
+.skill-ledger__row p,
+.resume-career-card__overview,
+.resume-career-card__work li > p,
+.resume-info-card p,
+.resume-project-card p {
+  color: var(--text-secondary) !important;
+}
+
+.career-index em,
+.career-story__lead li,
+.career-project__technologies,
+.resume-career-card__technology p {
+  color: var(--text-muted) !important;
+}
+
+.section-header .eyebrow,
+.editorial-number,
+.project-editorial__category,
+.project-case-study__grid span,
+.project-case-study__implementation > span,
+.project-case-study__technology > span,
+.youtube-card__korean-title,
+.youtube-card__status strong,
+.career-index span,
+.career-story__header p,
+.career-chapter__heading > span,
+.career-project__title > span,
+.career-project__context strong,
+.career-project__columns strong,
+.skill-ledger__row span,
+.resume-panel__eyebrow,
+.resume-section-title > span,
+.resume-career-card__label {
+  color: var(--gold) !important;
+}
+
+.career-story__header strong {
+  color: var(--wine) !important;
+}
+
+:root[data-theme="dark"] .career-story__header strong {
+  color: var(--palette-cream) !important;
 }
 
 .career-story__lead > p,
@@ -206,6 +364,14 @@ main,
   .theme-toggle > span:last-child {
     display: none;
   }
+
+  .career-story__lead {
+    margin-top: 20px !important;
+  }
+
+  .career-chapter {
+    margin-top: 30px !important;
+  }
 }
 
 @media (max-width: 620px) {
@@ -217,6 +383,15 @@ main,
   .site-nav__mode,
   .resume-page__back {
     font-size: 0.72rem !important;
+  }
+
+  .hero-actions .pill-button {
+    min-width: 0;
+  }
+
+  .career-stories {
+    margin-top: 28px !important;
+    gap: 52px !important;
   }
 }
 
