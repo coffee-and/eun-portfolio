@@ -12,6 +12,7 @@ import YouTubeSection from "./components/YouTubeSection";
 import "./styles/editorial.css";
 import "./styles/editorial-fixes.css";
 import "./styles/typography-polish.css";
+import "./styles/palette-and-hero-fix.css";
 
 const getRoute = () => (window.location.hash === "#/resume" ? "resume" : "portfolio");
 
