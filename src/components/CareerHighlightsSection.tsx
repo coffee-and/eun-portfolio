@@ -7,7 +7,7 @@ const CareerHighlightsSection = () => {
       <SectionHeader
         eyebrow="Career"
         title="실무에서 맡은 제품과 개선 경험"
-        description="회사별로 담당한 제품과 역할, 직접 개선한 기능과 그 결과를 빠짐없이 정리했습니다."
+        description="회사별 담당 제품, 역할, 프로젝트와 사용 기술을 경력 순서에 따라 빠짐없이 정리했습니다."
       />
 
       <nav className="career-index" aria-label="회사별 경력 바로가기">
