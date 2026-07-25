@@ -1,18 +1,18 @@
 @import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 :root {
-  --font-display: "Montserrat", "SUIT Variable", "Pretendard", sans-serif;
-  --font-body: "SUIT Variable", "Pretendard", Inter, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-display: "SUIT Variable", SUIT, "Pretendard", sans-serif;
+  --font-body: "SUIT Variable", SUIT, "Pretendard", system-ui, sans-serif;
+  --font-mono: "SUIT Variable", SUIT, "Pretendard", system-ui, sans-serif;
 }
 
 body,
+body *,
 button,
 input,
 textarea,
 select {
-  font-family: var(--font-body);
+  font-family: var(--font-body) !important;
 }
 
 body {
@@ -89,7 +89,7 @@ strong {
 .career-project__title > span,
 .ask-eun-questions > p,
 .ask-eun-answer > span {
-  font-family: var(--font-mono) !important;
+  font-family: var(--font-body) !important;
 }
 
 /* Compact technology icon gallery in the web resume. */
