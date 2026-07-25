@@ -17,6 +17,7 @@ import "./styles/frame-form.css";
 import "./styles/frame-form-final.css";
 import "./styles/final-polish.css";
 import "./styles/follow-up-fixes.css";
+import "./styles/type-brand-refresh.css";
 
 const getRoute = () => (window.location.hash === "#/resume" ? "resume" : "portfolio");
 
