@@ -10,14 +10,18 @@ const YOUTUBE_CHANNEL_URL =
 const YouTubeSection = () => (
   <section className="youtube-section" id="videos">
     <SectionHeader
-      eyebrow="Development Logs"
-      title="영상으로 확인하는 구현 결과"
-      description="완성 화면만 나열하지 않고, 역할별 사용자 흐름과 핵심 기능이 실제로 어떻게 이어지는지 데모 영상으로 기록했습니다."
+      eyebrow="Project Films"
+      title="스크린샷으로 보이지 않는 실제 조작과 역할별 화면"
+      description="역할 전환, 기능 이용 순서와 상태 변화를 직접 확인할 수 있도록 네 개 프로젝트의 데스크톱·모바일 시연 영상을 공개했습니다."
     />
 
     <div className="youtube-grid">
-      {youtubeVideos.map((video) => (
+      {youtubeVideos.map((video, index) => (
         <article className="youtube-card" key={video.id}>
+          <div className="youtube-card__index">
+            {String(index + 1).padStart(2, "0")}
+          </div>
+
           <ExternalLink
             className="youtube-card__visual"
             href={video.youtubeUrl}
@@ -29,7 +33,7 @@ const YouTubeSection = () => (
             />
             <span className="youtube-card__play" aria-hidden="true">
               <span>▶</span>
-              watch demo
+              watch project film
             </span>
           </ExternalLink>
 
@@ -40,7 +44,7 @@ const YouTubeSection = () => (
             <h3>{video.title}</h3>
             <p className="youtube-card__status">
               <strong>{video.statusLabel}</strong>
-              <span>역할별 전체 사용자 흐름 구현</span>
+              <span>역할별 전체 사용 과정 구현</span>
             </p>
             <p>{video.description}</p>
 
@@ -50,24 +54,59 @@ const YouTubeSection = () => (
               ))}
             </ul>
 
-            <div className="youtube-card__stack" aria-label="핵심 기술">
-              {video.stack.slice(0, 4).map((technology) => (
-                <span key={technology}>{technology}</span>
-              ))}
+            <p className="youtube-card__stack">
+              {video.stack.slice(0, 5).join(" · ")}
+            </p>
+
+            <div className="youtube-card__actions">
+              <ExternalLink
+                className="youtube-card__link"
+                href={video.youtubeUrl}
+                ariaLabel={`${video.koreanTitle ?? video.title} 프로젝트 데모 영상 YouTube에서 새 탭으로 보기`}
+              >
+                YouTube에서 영상 보기
+              </ExternalLink>
             </div>
 
-            <div className="youtube-card__scope">
-              <strong>현재 범위</strong>
-              <p>{video.scopeNote}</p>
-            </div>
-
-            <ExternalLink
-              className="youtube-card__link"
-              href={video.youtubeUrl}
-              ariaLabel={`${video.koreanTitle ?? video.title} 프로젝트 데모 영상 YouTube에서 새 탭으로 보기`}
-            >
-              YouTube에서 영상 보기
-            </ExternalLink>
+            <details className="youtube-card__details">
+              <summary>프로젝트 설명 전체 보기</summary>
+              <div>
+                {video.purpose && (
+                  <section>
+                    <span>Purpose</span>
+                    <p>{video.purpose}</p>
+                  </section>
+                )}
+                {video.role && (
+                  <section>
+                    <span>Role</span>
+                    <p>{video.role}</p>
+                  </section>
+                )}
+                {video.users && (
+                  <section>
+                    <span>Users</span>
+                    <p>{video.users.join(" · ")}</p>
+                  </section>
+                )}
+                <section>
+                  <span>Implementation</span>
+                  <ul>
+                    {video.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <span>Current scope</span>
+                  <p>{video.scopeNote}</p>
+                </section>
+                <section>
+                  <span>Technology</span>
+                  <p>{video.stack.join(" · ")}</p>
+                </section>
+              </div>
+            </details>
           </div>
         </article>
       ))}
@@ -76,7 +115,7 @@ const YouTubeSection = () => (
     <div className="youtube-channel-cta">
       <div>
         <span>4 functional prototypes</span>
-        <p>프로젝트별 전체 사용자 흐름을 채널에서 이어서 볼 수 있습니다.</p>
+        <p>각 프로젝트의 실제 조작과 역할별 화면을 채널에서 이어서 볼 수 있습니다.</p>
       </div>
       <ExternalLink
         className="pill-button pill-button--primary"
