@@ -4,6 +4,7 @@
   --font-display: "SUIT Variable", SUIT, "Pretendard", sans-serif;
   --font-body: "SUIT Variable", SUIT, "Pretendard", system-ui, sans-serif;
   --font-mono: "SUIT Variable", SUIT, "Pretendard", system-ui, sans-serif;
+  --font-weight-accent: 500;
 }
 
 body,

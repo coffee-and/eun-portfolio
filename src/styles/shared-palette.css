@@ -47,9 +47,5 @@
   --brand-primary: var(--color-accent);
   --brand-text: var(--color-heading);
 
-  --shadow-sm: none;
-  --shadow-md: none;
-  --shadow-lg: none;
 
-  --font-weight-accent: 500;
 }
