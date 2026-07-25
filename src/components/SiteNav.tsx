@@ -4,7 +4,7 @@ const navItems = [
   { label: "films", href: "#videos" },
   { label: "career", href: "#career" },
   { label: "skills", href: "#skills" },
-  { label: "ask eun", href: "#ask-eun" },
+  { label: "about", href: "#ask-eun" },
   { label: "contact", href: "#contact" },
 ];
 
