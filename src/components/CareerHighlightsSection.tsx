@@ -6,7 +6,7 @@ const CareerHighlightsSection = () => {
     <section className="career-editorial" id="career">
       <SectionHeader
         eyebrow="Career"
-        title="실무에서 맡은 제품과 개선 경험"
+        title="회사별 제품 개발과 주요 성과"
         description="회사별 담당 제품, 역할, 프로젝트와 사용 기술을 경력 순서에 따라 빠짐없이 정리했습니다."
       />
 
