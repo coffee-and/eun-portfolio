@@ -22,8 +22,17 @@ function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      setRoute(getRoute());
-      window.scrollTo({ top: 0, behavior: "auto" });
+      const nextRoute = getRoute();
+
+      setRoute((currentRoute) => {
+        if (currentRoute !== nextRoute) {
+          window.requestAnimationFrame(() => {
+            window.scrollTo({ top: 0, behavior: "auto" });
+          });
+        }
+
+        return nextRoute;
+      });
     };
 
     window.addEventListener("hashchange", handleHashChange);
