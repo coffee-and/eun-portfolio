@@ -9,9 +9,13 @@ const Hero = () => {
       </div>
 
       <h1>
-        제품의 사용성과 기술 구조를 함께 설계해
-        <strong>실제 제품으로 완성합니다.</strong>
-        <span>
+        <span className="hero-editorial__headline-line">
+          제품의 사용성과 기술 구조를
+        </span>
+        <strong className="hero-editorial__headline-line">
+          함께 설계해 실제 제품으로 완성합니다.
+        </strong>
+        <span className="hero-editorial__role">
           Product-focused Full-stack Engineer · WPF · React · TypeScript ·
           C#/.NET · Supabase
         </span>
@@ -19,9 +23,9 @@ const Hero = () => {
 
       <div className="hero-editorial__bottom">
         <p className="hero-description">
-          {`8년 이상의 제품 UI 개발 경험을 바탕으로 화면 구성, 인증, 데이터 저장,
-검증과 배포까지 직접 연결해왔습니다. 복잡한 요구사항을 사용하기 좋은 제품으로 정리하고,
-운영과 확장을 고려한 구조로 구현합니다.`}
+          8년 이상의 제품 UI 개발 경험을 바탕으로 화면 구성, 인증, 데이터 저장,
+          검증과 배포까지 직접 연결해왔습니다. 복잡한 요구사항을 사용하기 좋은
+          제품으로 정리하고 운영과 확장을 고려한 구조로 구현합니다.
         </p>
 
         <div className="hero-summary" aria-label="profile summary">
