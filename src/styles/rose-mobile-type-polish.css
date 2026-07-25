@@ -1,21 +1,15 @@
-:root {
-  --dusty-rose: #d8aeb9;
-  --dusty-rose-soft: #f5e9ec;
-  --dusty-rose-border: #e7cdd4;
-  --dusty-rose-ink: #9b4f63;
-}
-
 ::selection {
-  background: var(--dusty-rose-soft);
+  background: rgba(91, 16, 35, 0.12);
   color: var(--ink);
 }
 
-/* Remove the old page grid completely. */
+/* Keep the page quiet and remove the old editorial grid. */
 html,
 body,
 main,
 .site-nav,
-.resume-page {
+.resume-page,
+.resume-page__nav {
   background-image: none !important;
 }
 
@@ -32,7 +26,6 @@ main,
   border-right: 0 !important;
 }
 
-/* Korean and English copy should wrap by meaning, not by isolated words. */
 h1,
 h2,
 h3,
@@ -51,7 +44,6 @@ li,
   hyphens: none;
 }
 
-/* Keep the hierarchy compact: headings lead, copy remains visually related. */
 .section-header p:not(.eyebrow),
 .project-editorial__description,
 .youtube-card__body > p:not(.youtube-card__status),
@@ -67,6 +59,11 @@ li,
 .about-editorial__statement p,
 .about-editorial__statement p + p {
   max-width: 760px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
   font-size: clamp(0.98rem, 1.25vw, 1.08rem) !important;
   font-weight: 400 !important;
   line-height: 1.78 !important;
@@ -74,10 +71,6 @@ li,
 }
 
 .about-editorial__statement p:first-child {
-  padding: 18px 20px;
-  border-left: 3px solid var(--dusty-rose);
-  background: var(--dusty-rose-soft);
-  color: var(--ink);
   font-weight: 500 !important;
 }
 
@@ -88,17 +81,12 @@ li,
   font-weight: 650 !important;
 }
 
-.about-grid--editorial .info-card p {
+.about-grid--editorial .info-card p,
+.editorial-list li,
+.career-project__context p,
+.career-project__columns li {
   font-size: 0.9rem !important;
-  line-height: 1.65 !important;
-}
-
-.about-grid--editorial .info-card > span,
-.project-editorial__category,
-.youtube-card__korean-title,
-.resume-panel__eyebrow,
-.resume-section-title > span {
-  color: var(--dusty-rose-ink) !important;
+  line-height: 1.66 !important;
 }
 
 .career-story__lead > p {
@@ -107,17 +95,80 @@ li,
   line-height: 1.75 !important;
 }
 
-.editorial-list li,
-.career-project__context p,
-.career-project__columns li {
-  font-size: 0.9rem !important;
-  line-height: 1.68 !important;
-}
-
 .skill-ledger header p,
 .skill-ledger__row p {
   font-size: 0.88rem !important;
   line-height: 1.62 !important;
+}
+
+/* Featured projects live in two independent vertical columns. */
+.projects-editorial__list {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: clamp(28px, 4vw, 56px) !important;
+  align-items: start;
+}
+
+.projects-editorial__column {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 56px);
+}
+
+.projects-editorial__column .project-editorial {
+  width: 100%;
+  min-width: 0;
+  margin: 0 !important;
+}
+
+/* Color is limited to text and fine borders, never large tinted surfaces. */
+.project-editorial__badges span,
+.youtube-card__status strong,
+.resume-project-card__badges span:first-child,
+.resume-tag-row em {
+  background: transparent !important;
+  border-color: var(--border-light) !important;
+  color: var(--wine) !important;
+}
+
+.ask-eun-editorial .section-header {
+  margin-bottom: 28px;
+}
+
+.ask-eun-explorer {
+  width: 100%;
+  max-width: 100%;
+  grid-template-columns: minmax(190px, 0.32fr) minmax(280px, 0.5fr) minmax(0, 1fr) !important;
+}
+
+.ask-eun-category,
+.ask-eun-category--active,
+.ask-eun-question,
+.ask-eun-question--active,
+.ask-eun-answer,
+.ask-eun-answer > strong {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.ask-eun-category--active,
+.ask-eun-question--active {
+  color: var(--wine) !important;
+}
+
+.ask-eun-category--active {
+  border-left-color: var(--wine) !important;
+}
+
+.ask-eun-question--active {
+  font-weight: 650;
+}
+
+.ask-eun-answer > strong {
+  padding: 0;
+  border: 0;
+  color: var(--wine);
 }
 
 .ask-eun-answer__copy p {
@@ -125,38 +176,27 @@ li,
   line-height: 1.72 !important;
 }
 
-/* Use rose as a surface accent instead of making supporting copy oversized. */
-.project-editorial__badges span,
-.youtube-card__status strong,
-.resume-project-card__badges span:first-child,
-.resume-tag-row em {
-  border-color: var(--dusty-rose-border) !important;
-  background: var(--dusty-rose-soft) !important;
-  color: var(--wine) !important;
+/* Resume uses the document scroll only. */
+.resume-left-column,
+.resume-panel,
+.resume-panel--profile {
+  max-height: none !important;
+  overflow: visible !important;
 }
 
-.ask-eun-category--active {
-  background: var(--dusty-rose-soft) !important;
-  box-shadow: inset 3px 0 0 var(--dusty-rose);
+.resume-left-column {
+  gap: clamp(18px, 2.5vw, 28px) !important;
 }
 
-.ask-eun-question--active {
-  background: linear-gradient(90deg, var(--dusty-rose-soft), transparent 88%);
-}
+@media (max-width: 980px) {
+  .projects-editorial__list {
+    grid-template-columns: 1fr !important;
+  }
 
-.ask-eun-answer > strong {
-  padding: 12px 14px;
-  border-left: 3px solid var(--dusty-rose);
-  background: var(--dusty-rose-soft);
-  color: var(--wine);
-}
+  .projects-editorial__column {
+    display: contents;
+  }
 
-.ask-eun-editorial .section-header {
-  margin-bottom: 28px;
-}
-
-/* Tablets and narrow desktop panes need a true one-column question layout. */
-@media (max-width: 900px) {
   .ask-eun-editorial .section-header {
     grid-template-columns: 1fr !important;
     row-gap: 10px;
@@ -169,8 +209,7 @@ li,
   }
 
   .ask-eun-explorer {
-    width: 100%;
-    max-width: 100%;
+    display: grid !important;
     grid-template-columns: minmax(0, 1fr) !important;
     overflow: visible;
   }
@@ -186,13 +225,11 @@ li,
   }
 
   .ask-eun-categories {
-    padding: 12px 0 16px !important;
     display: flex !important;
     gap: 10px;
+    padding: 12px 0 16px !important;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
-    scroll-snap-type: x proximity;
-    scroll-padding-inline: 1px;
     scrollbar-width: none;
   }
 
@@ -203,11 +240,14 @@ li,
   .ask-eun-category,
   .ask-eun-category:nth-child(2n) {
     width: auto !important;
-    min-width: min(78vw, 260px);
-    flex: 0 0 min(78vw, 320px) !important;
-    padding: 14px !important;
+    min-width: 180px;
+    flex: 0 0 auto !important;
+    padding: 13px 14px !important;
     border: 1px solid var(--border-light) !important;
-    scroll-snap-align: start;
+  }
+
+  .ask-eun-category--active {
+    border-color: var(--wine) !important;
   }
 
   .ask-eun-questions {
@@ -216,29 +256,23 @@ li,
   }
 
   .ask-eun-question {
-    width: 100%;
-    max-width: none;
-    padding: 16px 14px 16px 20px !important;
-    font-size: 0.96rem !important;
-    line-height: 1.58 !important;
-    white-space: normal;
-    text-align: left;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    padding: 15px 14px 15px 20px !important;
+    white-space: normal !important;
     word-break: keep-all !important;
     overflow-wrap: break-word !important;
-  }
-
-  .ask-eun-question > span {
-    top: 1.55rem;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    text-align: left;
+    font-size: 0.95rem !important;
+    line-height: 1.58 !important;
   }
 
   .ask-eun-answer {
+    min-height: 0 !important;
     padding: 22px 0 !important;
-    background: transparent;
-  }
-
-  .ask-eun-answer h3 {
-    max-width: none;
-    font-size: clamp(1.5rem, 5.8vw, 2.05rem) !important;
   }
 }
 
@@ -258,21 +292,12 @@ li,
     margin: 0 !important;
   }
 
-  .about-editorial__statement p:first-child {
-    padding: 15px 16px;
-  }
-
   .ask-eun-editorial .section-header {
     margin-bottom: 22px;
   }
 
   .ask-eun-category,
   .ask-eun-category:nth-child(2n) {
-    min-width: min(82vw, 250px);
-    flex-basis: min(82vw, 290px) !important;
-  }
-
-  .ask-eun-question {
-    font-size: 0.94rem !important;
+    min-width: 164px;
   }
 }
