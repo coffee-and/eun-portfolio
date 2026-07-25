@@ -13,6 +13,7 @@ import "../styles/resume.css";
 import "../styles/resume-icons.css";
 import BrandMark from "./BrandMark";
 import ExternalLink from "./ExternalLink";
+import ThemeToggle from "./ThemeToggle";
 import YouTubeThumbnail from "./YouTubeThumbnail";
 
 const PhotoshopIcon = () => (
@@ -80,9 +81,12 @@ const ResumeSection = () => {
         <a className="resume-page__brand" href="#/" aria-label="portfolio home">
           <BrandMark />
         </a>
-        <a className="resume-page__back" href="#/">
-          back to portfolio
-        </a>
+        <div className="resume-page__actions">
+          <ThemeToggle />
+          <a className="resume-page__back" href="#/">
+            back to portfolio
+          </a>
+        </div>
       </header>
 
       <section className="resume-hero" aria-label="web resume hero">
