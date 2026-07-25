@@ -7,7 +7,7 @@ const ContactSection = () => {
       <SectionHeader
         eyebrow="Contact"
         title="제품 개발과 기획, 디자인 의뢰를 받고 있습니다"
-        description="웹 서비스와 관리자 화면, WPF 기반 제품 UI, 기능형 프로토타입, 기존 서비스 개선과 화면 디자인까지 프로젝트 단위로 협의합니다. 이메일로 편하게 문의해 주세요."
+        description="새로운 제품의 기획과 개발부터 기존 서비스의 기능·화면 개선까지, 프로젝트의 목적과 범위에 맞춰 진행합니다."
       />
 
       <div className="contact-actions">
