@@ -12,6 +12,7 @@ import YouTubeSection from "./components/YouTubeSection";
 import "./styles/editorial.css";
 import "./styles/editorial-fixes.css";
 import "./styles/typography-polish.css";
+import "./styles/frame-form.css";
 
 const getRoute = () => (window.location.hash === "#/resume" ? "resume" : "portfolio");
 
@@ -39,9 +40,9 @@ function App() {
     <main>
       <SiteNav />
       <Hero />
-      <AboutSection />
       <ProjectsSection />
       <YouTubeSection />
+      <AboutSection />
       <CareerHighlightsSection />
       <SkillsSection />
       <AskEunSection />
