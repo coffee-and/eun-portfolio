@@ -4,6 +4,7 @@ import {
   type ProjectPresentation,
 } from "./projects";
 import { skillGroups } from "./skills";
+import { getCompanyDisplayName } from "../utils/companyNames";
 
 export type SkillIcon = {
   name: string;
@@ -72,14 +73,14 @@ export const profileCards: ResumeCard[] = [
     meta: "AI 머신비전 플랫폼 · MVVM · Plugin",
     tags: ["wpf", "mvvm", "plugin architecture"],
     description:
-      "코그넥스 VPDL에서 Native 엔진 연동, UI/UX 리뉴얼, 제품 통합, Migration·Easy UI Plugin, 로그·분석 도구와 배포 환경을 개발했습니다.",
+      "Cognex VPDL에서 Native 엔진 연동, UI/UX 리뉴얼, 제품 통합, Migration·Easy UI Plugin, 로그·분석 도구와 배포 환경을 개발했습니다.",
   },
   {
     title: "기업용·금융 제품 개발 경험",
     meta: "금융 데이터 · 문서 처리 · 관리자 솔루션",
     tags: ["enterprise", "finance", "system integration"],
     description:
-      "핑거, 스탠다드차타드은행, 핸디에이치아이에스와 퓨전데이타에서 금융 데이터 연동, 문서 뷰어·파일 변환, AD 관리와 프로세스 모니터링 솔루션을 개발했습니다.",
+      "FINGER Inc., Standard Chartered Bank Korea, HandyHIS와 FusionData에서 금융 데이터 연동, 문서 뷰어·파일 변환, AD 관리와 프로세스 모니터링 솔루션을 개발했습니다.",
   },
   {
     title: "React 기반 제품 서비스 구현",
@@ -100,7 +101,7 @@ export const resumeHighlights = [
   "TeamCity·AWS EC2·InstallShield·NSIS 기반 검증·설치·배포 환경 운영",
   "ADAgent·ProcessWatchdog와 NSIS 통합 설치 프로그램 개발·유지보수",
   "PDF 보안 뷰어와 Office·압축파일 이미지 변환 시스템 개발",
-  "스탠다드차타드은행 여신 거래 데이터와 Excel·Oracle 업무 도구 관리",
+  "Standard Chartered Bank Korea 여신 거래 데이터와 Excel·Oracle 업무 도구 관리",
   "신한은행 머니멘토·국민은행 가계부·myFingerCM 자산관리 솔루션 개발",
   "은행·카드·통신사·증권사·공공기관 스크래핑 스크립트 개발·유지보수",
   "블록체인 입문 도서 집필과 아키텍처 다이어그램·개념 시각화 제작",
@@ -133,7 +134,7 @@ export const resumeSkills = skillGroups.map((group) => ({
 }));
 
 export const careerCards: ResumeCard[] = careers.map((career) => ({
-  title: career.company,
+  title: getCompanyDisplayName(career),
   period: career.period,
   meta: career.role,
   tags: career.technologies.slice(0, 6),
