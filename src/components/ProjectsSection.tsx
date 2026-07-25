@@ -10,7 +10,7 @@ import SectionHeader from "./SectionHeader";
 const featuredProjects = getProjectsByPresentation("featured");
 const earlierProjects = getProjectsByPresentation("archive");
 
-const ProjectPreview = ({ project }: { project: Project }) => {
+const ProjectVisual = ({ project }: { project: Project }) => {
   const [hasImageFailed, setHasImageFailed] = useState(false);
 
   if (project.image && !hasImageFailed) {
@@ -27,11 +27,28 @@ const ProjectPreview = ({ project }: { project: Project }) => {
     );
   }
 
+  if (project.demo && project.presentation === "featured") {
+    return (
+      <div className="project-live-preview" aria-label={`${project.title} 실제 배포 화면 미리보기`}>
+        <div className="project-live-preview__bar" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+          <em>{new URL(project.demo).hostname}</em>
+        </div>
+        <iframe
+          src={project.demo}
+          title={`${project.title} 배포 화면`}
+          loading="lazy"
+          tabIndex={-1}
+        />
+      </div>
+    );
+  }
+
   return (
-    <span className="project-card__preview-placeholder">
-      <span className="project-card__preview-index">
-        {String(project.order).padStart(2, "0")} / featured work
-      </span>
+    <span className="project-editorial-placeholder">
+      <span>{String(project.order).padStart(2, "0")}</span>
       <strong>{project.title}</strong>
       <em>{project.previewLabel}</em>
     </span>
@@ -39,13 +56,13 @@ const ProjectPreview = ({ project }: { project: Project }) => {
 };
 
 const ProjectLinks = ({ project }: { project: Project }) => (
-  <div className="project-card__links">
+  <div className="project-editorial__links">
     {project.demo && (
       <ExternalLink
         href={project.demo}
         ariaLabel={`${project.title} 배포 사이트 새 탭에서 열기`}
       >
-        View Site
+        View live product
       </ExternalLink>
     )}
 
@@ -54,12 +71,12 @@ const ProjectLinks = ({ project }: { project: Project }) => (
         href={project.github}
         ariaLabel={`${project.title} GitHub 저장소 새 탭에서 열기`}
       >
-        GitHub
+        GitHub repository
       </ExternalLink>
     )}
 
     {project.repositoryNote && (
-      <span className="project-card__repository-note">
+      <span className="project-editorial__repository-note">
         {project.repositoryNote}
       </span>
     )}
@@ -67,190 +84,132 @@ const ProjectLinks = ({ project }: { project: Project }) => (
 );
 
 const ProjectsSection = () => {
-  const [openProjectId, setOpenProjectId] = useState<string | null>(null);
-
-  const handleToggle = (id: string) => {
-    setOpenProjectId((currentId) => (currentId === id ? null : id));
-  };
-
   return (
-    <section id="projects">
+    <section className="projects-editorial" id="projects">
       <SectionHeader
-        eyebrow="Projects"
-        title="selected product work"
-        description={`기획부터 화면 구조, 상태 흐름, 데이터 저장과 검증까지 직접 구현한 서비스입니다.
-각 프로젝트의 완료 상태와 현재 미연동 범위를 구분해 표시했습니다.`}
+        eyebrow="Selected Work"
+        title="실제 화면과 구현 근거로 보여드리는 대표 작업"
+        description={`홈에서는 핵심 내용을 빠르게 확인하고, 상세 영역에서는 목적·담당 범위·기능·기술과 현재 미연동 범위를 빠짐없이 볼 수 있습니다.`}
       />
 
-      <div className="project-tier-heading">
-        <span>Featured Projects</span>
-        <p>핵심 서비스 흐름을 구현 완료한 현재의 대표 작업입니다.</p>
-      </div>
-
-      <div className="project-list">
-        {featuredProjects.map((project) => {
-          const isOpen = openProjectId === project.id;
-          const detailId = `project-detail-${project.id}`;
-
-          return (
-            <article
-              key={project.id}
-              className={`project-card ${isOpen ? "project-card--open" : ""}`}
-            >
-              <div className="project-card__layout">
-                <div className="project-card__content">
-                  <div className="project-card__badges" aria-label="프로젝트 상태">
-                    <span data-status={project.status}>
-                      {project.statusLabel}
-                    </span>
-                    <span>{project.scopeLabel}</span>
-                  </div>
-
-                  <button
-                    type="button"
-                    className="project-card__toggle"
-                    onClick={() => handleToggle(project.id)}
-                    aria-expanded={isOpen}
-                    aria-controls={detailId}
-                  >
-                    <span className="project-card__title-group">
-                      <span>{project.category}</span>
-                      <span
-                        className="project-card__title"
-                        role="heading"
-                        aria-level={3}
-                      >
-                        {project.title}
-                      </span>
-                    </span>
-
-                    <em>{isOpen ? "Hide Details" : "View Details"}</em>
-                  </button>
-
-                  <p className="project-card__description">
-                    {project.description}
-                  </p>
-
-                  <ul
-                    className="project-card__summary-points"
-                    aria-label="대표 기능"
-                  >
-                    {project.cardHighlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-
-                  <div className="project-card__stack" aria-label="기술 스택">
-                    {project.stack.slice(0, 6).map((technology) => (
-                      <span key={technology}>{technology}</span>
-                    ))}
-                  </div>
-
-                  <ProjectLinks project={project} />
-                </div>
-
-                {project.demo ? (
-                  <ExternalLink
-                    className="project-card__preview"
-                    href={project.demo}
-                    ariaLabel={`${project.title} 배포 사이트 새 탭에서 열기`}
-                  >
-                    <ProjectPreview project={project} />
-                  </ExternalLink>
-                ) : (
-                  <div className="project-card__preview">
-                    <ProjectPreview project={project} />
-                  </div>
-                )}
-              </div>
-
-              <div
-                id={detailId}
-                className={`project-card__detail-wrap ${
-                  isOpen ? "project-card__detail-wrap--open" : ""
-                }`}
-              >
-                <div className="project-card__detail-inner">
-                  <div className="project-card__detail">
-                    {project.detailDescription && (
-                      <p className="project-card__detail-description">
-                        {project.detailDescription}
-                      </p>
-                    )}
-
-                    <div className="project-card__detail-grid">
-                      <div>
-                        <span className="project-card__detail-label">
-                          Purpose
-                        </span>
-                        <p>{project.purpose}</p>
-                      </div>
-                      <div>
-                        <span className="project-card__detail-label">Role</span>
-                        <p>{project.role}</p>
-                      </div>
-                    </div>
-
-                    {project.users && (
-                      <div className="project-card__users">
-                        <span className="project-card__detail-label">
-                          Users
-                        </span>
-                        <div>
-                          {project.users.map((user) => (
-                            <span key={user}>{user}</span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    <span className="project-card__detail-label">
-                      Implementation Highlights
-                    </span>
-                    <ul className="project-card__points">
-                      {project.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
-
-                    <div className="project-card__scope-note">
-                      <strong>현재 범위</strong>
-                      <p>{project.scopeNote}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-
-      <div className="earlier-work">
-        <div className="project-tier-heading">
-          <span>Earlier Work</span>
-          <p>외부 API와 브라우저 저장 흐름을 다룬 이전 프로젝트입니다.</p>
-        </div>
-
-        {earlierProjects.map((project) => (
-          <article className="archive-project-card" key={project.id}>
-            <div className="archive-project-card__body">
-              <div className="project-card__badges" aria-label="프로젝트 상태">
-                <span data-status={project.status}>{project.statusLabel}</span>
-                <span>{project.scopeLabel}</span>
-              </div>
-              <span>{project.category}</span>
+      <div className="projects-editorial__list">
+        {featuredProjects.map((project, index) => (
+          <article
+            className={`project-editorial ${index % 2 === 1 ? "project-editorial--reverse" : ""}`}
+            key={project.id}
+          >
+            <div className="project-editorial__intro">
+              <span className="editorial-number">
+                {String(project.order).padStart(2, "0")}
+              </span>
+              <p className="project-editorial__category">{project.category}</p>
               <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="project-card__stack">
-                {project.stack.map((technology) => (
-                  <span key={technology}>{technology}</span>
+              <p className="project-editorial__description">{project.description}</p>
+
+              <dl className="project-editorial__status">
+                <div>
+                  <dt>Status</dt>
+                  <dd>{project.statusLabel}</dd>
+                </div>
+                <div>
+                  <dt>Current scope</dt>
+                  <dd>{project.scopeLabel}</dd>
+                </div>
+              </dl>
+
+              <ul className="project-editorial__highlights" aria-label="대표 기능">
+                {project.cardHighlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
                 ))}
-              </div>
+              </ul>
+
+              <p className="project-editorial__stack">
+                {project.stack.slice(0, 7).join(" · ")}
+              </p>
+
               <ProjectLinks project={project} />
             </div>
 
-            <div className="archive-project-card__visual">
-              <ProjectPreview project={project} />
+            <div className="project-editorial__visual">
+              <ProjectVisual project={project} />
+            </div>
+
+            <details className="project-case-study">
+              <summary>
+                <span>프로젝트 상세 보기</span>
+                <em>purpose · role · implementation · scope</em>
+              </summary>
+
+              <div className="project-case-study__content">
+                {project.detailDescription && (
+                  <p className="project-case-study__lead">
+                    {project.detailDescription}
+                  </p>
+                )}
+
+                <div className="project-case-study__grid">
+                  <section>
+                    <span>01 / Purpose</span>
+                    <h4>만든 이유</h4>
+                    <p>{project.purpose}</p>
+                  </section>
+                  <section>
+                    <span>02 / Role</span>
+                    <h4>담당 범위</h4>
+                    <p>{project.role}</p>
+                  </section>
+                  {project.users && (
+                    <section>
+                      <span>03 / Users</span>
+                      <h4>주요 사용자</h4>
+                      <p>{project.users.join(" · ")}</p>
+                    </section>
+                  )}
+                  <section>
+                    <span>04 / Current scope</span>
+                    <h4>현재 구현 범위</h4>
+                    <p>{project.scopeNote}</p>
+                  </section>
+                </div>
+
+                <section className="project-case-study__implementation">
+                  <span>05 / Implementation</span>
+                  <h4>구현 내용</h4>
+                  <ol>
+                    {project.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ol>
+                </section>
+
+                <section className="project-case-study__technology">
+                  <span>06 / Technology</span>
+                  <h4>사용 기술</h4>
+                  <p>{project.stack.join(" · ")}</p>
+                </section>
+              </div>
+            </details>
+          </article>
+        ))}
+      </div>
+
+      <div className="earlier-work earlier-work--editorial">
+        <div className="project-tier-heading">
+          <span>Earlier Work</span>
+          <p>외부 API와 브라우저 저장 방식을 다룬 이전 프로젝트입니다.</p>
+        </div>
+
+        {earlierProjects.map((project) => (
+          <article className="archive-project-editorial" key={project.id}>
+            <div>
+              <span>{project.category}</span>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <strong>{project.stack.join(" · ")}</strong>
+              <ProjectLinks project={project} />
+            </div>
+            <div className="archive-project-editorial__visual">
+              <ProjectVisual project={project} />
             </div>
           </article>
         ))}
