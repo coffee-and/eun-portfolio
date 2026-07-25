@@ -10,9 +10,78 @@
   white-space: nowrap;
 }
 
+/* Keep the primary navigation readable without making it visually heavy. */
+.site-nav__links {
+  gap: 20px;
+}
+
+.site-nav__links a,
+.site-nav__mode {
+  min-height: 46px;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+}
+
+/* Skill icons use their own colors on a quiet white and silver frame. */
+.resume-page .resume-tech-icon {
+  background: var(--white) !important;
+  border: 1px solid var(--silver) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.resume-page .resume-tech-icon__mark,
+.resume-page .resume-tech-icon img {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+.resume-page .resume-tech-icon strong {
+  background: transparent !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--silver);
+  border-radius: 6px;
+}
+
+.resume-page .resume-tech-icon__svg {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+
+.resume-page .resume-tech-icon__svg-fill {
+  fill: transparent !important;
+}
+
+.resume-page .resume-tech-icon__svg-rim {
+  stroke: #31a8ff !important;
+  opacity: 1 !important;
+}
+
+.resume-page .resume-tech-icon__svg text {
+  fill: #31a8ff !important;
+}
+
+@media (max-width: 900px) {
+  .site-nav__links {
+    gap: 13px;
+  }
+
+  .site-nav__links a,
+  .site-nav__mode {
+    font-size: 0.82rem !important;
+  }
+}
+
 @media (max-width: 620px) {
   .site-footer strong {
     font-size: clamp(2.8rem, 16vw, 4.8rem);
     white-space: normal;
+  }
+
+  .site-nav__links a,
+  .site-nav__mode {
+    font-size: 0.78rem !important;
   }
 }
