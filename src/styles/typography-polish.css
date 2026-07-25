@@ -1,0 +1,178 @@
+@import url("https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css");
+
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Paperlogy";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --font-display: "Paperlogy", "SUIT Variable", "Pretendard", sans-serif;
+  --font-body: "SUIT Variable", "Pretendard", Inter, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+}
+
+body {
+  font-weight: 400;
+}
+
+p,
+li {
+  font-weight: 400 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-display) !important;
+  font-style: normal;
+}
+
+h1,
+h2 {
+  font-weight: 700 !important;
+}
+
+h3,
+h4,
+h5 {
+  font-weight: 600 !important;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.hero-editorial h1 strong {
+  font-weight: 700;
+}
+
+.site-nav__links a,
+.site-nav__mode,
+.resume-page__back,
+.resume-contact-row a,
+.resume-project-card__links a,
+.pill-button,
+.ask-eun-category,
+.ask-eun-question,
+.ask-eun-answer__links a {
+  font-weight: 500 !important;
+}
+
+.pill-button--primary,
+.ask-eun-category--active,
+.ask-eun-question--active {
+  font-weight: 600 !important;
+}
+
+.hero-summary span,
+.project-editorial__badges span,
+.youtube-card__status strong,
+.youtube-card__status span,
+.resume-keywords span,
+.resume-skill-card span,
+.resume-project-card__stack span,
+.resume-tag-row em {
+  font-weight: 500 !important;
+}
+
+.eyebrow,
+.editorial-number,
+.hero-editorial h1 span,
+.section-header .eyebrow,
+.career-chapter__heading > span,
+.career-project__title > span,
+.ask-eun-questions > p,
+.ask-eun-answer > span {
+  font-family: var(--font-mono) !important;
+}
+
+/* Compact technology icon gallery in the web resume. */
+.resume-page .resume-icon-grid {
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.resume-page .resume-tech-icon {
+  min-height: 0;
+  padding: 9px 5px 7px;
+  gap: 5px;
+  justify-content: flex-start;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+}
+
+.resume-page .resume-tech-icon__mark {
+  width: 30px;
+  height: 30px;
+}
+
+.resume-page .resume-tech-icon strong {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+}
+
+.resume-page .resume-tech-icon img {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: transparent;
+}
+
+.resume-page .resume-tech-icon span:not(.resume-tech-icon__mark) {
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.64rem;
+  font-weight: 450 !important;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+@media (max-width: 1080px) {
+  .resume-page .resume-icon-grid {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .resume-page .resume-icon-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 430px) {
+  .resume-page .resume-icon-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .resume-page .resume-tech-icon {
+    padding-inline: 4px;
+  }
+}
