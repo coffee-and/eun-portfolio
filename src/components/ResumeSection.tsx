@@ -123,8 +123,8 @@ const ResumeSection = () => {
         <aside className="resume-left-column">
           <section className="resume-panel resume-panel--profile">
             <span className="resume-panel__eyebrow">at a glance</span>
-            <h2>Product UI Developer</h2>
-            <p>WPF 기반 제품 개발 경험을 React 서비스와 역할별 기능형 프로토타입으로 확장했습니다.</p>
+            <h2>Product-focused Full-stack Engineer</h2>
+            <p>제품의 사용성과 기술 구조를 함께 설계하고, 화면부터 데이터와 배포까지 연결해 실제 제품으로 완성합니다.</p>
 
             <div className="resume-keywords">
               {resumeProfile.keywords.map((keyword) => (
@@ -177,7 +177,7 @@ const ResumeSection = () => {
                 <div className="resume-tech-icon" key={skill.name}>
                   <span className="resume-tech-icon__mark">
                     {skill.iconVariant === "photoshop" ? (
-                        <PhotoshopIcon />
+                      <PhotoshopIcon />
                     ) : (
                       <>
                         {skill.icon && (
