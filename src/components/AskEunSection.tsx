@@ -101,13 +101,12 @@ const AskEunSection = () => {
   return (
     <section className="ask-eun-editorial" id="ask-eun">
       <SectionHeader
-        eyebrow="Ask Eun"
+        eyebrow="About"
         title="궁금한 질문을 골라 경력과 프로젝트를 살펴보세요"
-        description="독립 프로젝트 Ask Eun의 질문형 탐색 방식을 현재 경력과 풀스택 프로젝트에 맞게 다시 구성했습니다."
       />
 
       <div className="ask-eun-explorer">
-        <nav className="ask-eun-categories" aria-label="Ask Eun 질문 카테고리">
+        <nav className="ask-eun-categories" aria-label="About 질문 카테고리">
           {askEunCategories.map((category, index) => (
             <button
               type="button"
