@@ -63,7 +63,60 @@
   fill: #31a8ff !important;
 }
 
-@media (max-width: 900px) {
+/* Six companies are displayed as a complete career index. */
+.career-index {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.career-index a:nth-child(3n) {
+  border-right: 0;
+}
+
+.career-index a:nth-child(n + 4) {
+  border-top: 1px solid var(--border-light);
+}
+
+/* Each skill group gets the width it needs; rows no longer collide. */
+.skills-editorial__groups {
+  grid-template-columns: 1fr;
+  gap: clamp(54px, 7vw, 88px);
+}
+
+.skill-ledger__row {
+  grid-template-columns: minmax(170px, 0.58fr) minmax(190px, 0.62fr) minmax(0, 1.5fr);
+  gap: clamp(22px, 4vw, 58px);
+  align-items: start;
+}
+
+.skill-ledger__row strong,
+.skill-ledger__row span,
+.skill-ledger__row p {
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+/* Give complete questions enough width and keep Korean words together. */
+.ask-eun-explorer {
+  grid-template-columns: minmax(210px, 0.3fr) minmax(330px, 0.46fr) minmax(0, 1.25fr);
+}
+
+.ask-eun-question {
+  padding-right: 18px;
+  font-size: 0.84rem;
+  line-height: 1.62;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.ask-eun-answer h3,
+.ask-eun-answer > strong,
+.ask-eun-answer__copy p {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 1100px) {
   .site-nav__links {
     gap: 13px;
   }
@@ -71,6 +124,67 @@
   .site-nav__links a,
   .site-nav__mode {
     font-size: 0.82rem !important;
+  }
+
+  .ask-eun-explorer {
+    grid-template-columns: minmax(290px, 0.46fr) minmax(0, 1fr);
+  }
+
+  .ask-eun-categories {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    border-right: 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .ask-eun-category {
+    padding: 14px 12px;
+    border-right: 1px solid var(--border-light);
+    border-bottom: 0;
+  }
+
+  .ask-eun-category:last-child {
+    border-right: 0;
+  }
+
+  .ask-eun-answer {
+    min-height: 540px;
+  }
+}
+
+@media (max-width: 820px) {
+  .career-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .career-index a:nth-child(3n) {
+    border-right: 1px solid var(--border-light);
+  }
+
+  .career-index a:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .career-index a:nth-child(n + 3) {
+    border-top: 1px solid var(--border-light);
+  }
+
+  .skill-ledger__row {
+    grid-template-columns: minmax(145px, 0.7fr) minmax(155px, 0.7fr) minmax(0, 1.2fr);
+    gap: 18px;
+  }
+
+  .ask-eun-categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ask-eun-category:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ask-eun-category:nth-child(n + 3) {
+    border-top: 1px solid var(--border-light);
   }
 }
 
@@ -83,5 +197,49 @@
   .site-nav__links a,
   .site-nav__mode {
     font-size: 0.78rem !important;
+  }
+
+  .career-index {
+    grid-template-columns: 1fr;
+  }
+
+  .career-index a,
+  .career-index a:nth-child(2n),
+  .career-index a:nth-child(3n) {
+    border-right: 0;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .career-index a:first-child {
+    border-top: 0;
+  }
+
+  .skill-ledger__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 15px 0;
+  }
+
+  .ask-eun-explorer {
+    grid-template-columns: 1fr;
+  }
+
+  .ask-eun-categories,
+  .ask-eun-questions {
+    border-right: 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .ask-eun-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .ask-eun-category,
+  .ask-eun-category:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .ask-eun-answer {
+    min-height: 0;
   }
 }
