@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AboutSection from "./components/AboutSection";
 import AskEunSection from "./components/AskEunSection";
+import BackToTop from "./components/BackToTop";
 import CareerHighlightsSection from "./components/CareerHighlightsSection";
 import ContactSection from "./components/ContactSection";
 import Hero from "./components/Hero";
@@ -42,27 +43,30 @@ function App() {
     };
   }, []);
 
-  if (route === "resume") {
-    return <ResumeSection />;
-  }
-
   return (
-    <main>
-      <SiteNav />
-      <Hero />
-      <ProjectsSection />
-      <YouTubeSection />
-      <AboutSection />
-      <CareerHighlightsSection />
-      <SkillsSection />
-      <AskEunSection />
-      <ContactSection />
+    <>
+      {route === "resume" ? (
+        <ResumeSection />
+      ) : (
+        <main>
+          <SiteNav />
+          <Hero />
+          <ProjectsSection />
+          <YouTubeSection />
+          <AboutSection />
+          <CareerHighlightsSection />
+          <SkillsSection />
+          <AskEunSection />
+          <ContactSection />
 
-      <footer className="site-footer">
-        <p>2026 · product, design and coding by me</p>
-        <strong>Eun Jeongan</strong>
-      </footer>
-    </main>
+          <footer className="site-footer">
+            <p>2026 · product, design and coding by me</p>
+            <strong>Eun Jeongan</strong>
+          </footer>
+        </main>
+      )}
+      <BackToTop />
+    </>
   );
 }
 
