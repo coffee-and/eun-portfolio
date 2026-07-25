@@ -4,9 +4,9 @@ const AboutSection = () => {
   return (
     <section className="about-editorial" id="about">
       <SectionHeader
-        eyebrow="About"
-        title="복잡한 기능을 이해하기 쉬운 제품으로 정리합니다"
-        description="화면을 만드는 일과 기술 구조를 설계하는 일을 분리하지 않습니다. 사용 과정, 상태 변화, 데이터 저장, 검증과 배포를 함께 살피며 실제 동작하는 결과로 설명합니다."
+        eyebrow="Approach"
+        title="사용하기 편한 화면과 확장 가능한 구조로 제품을 만듭니다"
+        description="복잡한 요구사항을 화면과 기능으로 정리하고, 상태·데이터·검증·배포를 고려해 실제로 동작하는 결과로 구현합니다."
       />
 
       <div className="about-editorial__profile">
