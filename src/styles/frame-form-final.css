@@ -1,0 +1,18 @@
+.site-footer strong {
+  margin-top: clamp(46px, 7vw, 96px);
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 9.5vw, 8.8rem);
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: -0.075em;
+  white-space: nowrap;
+}
+
+@media (max-width: 620px) {
+  .site-footer strong {
+    font-size: clamp(2.8rem, 16vw, 4.8rem);
+    white-space: normal;
+  }
+}
