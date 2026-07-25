@@ -1,13 +1,13 @@
-import SectionHeader from "./SectionHeader";
 import ExternalLink from "./ExternalLink";
+import SectionHeader from "./SectionHeader";
 
 const ContactSection = () => {
   return (
     <section id="contact">
       <SectionHeader
         eyebrow="Contact"
-        title="contact me"
-        description="복잡한 제품과 업무 흐름을 이해하기 쉬운 사용자 경험으로 구조화하고, 실제로 동작하는 서비스 형태까지 구현합니다."
+        title="제품의 사용성과 기술 구조를 함께 고민할 팀을 찾고 있습니다"
+        description="복잡한 요구사항을 사용하기 좋은 화면과 안정적인 데이터 구조로 정리하고, 검증과 배포까지 책임지는 제품 중심 풀스택 개발자로 새로운 기회를 기다리고 있습니다."
       />
 
       <div className="contact-actions">
@@ -32,7 +32,9 @@ const ContactSection = () => {
         >
           YouTube
         </ExternalLink>
-        <a className="pill-button" href="#/resume">web resume</a>
+        <a className="pill-button" href="#/resume">
+          web resume
+        </a>
       </div>
     </section>
   );
