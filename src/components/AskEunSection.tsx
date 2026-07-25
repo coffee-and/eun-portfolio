@@ -6,9 +6,7 @@ import {
   type AskEunItem,
 } from "../data/askEun";
 import { careerCards } from "../data/resume";
-import {
-  normalizeCompanyNames,
-} from "../utils/companyNames";
+import { normalizeCompanyNames } from "../utils/companyNames";
 import ExternalLink from "./ExternalLink";
 import SectionHeader from "./SectionHeader";
 
@@ -41,16 +39,38 @@ const companyCareerQuestions: AskEunItem[] = careerCards
     ],
   }));
 
-const normalizedAskEunItems = askEunItems.map((item) => ({
-  ...item,
-  question: normalizeCompanyNames(item.question),
-  summary: normalizeCompanyNames(item.summary),
-  answer: item.answer.map(normalizeCompanyNames),
-  relatedLinks: item.relatedLinks?.map((link) => ({
-    ...link,
-    label: normalizeCompanyNames(link.label),
-  })),
-}));
+const collaborationCopy = {
+  question: "왜 정안님과 함께 일해야 하나요?",
+  summary:
+    "기획 의도를 빠르게 구조화하고 화면·데이터·검증·배포까지 연결해 실제 결과물로 완성합니다.",
+  answer: [
+    "금융·기업용 솔루션과 AI 머신비전 플랫폼에서 복잡한 제품을 개발하고 장기간 유지하며, 요구사항을 안정적인 제품 구조로 옮겨왔습니다.",
+    "프로젝트를 맡으면 화면만 만드는 데 그치지 않고 사용자 작업, 데이터 처리, 오류 조건, 테스트와 배포까지 함께 정리합니다.",
+    "기획·디자인·개발을 분리해서 보지 않아 초기 아이디어를 화면과 기능으로 빠르게 구체화하고, 기존 서비스는 문제의 원인을 찾아 구조적으로 개선할 수 있습니다.",
+    "협업 범위와 일정, 구현한 내용과 남은 과제를 명확하게 공유해 프리랜서 프로젝트에서도 결과와 다음 판단이 남도록 작업합니다.",
+  ],
+};
+
+const normalizedAskEunItems = askEunItems.map((item) => {
+  const sourceItem =
+    item.id === "why-hire"
+      ? {
+          ...item,
+          ...collaborationCopy,
+        }
+      : item;
+
+  return {
+    ...sourceItem,
+    question: normalizeCompanyNames(sourceItem.question),
+    summary: normalizeCompanyNames(sourceItem.summary),
+    answer: sourceItem.answer.map(normalizeCompanyNames),
+    relatedLinks: sourceItem.relatedLinks?.map((link) => ({
+      ...link,
+      label: normalizeCompanyNames(link.label),
+    })),
+  };
+});
 
 const currentAskEunItems = normalizedAskEunItems.flatMap((item) => {
   if (item.id === "career-overview") {
@@ -67,16 +87,14 @@ const currentAskEunItems = normalizedAskEunItems.flatMap((item) => {
 const AskEunSection = () => {
   const [activeCategory, setActiveCategory] =
     useState<AskEunCategoryId>("positioning");
-  const [activeQuestionId, setActiveQuestionId] = useState("profile");
+  const [activeQuestionId, setActiveQuestionId] = useState<string | null>(
+    "profile",
+  );
 
   const categoryQuestions = useMemo(
     () => currentAskEunItems.filter((item) => item.category === activeCategory),
     [activeCategory],
   );
-
-  const activeQuestion =
-    currentAskEunItems.find((item) => item.id === activeQuestionId) ??
-    categoryQuestions[0];
 
   const handleCategoryChange = (categoryId: AskEunCategoryId) => {
     const firstQuestion = currentAskEunItems.find(
@@ -84,9 +102,7 @@ const AskEunSection = () => {
     );
 
     setActiveCategory(categoryId);
-    if (firstQuestion) {
-      setActiveQuestionId(firstQuestion.id);
-    }
+    setActiveQuestionId(firstQuestion?.id ?? null);
   };
 
   return (
@@ -98,7 +114,7 @@ const AskEunSection = () => {
 
       <div className="ask-eun-explorer">
         <nav className="ask-eun-categories" aria-label="About 질문 카테고리">
-          {askEunCategories.map((category, index) => (
+          {askEunCategories.map((category) => (
             <button
               type="button"
               key={category.id}
@@ -110,66 +126,86 @@ const AskEunSection = () => {
               onClick={() => handleCategoryChange(category.id)}
               aria-pressed={activeCategory === category.id}
             >
-              <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{category.label}</strong>
-              <em>{category.description}</em>
             </button>
           ))}
         </nav>
 
-        <div className="ask-eun-questions" aria-label="질문 목록">
-          <p>Questions</p>
-          {categoryQuestions.map((item) => (
-            <button
-              type="button"
-              key={item.id}
-              className={
-                activeQuestion?.id === item.id
-                  ? "ask-eun-question ask-eun-question--active"
-                  : "ask-eun-question"
-              }
-              onClick={() => setActiveQuestionId(item.id)}
-              aria-pressed={activeQuestion?.id === item.id}
-            >
-              <span aria-hidden="true" />
-              {item.question}
-            </button>
-          ))}
-        </div>
+        <div className="ask-eun-accordion" aria-label="질문과 답변">
+          {categoryQuestions.map((item, index) => {
+            const isActive = activeQuestionId === item.id;
+            const answerId = `ask-eun-answer-${item.id}`;
 
-        {activeQuestion && (
-          <article className="ask-eun-answer" aria-live="polite">
-            <span>Answer</span>
-            <h3>{activeQuestion.question}</h3>
-            <strong>{activeQuestion.summary}</strong>
+            return (
+              <article
+                className={
+                  isActive
+                    ? "ask-eun-item ask-eun-item--active"
+                    : "ask-eun-item"
+                }
+                key={item.id}
+              >
+                <h3>
+                  <button
+                    type="button"
+                    className="ask-eun-question"
+                    onClick={() =>
+                      setActiveQuestionId(isActive ? null : item.id)
+                    }
+                    aria-expanded={isActive}
+                    aria-controls={answerId}
+                  >
+                    <span className="ask-eun-question__number" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="ask-eun-question__text">
+                      {item.question}
+                    </span>
+                    <span className="ask-eun-question__icon" aria-hidden="true">
+                      {isActive ? "−" : "+"}
+                    </span>
+                  </button>
+                </h3>
 
-            <div className="ask-eun-answer__copy">
-              {activeQuestion.answer.map((paragraph, index) => (
-                <p key={`${activeQuestion.id}-${index}`}>{paragraph}</p>
-              ))}
-            </div>
+                {isActive && (
+                  <div
+                    className="ask-eun-answer"
+                    id={answerId}
+                    aria-live="polite"
+                  >
+                    <strong>{item.summary}</strong>
 
-            {activeQuestion.relatedLinks && (
-              <div className="ask-eun-answer__links">
-                {activeQuestion.relatedLinks.map((link) =>
-                  link.href.startsWith("http") ? (
-                    <ExternalLink
-                      key={link.href}
-                      href={link.href}
-                      ariaLabel={`${link.label} 새 탭에서 열기`}
-                    >
-                      {link.label}
-                    </ExternalLink>
-                  ) : (
-                    <a key={link.href} href={link.href}>
-                      {link.label}
-                    </a>
-                  ),
+                    <div className="ask-eun-answer__copy">
+                      {item.answer.map((paragraph, paragraphIndex) => (
+                        <p key={`${item.id}-${paragraphIndex}`}>{paragraph}</p>
+                      ))}
+                    </div>
+
+                    {item.relatedLinks && (
+                      <div className="ask-eun-answer__links">
+                        {item.relatedLinks.map((link) =>
+                          link.href.startsWith("http") ? (
+                            <ExternalLink
+                              key={link.href}
+                              href={link.href}
+                              ariaLabel={`${link.label} 새 탭에서 열기`}
+                            >
+                              {link.label}
+                            </ExternalLink>
+                          ) : (
+                            <a key={link.href} href={link.href}>
+                              {link.label}
+                            </a>
+                          ),
+                        )}
+                      </div>
+                    )}
+                  </div>
                 )}
-              </div>
-            )}
-          </article>
-        )}
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
