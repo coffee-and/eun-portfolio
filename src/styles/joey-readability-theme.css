@@ -1,0 +1,229 @@
+:root {
+  --ink: #111111;
+  --white: #ffffff;
+  --surface: #ffffff;
+  --silver: rgba(17, 17, 17, 0.18);
+  --slate: #6f6f6f;
+  --wine: #5a0f1d;
+  --gold: #d2a84c;
+  --palette-cream: #f7eedc;
+
+  --bg-primary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-muted: #f8f8f8;
+  --bg-pill: transparent;
+  --border-light: rgba(17, 17, 17, 0.17);
+  --border-strong: #111111;
+  --text-primary: #111111;
+  --text-secondary: #414141;
+  --text-muted: #747474;
+  --brand-primary: #5a0f1d;
+  --brand-text: #111111;
+
+  --theme-page: #ffffff;
+  --theme-panel: #ffffff;
+  --theme-soft: #f8f8f8;
+  --theme-inverse: #111111;
+  --theme-inverse-text: #ffffff;
+}
+
+:root[data-theme="dark"] {
+  --ink: #f5f5f5;
+  --surface: #111111;
+  --silver: rgba(255, 255, 255, 0.2);
+  --slate: #a2a2a2;
+  --wine: #f7eedc;
+  --gold: #d2a84c;
+
+  --bg-primary: #090909;
+  --bg-card: #101010;
+  --bg-muted: #161616;
+  --border-light: rgba(255, 255, 255, 0.17);
+  --border-strong: #f5f5f5;
+  --text-primary: #f5f5f5;
+  --text-secondary: #c7c7c7;
+  --text-muted: #929292;
+  --brand-primary: #d2a84c;
+  --brand-text: #f5f5f5;
+
+  --theme-page: #090909;
+  --theme-panel: #101010;
+  --theme-soft: #161616;
+  --theme-inverse: #f5f5f5;
+  --theme-inverse-text: #090909;
+}
+
+html,
+body {
+  background: var(--theme-page) !important;
+  color: var(--text-primary);
+}
+
+body,
+button,
+a {
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+main,
+.hero-editorial,
+.site-nav,
+.resume-page,
+.resume-page__nav {
+  background-color: var(--theme-page) !important;
+}
+
+.resume-hero__intro,
+.resume-hero__summary,
+.resume-panel,
+.resume-info-card,
+.resume-skill-card,
+.resume-project-card,
+.resume-section-block,
+.resume-tech-icon,
+.ask-eun-answer,
+.pill-button,
+.back-to-top {
+  background-color: var(--theme-panel) !important;
+}
+
+.project-editorial__visual,
+.project-case-study,
+.archive-project-editorial__visual,
+.youtube-card__visual,
+.resume-project-card__image-slot,
+.resume-project-card__placeholder {
+  background-color: var(--theme-soft) !important;
+}
+
+.brand-mark__word {
+  fill: var(--text-primary) !important;
+}
+
+.brand-mark__dot {
+  fill: var(--wine) !important;
+  stroke: var(--theme-page) !important;
+}
+
+.site-nav {
+  grid-template-columns: minmax(78px, auto) minmax(0, 1fr) auto !important;
+}
+
+.site-nav__actions,
+.resume-page__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.theme-toggle {
+  min-width: 68px;
+  height: 36px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.72rem;
+  font-weight: 650;
+  line-height: 1;
+  text-transform: lowercase;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  border-color: var(--border-strong);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.theme-toggle__mark {
+  width: 14px;
+  display: inline-flex;
+  justify-content: center;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+:root[data-theme="dark"] .site-nav,
+:root[data-theme="dark"] .resume-page__nav {
+  background: rgba(9, 9, 9, 0.94) !important;
+}
+
+:root[data-theme="dark"] .pill-button--primary,
+:root[data-theme="dark"] .pill-button:hover,
+:root[data-theme="dark"] .back-to-top:hover {
+  border-color: var(--theme-inverse) !important;
+  background: var(--theme-inverse) !important;
+  color: var(--theme-inverse-text) !important;
+}
+
+:root[data-theme="dark"] img:not(.resume-tech-icon img) {
+  filter: brightness(0.96);
+}
+
+/* Keep the approved category / question / answer layout intact. */
+.ask-eun-category,
+.ask-eun-question,
+.ask-eun-answer {
+  color: var(--text-primary);
+}
+
+.ask-eun-answer__copy p {
+  color: var(--text-secondary) !important;
+}
+
+.career-story__lead > p,
+.resume-career-card__overview,
+.resume-career-card__work li > p,
+.resume-info-card p,
+.resume-project-card p {
+  text-wrap: pretty;
+}
+
+@media (max-width: 900px) {
+  .site-nav {
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+  }
+
+  .theme-toggle {
+    min-width: 38px;
+    width: 38px;
+    padding: 0;
+  }
+
+  .theme-toggle > span:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-nav__actions,
+  .resume-page__actions {
+    gap: 6px;
+  }
+
+  .site-nav__mode,
+  .resume-page__back {
+    font-size: 0.72rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  button,
+  a {
+    transition: none;
+  }
+}
