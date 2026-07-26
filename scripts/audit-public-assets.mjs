@@ -1,4 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -7,6 +7,9 @@ const rootDirectory = path.resolve(
   "..",
 );
 const publicDirectory = path.join(rootDirectory, "public");
+const reportDirectory = path.join(rootDirectory, ".audit");
+const reportPath = path.join(reportDirectory, "public-assets.txt");
+const failureMarkerPath = path.join(reportDirectory, "public-assets.failed");
 
 const textExtensions = new Set([
   ".css",
@@ -33,6 +36,7 @@ const implicitlyServedFiles = new Set([
 ]);
 
 const excludedDirectories = new Set([
+  ".audit",
   ".git",
   "dist",
   "node_modules",
@@ -85,10 +89,21 @@ const unusedFiles = publicFiles.filter((relativePath) => {
   );
 });
 
+await mkdir(reportDirectory, { recursive: true });
+
 if (unusedFiles.length > 0) {
-  console.error("Unused public assets detected:");
-  unusedFiles.forEach((filePath) => console.error(`- public/${filePath}`));
+  const report = [
+    "Unused public assets detected:",
+    ...unusedFiles.map((filePath) => `public/${filePath}`),
+    "",
+  ].join("\n");
+
+  await writeFile(reportPath, report, "utf8");
+  await writeFile(failureMarkerPath, "failed\n", "utf8");
+  console.error(report);
   process.exitCode = 1;
 } else {
-  console.log(`Verified ${publicFiles.length} referenced public assets.`);
+  const report = `Verified ${publicFiles.length} referenced public assets.\n`;
+  await writeFile(reportPath, report, "utf8");
+  console.log(report.trim());
 }
