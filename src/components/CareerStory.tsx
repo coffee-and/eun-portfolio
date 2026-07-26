@@ -1,8 +1,11 @@
 import type { Career, CareerProject } from "../data/careers";
+import type { DisclosureToggleHandler } from "../hooks/useExclusiveDisclosure";
 import { getCompanyDisplayName } from "../utils/companyNames";
 
 type CareerStoryProps = {
   career: Career;
+  isOpen: boolean;
+  onToggle: DisclosureToggleHandler;
 };
 
 type CareerProjectCardProps = {
@@ -47,8 +50,9 @@ const CareerProjectCard = ({ project, index }: CareerProjectCardProps) => (
   </article>
 );
 
-const CareerStory = ({ career }: CareerStoryProps) => {
+const CareerStory = ({ career, isOpen, onToggle }: CareerStoryProps) => {
   const companyName = getCompanyDisplayName(career);
+  const detailsId = `career-details-${career.id}`;
 
   return (
     <article
@@ -81,15 +85,23 @@ const CareerStory = ({ career }: CareerStoryProps) => {
         </div>
       </div>
 
-      <details className="career-story__details">
-        <summary>
+      <details
+        className="career-story__details"
+        id={detailsId}
+        open={isOpen}
+        onToggle={(event) => onToggle(career.id, event.currentTarget.open)}
+      >
+        <summary aria-controls={`${detailsId}-content`}>
           <span>담당 업무와 프로젝트 전체 보기</span>
           <em>
             {career.responsibilities.length} responsibilities · {career.projects.length} projects
           </em>
         </summary>
 
-        <div className="career-story__details-content">
+        <div
+          className="career-story__details-content"
+          id={`${detailsId}-content`}
+        >
           <section className="career-chapter">
             <div className="career-chapter__heading">
               <span>01</span>
