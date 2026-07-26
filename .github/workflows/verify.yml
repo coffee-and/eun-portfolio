@@ -8,7 +8,20 @@ permissions:
   contents: read
 
 jobs:
-  verify:
+  repository-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Audit public assets
+        run: node scripts/audit-public-assets.mjs
+
+      - name: Audit removed selectors
+        run: node scripts/audit-legacy-selectors.mjs
+
+  code-quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,5 +37,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Verify repository
-        run: npm run verify
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
