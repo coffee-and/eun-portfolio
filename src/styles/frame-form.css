@@ -267,28 +267,35 @@ summary:focus-visible {
 }
 
 .hero-editorial .hero-summary {
-  margin: 28px 0 0;
-  display: grid;
-  justify-content: stretch;
-  gap: 0;
+  margin: 22px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
 }
 
 .hero-editorial .hero-summary span {
-  padding: 10px 0;
-  border: 0;
-  border-bottom: 1px solid var(--border-light);
-  border-radius: 0;
-  background: transparent;
+  position: relative;
+  padding-left: 12px;
   color: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 500 !important;
   line-height: 1.45;
   text-transform: uppercase;
 }
 
+.hero-editorial .hero-summary span::before {
+  content: "";
+  position: absolute;
+  top: 0.68em;
+  left: 0;
+  width: 6px;
+  height: 1px;
+  background: var(--wine);
+}
+
 .hero-editorial .hero-actions {
-  margin-top: 28px;
+  margin-top: 22px;
   justify-content: flex-start;
   gap: 8px;
 }
@@ -303,31 +310,6 @@ summary:focus-visible {
   border-bottom: 1px solid currentColor;
 }
 
-.hero-editorial__next {
-  padding: 14px 0;
-  display: grid;
-  grid-template-columns: 48px 1fr auto;
-  align-items: center;
-  gap: 18px;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-}
-
-.hero-editorial__next span,
-.hero-editorial__next em {
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.hero-editorial__next strong {
-  color: var(--ink);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
 
 /* About */
 .about-editorial__profile {
@@ -869,9 +851,39 @@ summary:focus-visible {
 
 .youtube-card__details summary {
   padding: 11px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   color: var(--ink);
   font-size: 0.72rem;
   font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.youtube-card__details summary::-webkit-details-marker {
+  display: none;
+}
+
+.youtube-card__details summary em {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.youtube-card__details summary::after {
+  content: "+";
+  color: var(--wine);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+}
+
+.youtube-card__details[open] summary::after {
+  content: "−";
 }
 
 .youtube-card__details > div {
@@ -1020,6 +1032,79 @@ summary:focus-visible {
   border-bottom: 1px solid var(--border-light);
   color: var(--text-muted);
   font-size: 0.7rem;
+}
+
+.career-story__meta {
+  min-width: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.career-story__technology-summary {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  line-height: 1.65;
+}
+
+.career-story__technology-summary span {
+  margin-bottom: 7px;
+  display: block;
+  color: var(--wine);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+}
+
+.career-story__details {
+  margin: 28px 0 0 min(25%, 280px);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.career-story__details > summary {
+  padding: 14px 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.career-story__details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.career-story__details > summary em {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.career-story__details > summary::after {
+  content: "+";
+  color: var(--wine);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.career-story__details[open] > summary::after {
+  content: "−";
+}
+
+.career-story__details-content {
+  padding-bottom: 18px;
+}
+
+.career-story__details .career-chapter {
+  margin: clamp(34px, 4vw, 52px) 0 0;
 }
 
 .career-chapter {
@@ -1177,6 +1262,66 @@ summary:focus-visible {
   color: var(--text-secondary);
   font-size: 0.78rem;
   line-height: 1.55;
+}
+
+.skill-ledger__names {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+}
+
+.skill-ledger__names li {
+  padding: 6px 9px;
+  border: 1px solid var(--border-light);
+  color: var(--ink);
+  font-size: 0.68rem;
+  line-height: 1.35;
+}
+
+.skill-ledger__details {
+  margin-top: 18px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--ink);
+}
+
+.skill-ledger__details > summary {
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.skill-ledger__details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.skill-ledger__details > summary em {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.skill-ledger__details > summary::after {
+  content: "+";
+  color: var(--wine);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+}
+
+.skill-ledger__details[open] > summary::after {
+  content: "−";
 }
 
 .skill-ledger__table {
@@ -1737,5 +1882,30 @@ summary:focus-visible {
   .resume-page .resume-avatar-placeholder--image {
     width: 96px;
     height: 120px;
+  }
+}
+
+
+@media (max-width: 760px) {
+  .career-story__details {
+    margin-left: 0;
+  }
+
+  .career-story__details > summary,
+  .skill-ledger__details > summary,
+  .youtube-card__details > summary {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .career-story__details > summary em,
+  .skill-ledger__details > summary em,
+  .youtube-card__details > summary em {
+    width: calc(100% - 24px);
+    margin-left: 0;
+  }
+
+  .career-story__details .career-chapter {
+    margin-top: 30px;
   }
 }
