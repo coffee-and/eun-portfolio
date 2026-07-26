@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <text
     x="32"
-    y="45"
+    y="51"
     text-anchor="middle"
     fill="#111214"
-    stroke="#3F444A"
-    stroke-width="0.55"
+    stroke="#70767D"
+    stroke-width="0.32"
     paint-order="stroke fill"
-    font-family="Arial Black, Arial, Helvetica, sans-serif"
-    font-size="46"
+    font-family="Arial Black, Helvetica Neue, Arial, sans-serif"
+    font-size="58"
     font-weight="900"
   >e</text>
   <path
-    d="M17 53H47"
+    d="M12 58H52"
     fill="none"
     stroke="#76283B"
-    stroke-width="2.2"
+    stroke-width="1.6"
     stroke-linecap="round"
   />
 </svg>
