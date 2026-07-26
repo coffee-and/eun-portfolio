@@ -8,12 +8,47 @@ permissions:
   contents: read
 
 jobs:
-  verify:
+  repository-audit:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Audit public assets
+        id: public-assets
+        continue-on-error: true
+        run: node scripts/audit-public-assets.mjs
+
+      - name: Audit removed selectors
+        id: legacy-selectors
+        continue-on-error: true
+        run: node scripts/audit-legacy-selectors.mjs
+
+      - name: Upload audit report
+        if: steps.public-assets.outcome == 'failure' || steps.legacy-selectors.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-audit-report
+          path: .audit
+          include-hidden-files: true
+          if-no-files-found: error
+
+      - name: Check audit result
+        run: |
+          test ! -f .audit/public-assets.failed
+          test ! -f .audit/legacy-selectors.failed
+
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v4

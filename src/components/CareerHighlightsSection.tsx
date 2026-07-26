@@ -1,9 +1,12 @@
 import { careers } from "../data/careers";
+import useExclusiveDisclosure from "../hooks/useExclusiveDisclosure";
 import { getCompanyDisplayName } from "../utils/companyNames";
 import CareerStory from "./CareerStory";
 import SectionHeader from "./SectionHeader";
 
 const CareerHighlightsSection = () => {
+  const { openId, handleToggle } = useExclusiveDisclosure();
+
   return (
     <section className="career-editorial" id="career">
       <SectionHeader
@@ -28,7 +31,12 @@ const CareerHighlightsSection = () => {
 
       <div className="career-stories">
         {careers.map((career) => (
-          <CareerStory career={career} key={career.id} />
+          <CareerStory
+            career={career}
+            isOpen={openId === career.id}
+            key={career.id}
+            onToggle={handleToggle}
+          />
         ))}
       </div>
     </section>

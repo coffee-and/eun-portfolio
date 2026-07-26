@@ -76,25 +76,6 @@
   border-top: 1px solid var(--border-light);
 }
 
-/* Each skill group gets the width it needs; rows no longer collide. */
-.skills-editorial__groups {
-  grid-template-columns: 1fr;
-  gap: clamp(54px, 7vw, 88px);
-}
-
-.skill-ledger__row {
-  grid-template-columns: minmax(170px, 0.58fr) minmax(190px, 0.62fr) minmax(0, 1.5fr);
-  gap: clamp(22px, 4vw, 58px);
-  align-items: start;
-}
-
-.skill-ledger__row strong,
-.skill-ledger__row span,
-.skill-ledger__row p {
-  min-width: 0;
-  overflow-wrap: break-word;
-}
-
 /* Give complete questions enough width and keep Korean words together. */
 .ask-eun-explorer {
   grid-template-columns: minmax(210px, 0.3fr) minmax(330px, 0.46fr) minmax(0, 1.25fr);
@@ -170,11 +151,6 @@
     border-top: 1px solid var(--border-light);
   }
 
-  .skill-ledger__row {
-    grid-template-columns: minmax(145px, 0.7fr) minmax(155px, 0.7fr) minmax(0, 1.2fr);
-    gap: 18px;
-  }
-
   .ask-eun-categories {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -212,12 +188,6 @@
 
   .career-index a:first-child {
     border-top: 0;
-  }
-
-  .skill-ledger__row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding: 15px 0;
   }
 
   .ask-eun-explorer {
