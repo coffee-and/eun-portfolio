@@ -332,6 +332,7 @@
   line-height: 1.22;
   letter-spacing: -0.055em;
   word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .resume-info-card strong {

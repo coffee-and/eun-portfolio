@@ -69,7 +69,6 @@ li,
 .career-story__header p,
 .career-chapter__heading > span,
 .career-project__title > span,
-.skill-ledger__row span,
 .ask-eun-questions > p,
 .ask-eun-answer > span,
 .resume-panel__eyebrow,
@@ -128,12 +127,6 @@ li,
   font-size: clamp(0.98rem, 1.3vw, 1.08rem) !important;
   font-weight: 450 !important;
   line-height: 1.75 !important;
-}
-
-.skill-ledger header p,
-.skill-ledger__row p {
-  font-size: 0.88rem !important;
-  line-height: 1.62 !important;
 }
 
 /* Featured projects live in two independent vertical columns. */

@@ -58,10 +58,6 @@ section {
   row-gap: clamp(28px, 4vw, 46px);
 }
 
-.about-editorial__profile {
-  margin-bottom: clamp(34px, 4vw, 54px);
-}
-
 .earlier-work--editorial {
   margin-top: clamp(42px, 5vw, 68px);
 }
@@ -73,10 +69,6 @@ section {
 
 .career-chapter {
   margin-top: clamp(34px, 4vw, 52px);
-}
-
-.skills-editorial__groups {
-  gap: clamp(30px, 4vw, 48px);
 }
 
 .site-footer {

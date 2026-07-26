@@ -3,10 +3,6 @@
   grid-template-columns: minmax(0, 1fr) !important;
 }
 
-.youtube-card__index {
-  display: none !important;
-}
-
 .youtube-card__visual,
 .youtube-card__body {
   grid-column: 1 !important;

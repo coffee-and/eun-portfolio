@@ -310,31 +310,6 @@ summary:focus-visible {
   border-bottom: 1px solid currentColor;
 }
 
-
-/* About */
-.about-editorial__profile {
-  margin: 0 0 clamp(58px, 7vw, 92px) min(23%, 260px);
-  display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  align-items: start;
-  gap: clamp(30px, 5vw, 76px);
-}
-
-.about-editorial__portrait {
-  width: 190px;
-  margin: 0;
-}
-
-.about-editorial__portrait img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  display: block;
-  object-fit: cover;
-  object-position: center top;
-  filter: saturate(0.78) contrast(0.98);
-}
-
 .about-editorial__statement {
   margin: 0;
   display: grid;
@@ -716,15 +691,6 @@ summary:focus-visible {
   box-shadow: none;
 }
 
-.youtube-card__index {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  padding-top: 12px;
-  color: var(--wine);
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-}
-
 .youtube-card__visual {
   grid-column: 2;
   grid-row: 1;
@@ -960,6 +926,7 @@ summary:focus-visible {
   font-size: 1rem;
   font-weight: 500;
   word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .career-index em {
@@ -997,6 +964,7 @@ summary:focus-visible {
   font-size: clamp(2.2rem, 4vw, 3.6rem);
   font-weight: 600 !important;
   letter-spacing: -0.055em;
+  overflow-wrap: break-word;
 }
 
 .career-story__header strong {
@@ -1230,131 +1198,6 @@ summary:focus-visible {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   line-height: 1.7;
-}
-
-/* Skills */
-.skills-editorial__groups {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(58px, 7vw, 92px) clamp(28px, 5vw, 76px);
-}
-
-.skill-ledger {
-  border-top: 1px solid var(--ink);
-}
-
-.skill-ledger > header {
-  padding: 14px 0 28px;
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 18px;
-}
-
-.skill-ledger h3 {
-  color: var(--ink);
-  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
-  font-weight: 600 !important;
-}
-
-.skill-ledger header p {
-  max-width: 480px;
-  margin-top: 8px;
-  color: var(--text-secondary);
-  font-size: 0.78rem;
-  line-height: 1.55;
-}
-
-.skill-ledger__names {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  list-style: none;
-}
-
-.skill-ledger__names li {
-  padding: 6px 9px;
-  border: 1px solid var(--border-light);
-  color: var(--ink);
-  font-size: 0.68rem;
-  line-height: 1.35;
-}
-
-.skill-ledger__details {
-  margin-top: 18px;
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--ink);
-}
-
-.skill-ledger__details > summary {
-  padding: 12px 0;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--ink);
-  font-size: 0.72rem;
-  font-weight: 500;
-  cursor: pointer;
-  list-style: none;
-}
-
-.skill-ledger__details > summary::-webkit-details-marker {
-  display: none;
-}
-
-.skill-ledger__details > summary em {
-  margin-left: auto;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.56rem;
-  font-style: normal;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.skill-ledger__details > summary::after {
-  content: "+";
-  color: var(--wine);
-  font-family: var(--font-mono);
-  font-size: 0.86rem;
-}
-
-.skill-ledger__details[open] > summary::after {
-  content: "−";
-}
-
-.skill-ledger__table {
-  border-top: 1px solid var(--border-light);
-}
-
-.skill-ledger__row {
-  padding: 12px 0;
-  display: grid;
-  grid-template-columns: minmax(120px, 0.65fr) minmax(120px, 0.7fr) minmax(0, 1.4fr);
-  gap: 16px;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.skill-ledger__row strong {
-  color: var(--ink);
-  font-size: 0.78rem;
-  font-weight: 500;
-}
-
-.skill-ledger__row span {
-  color: var(--wine);
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
-.skill-ledger__row p {
-  color: var(--text-secondary);
-  font-size: 0.72rem;
-  line-height: 1.5;
-  word-break: keep-all;
 }
 
 /* Ask Eun */
@@ -1593,8 +1436,7 @@ summary:focus-visible {
   }
 
   .projects-editorial__list,
-  .youtube-grid,
-  .skills-editorial__groups {
+  .youtube-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1710,21 +1552,10 @@ summary:focus-visible {
   .hero-editorial__next em {
     display: none;
   }
-
-  .about-editorial__profile,
   .career-story__lead,
   .career-chapter,
   .contact-actions {
     margin-left: 0;
-  }
-
-  .about-editorial__profile {
-    grid-template-columns: 140px minmax(0, 1fr);
-    gap: 28px;
-  }
-
-  .about-editorial__portrait {
-    width: 140px;
   }
 
   .about-grid--editorial {
@@ -1751,14 +1582,6 @@ summary:focus-visible {
 
   .career-project__columns {
     grid-template-columns: 1fr;
-  }
-
-  .skill-ledger__row {
-    grid-template-columns: minmax(110px, 0.7fr) minmax(0, 1fr);
-  }
-
-  .skill-ledger__row p {
-    grid-column: 1 / -1;
   }
 }
 
@@ -1788,14 +1611,6 @@ summary:focus-visible {
 
   .hero-text-link {
     justify-content: flex-start;
-  }
-
-  .about-editorial__profile {
-    grid-template-columns: 1fr;
-  }
-
-  .about-editorial__portrait {
-    width: 112px;
   }
 
   .about-grid--editorial,
@@ -1855,15 +1670,6 @@ summary:focus-visible {
     gap: 8px;
   }
 
-  .skill-ledger__row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  .skill-ledger__row p {
-    grid-column: auto;
-  }
-
   .ask-eun-explorer {
     grid-template-columns: 1fr;
   }
@@ -1897,14 +1703,12 @@ summary:focus-visible {
   }
 
   .career-story__details > summary,
-  .skill-ledger__details > summary,
   .youtube-card__details > summary {
     align-items: flex-start;
     flex-wrap: wrap;
   }
 
   .career-story__details > summary em,
-  .skill-ledger__details > summary em,
   .youtube-card__details > summary em {
     width: calc(100% - 24px);
     margin-left: 0;
