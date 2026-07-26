@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
   compact-refactor:
-    if: github.ref == 'refs/heads/main' && github.event.head_commit.message == '포트폴리오 밀도 정리 검증 실행'
+    if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.head_ref == 'refactor/compact-portfolio-content'
     runs-on: ubuntu-latest
 
     steps:
