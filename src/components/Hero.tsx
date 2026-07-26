@@ -50,12 +50,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      <a className="hero-editorial__next" href="#projects">
-        <span>01</span>
-        <strong>Selected Work</strong>
-        <em>scroll to projects</em>
-      </a>
     </section>
   );
 };
