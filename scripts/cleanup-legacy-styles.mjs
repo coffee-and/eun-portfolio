@@ -54,6 +54,12 @@ const appendDeclaration = (source, selectorPattern, declaration) =>
     return rule.replace(/\n\}$/, `\n  ${declaration}\n}`);
   });
 
+const replaceDeclaration = (source, selector, property, value) =>
+  source.replace(
+    new RegExp(`(${selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")} \\{[^{}]*?)${property}:[^;]+;`, "g"),
+    `$1${property}: ${value};`,
+  );
+
 const styleFiles = (await readdir(stylesDirectory))
   .filter((fileName) => fileName.endsWith(".css"))
   .map((fileName) => path.join(stylesDirectory, fileName));
@@ -73,6 +79,24 @@ for (const filePath of styleFiles) {
       updatedSource,
       /\.career-story__header h3 \{[^{}]*\n\}/,
       "overflow-wrap: break-word;",
+    );
+    updatedSource = replaceDeclaration(
+      updatedSource,
+      ".youtube-card",
+      "grid-template-columns",
+      "minmax(0, 1fr)",
+    );
+    updatedSource = replaceDeclaration(
+      updatedSource,
+      ".youtube-card__visual",
+      "grid-column",
+      "1",
+    );
+    updatedSource = replaceDeclaration(
+      updatedSource,
+      ".youtube-card__body",
+      "grid-column",
+      "1",
     );
   }
 
