@@ -1,4 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -7,6 +7,9 @@ const rootDirectory = path.resolve(
   "..",
 );
 const sourceDirectory = path.join(rootDirectory, "src");
+const reportDirectory = path.join(rootDirectory, ".audit");
+const reportPath = path.join(reportDirectory, "legacy-selectors.txt");
+const failureMarkerPath = path.join(reportDirectory, "legacy-selectors.failed");
 
 const legacyTokens = [
   "about-editorial__profile",
@@ -59,10 +62,21 @@ for (const filePath of await walkFiles(sourceDirectory)) {
   });
 }
 
+await mkdir(reportDirectory, { recursive: true });
+
 if (violations.length > 0) {
-  console.error("Legacy selectors or markup remain:");
-  violations.forEach((violation) => console.error(`- ${violation}`));
+  const report = [
+    "Legacy selectors or markup remain:",
+    ...violations,
+    "",
+  ].join("\n");
+
+  await writeFile(reportPath, report, "utf8");
+  await writeFile(failureMarkerPath, "failed\n", "utf8");
+  console.error(report);
   process.exitCode = 1;
 } else {
-  console.log("Verified that removed layout selectors no longer remain.");
+  const report = "Verified that removed layout selectors no longer remain.\n";
+  await writeFile(reportPath, report, "utf8");
+  console.log(report.trim());
 }
