@@ -31,7 +31,7 @@ jobs:
         run: npm run build
 
   compact-refactor:
-    if: github.event_name == 'pull_request' && github.event.action == 'opened' && github.head_ref == 'refactor/compact-portfolio-content'
+    if: github.event_name == 'pull_request' && github.event.action == 'reopened' && github.head_ref == 'refactor/compact-portfolio-content'
     runs-on: ubuntu-latest
 
     steps:
@@ -42,7 +42,7 @@ jobs:
           fetch-depth: 0
 
       - name: Update source styles
-        run: python scripts/compact_portfolio.py
+        run: python scripts/run_compact_portfolio.py
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
