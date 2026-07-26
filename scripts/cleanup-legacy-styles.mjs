@@ -45,6 +45,15 @@ const removeLegacySelectors = (source) => {
     .replace(/[ \t]+\n/g, "\n");
 };
 
+const appendDeclaration = (source, selectorPattern, declaration) =>
+  source.replace(selectorPattern, (rule) => {
+    if (rule.includes(declaration)) {
+      return rule;
+    }
+
+    return rule.replace(/\n\}$/, `\n  ${declaration}\n}`);
+  });
+
 const styleFiles = (await readdir(stylesDirectory))
   .filter((fileName) => fileName.endsWith(".css"))
   .map((fileName) => path.join(stylesDirectory, fileName));
@@ -52,15 +61,26 @@ const styleFiles = (await readdir(stylesDirectory))
 for (const filePath of styleFiles) {
   const source = await readFile(filePath, "utf8");
   let updatedSource = removeLegacySelectors(source);
+  const fileName = path.basename(filePath);
 
-  if (path.basename(filePath) === "frame-form.css") {
-    updatedSource = updatedSource.replace(
-      /(\.career-index strong \{[\s\S]*?word-break: keep-all;)(\n\})/,
-      "$1\n  overflow-wrap: break-word;$2",
+  if (fileName === "frame-form.css") {
+    updatedSource = appendDeclaration(
+      updatedSource,
+      /\.career-index strong \{[^{}]*\n\}/,
+      "overflow-wrap: break-word;",
     );
-    updatedSource = updatedSource.replace(
-      /(\.career-story__header h3 \{[\s\S]*?letter-spacing: -0\.055em;)(\n\})/,
-      "$1\n  word-break: keep-all;\n  overflow-wrap: break-word;$2",
+    updatedSource = appendDeclaration(
+      updatedSource,
+      /\.career-story__header h3 \{[^{}]*\n\}/,
+      "overflow-wrap: break-word;",
+    );
+  }
+
+  if (fileName === "resume.css") {
+    updatedSource = appendDeclaration(
+      updatedSource,
+      /\.resume-info-card h3,\n\.resume-skill-card h3,\n\.resume-project-card h3 \{[^{}]*\n\}/,
+      "overflow-wrap: break-word;",
     );
   }
 
