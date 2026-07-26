@@ -1,13 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <circle cx="32" cy="32" r="30" fill="#FFFFFF" />
-  <circle cx="32" cy="32" r="29" fill="none" stroke="#D8DADD" stroke-width="1.5" />
+  <text
+    x="32"
+    y="45"
+    text-anchor="middle"
+    fill="#111214"
+    stroke="#3F444A"
+    stroke-width="0.55"
+    paint-order="stroke fill"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-size="46"
+    font-weight="900"
+  >e</text>
   <path
-    d="M13 34c0-12.5 8-21 20.5-21 11.5 0 18.5 7.5 18.5 19H18c1 10 7 16 17 16 6.5 0 11.5-2 16-6"
+    d="M17 53H47"
     fill="none"
-    stroke="#111214"
-    stroke-width="6.5"
+    stroke="#76283B"
+    stroke-width="2.2"
     stroke-linecap="round"
-    stroke-linejoin="round"
   />
-  <circle cx="50" cy="11" r="5" fill="#76283B" />
 </svg>
