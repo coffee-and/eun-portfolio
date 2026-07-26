@@ -12,7 +12,7 @@ const YouTubeSection = () => (
     <SectionHeader
       eyebrow="Project Films"
       title="영상으로 확인하는 프로젝트"
-      description="화면 이동, 기능 이용 순서와 상태 변화를 데스크톱·모바일 시연 영상으로 보여드립니다."
+      description="화면 이동과 주요 상태는 카드에서 확인하고, 기능·기술·구현 범위 전체는 프로젝트별로 펼쳐볼 수 있습니다."
     />
 
     <div className="youtube-grid">
@@ -48,29 +48,33 @@ const YouTubeSection = () => (
             </p>
             <p>{video.description}</p>
 
-            <ul className="youtube-card__features" aria-label="대표 기능">
-              {video.cardHighlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
-
-            <p className="youtube-card__stack">
-              {video.stack.slice(0, 5).join(" · ")}
-            </p>
-
-            <div className="youtube-card__actions">
-              <ExternalLink
-                className="youtube-card__link"
-                href={video.youtubeUrl}
-                ariaLabel={`${video.koreanTitle ?? video.title} 프로젝트 데모 영상 YouTube에서 새 탭으로 보기`}
-              >
-                YouTube에서 영상 보기
-              </ExternalLink>
-            </div>
-
             <details className="youtube-card__details">
-              <summary>프로젝트 상세 보기</summary>
+              <summary>
+                <span>기능·기술·구현 범위 전체 보기</span>
+                <em>{video.cardHighlights.length} highlights</em>
+              </summary>
               <div>
+                <section>
+                  <span>Highlights</span>
+                  <ul className="youtube-card__features" aria-label="대표 기능">
+                    {video.cardHighlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                  <p className="youtube-card__stack">
+                    {video.stack.slice(0, 5).join(" · ")}
+                  </p>
+                  <div className="youtube-card__actions">
+                    <ExternalLink
+                      className="youtube-card__link"
+                      href={video.youtubeUrl}
+                      ariaLabel={`${video.koreanTitle ?? video.title} 프로젝트 데모 영상 YouTube에서 새 탭으로 보기`}
+                    >
+                      YouTube에서 영상 보기
+                    </ExternalLink>
+                  </div>
+                </section>
+
                 {video.purpose && (
                   <section>
                     <span>Purpose</span>
