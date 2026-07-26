@@ -7,7 +7,7 @@ const ContactSection = () => {
       <SectionHeader
         eyebrow="Contact"
         title="제품 개발과 기획, 디자인 의뢰를 받고 있습니다"
-        description="새로운 제품의 기획과 개발부터 기존 서비스의 기능·화면 개선까지, 프로젝트의 목적과 범위에 맞춰 진행합니다."
+        description="신규 제품 기획·개발부터 기존 서비스 기능·화면 개선까지, 목적과 범위에 맞춰 진행합니다."
       />
 
       <div className="contact-actions">
