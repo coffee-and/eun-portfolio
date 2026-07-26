@@ -1,5 +1,6 @@
 import { careers } from "../data/careers";
 import { getCompanyDisplayName } from "../utils/companyNames";
+import CareerStory from "./CareerStory";
 import SectionHeader from "./SectionHeader";
 
 const CareerHighlightsSection = () => {
@@ -8,7 +9,7 @@ const CareerHighlightsSection = () => {
       <SectionHeader
         eyebrow="Career"
         title="회사별 제품 개발과 주요 성과"
-        description="회사별 담당 제품, 역할, 프로젝트와 사용 기술을 경력 순서에 따라 빠짐없이 정리했습니다."
+        description="회사별 역할과 핵심 경험은 바로 확인하고, 담당 업무와 프로젝트 전체 내용은 필요한 회사부터 펼쳐볼 수 있습니다."
       />
 
       <nav className="career-index" aria-label="회사별 경력 바로가기">
@@ -26,103 +27,9 @@ const CareerHighlightsSection = () => {
       </nav>
 
       <div className="career-stories">
-        {careers.map((career) => {
-          const companyName = getCompanyDisplayName(career);
-
-          return (
-            <article
-              className="career-story"
-              id={`career-${career.id}`}
-              key={career.id}
-            >
-              <header className="career-story__header">
-                <span className="editorial-number">
-                  {String(career.order).padStart(2, "0")}
-                </span>
-                <div>
-                  <p>{career.period}</p>
-                  <h3>{companyName}</h3>
-                  <strong>{career.role}</strong>
-                </div>
-              </header>
-
-              <div className="career-story__lead">
-                <p>{career.overview}</p>
-                <ul aria-label={`${companyName} 산업 분야`}>
-                  {career.domain.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <section className="career-chapter">
-                <div className="career-chapter__heading">
-                  <span>01</span>
-                  <h4>담당 업무</h4>
-                </div>
-                <ul className="editorial-list">
-                  {career.responsibilities.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </section>
-
-              <section className="career-chapter">
-                <div className="career-chapter__heading">
-                  <span>02</span>
-                  <h4>주요 프로젝트와 개선 내용</h4>
-                </div>
-
-                <div className="career-projects">
-                  {career.projects.map((project, projectIndex) => (
-                    <article className="career-project" key={project.title}>
-                      <div className="career-project__title">
-                        <span>{String(projectIndex + 1).padStart(2, "0")}</span>
-                        <h5>{project.title}</h5>
-                      </div>
-
-                      <div className="career-project__context">
-                        <strong>Background</strong>
-                        <p>{project.context}</p>
-                      </div>
-
-                      <div className="career-project__columns">
-                        <div>
-                          <strong>Implementation</strong>
-                          <ul>
-                            {project.work.map((item) => (
-                              <li key={item}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div>
-                          <strong>Result</strong>
-                          <ul>
-                            {project.result.map((item) => (
-                              <li key={item}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      <p className="career-project__technologies">
-                        {project.technologies.join(" · ")}
-                      </p>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              <section className="career-chapter career-chapter--technologies">
-                <div className="career-chapter__heading">
-                  <span>03</span>
-                  <h4>사용 기술</h4>
-                </div>
-                <p>{career.technologies.join(" · ")}</p>
-              </section>
-            </article>
-          );
-        })}
+        {careers.map((career) => (
+          <CareerStory career={career} key={career.id} />
+        ))}
       </div>
     </section>
   );
