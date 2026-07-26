@@ -1,0 +1,51 @@
+:root {
+  /* Core palette */
+  --color-white: #ffffff;
+  --color-charcoal-950: #111214;
+  --color-charcoal-900: #191b1e;
+  --color-charcoal-700: #3f444a;
+  --color-charcoal-500: #70767d;
+  --color-charcoal-line: rgba(25, 27, 30, 0.18);
+  --color-wine-700: #76283b;
+  --color-wine-800: #652131;
+
+  /* Semantic palette */
+  --color-heading: var(--color-charcoal-950);
+  --color-text: var(--color-charcoal-900);
+  --color-text-secondary: var(--color-charcoal-700);
+  --color-text-muted: var(--color-charcoal-500);
+  --color-accent: var(--color-wine-700);
+  --color-accent-hover: var(--color-wine-800);
+  --color-border: var(--color-charcoal-line);
+  --color-border-strong: var(--color-charcoal-900);
+
+  /* Shared aliases used by portfolio and resume styles */
+  --white: var(--color-white);
+  --black: var(--color-charcoal-950);
+  --palette-cream: var(--color-white);
+  --ink: var(--color-heading);
+  --navy: var(--color-heading);
+  --surface: var(--color-white);
+  --silver: var(--color-border);
+  --slate: var(--color-text-muted);
+  --blue: var(--color-accent);
+  --red: var(--color-accent);
+  --wine: var(--color-accent);
+  --burgundy: var(--color-accent);
+  --gold: var(--color-accent);
+  --cream: var(--color-white);
+
+  --bg-primary: var(--color-white);
+  --bg-card: var(--color-white);
+  --bg-muted: var(--color-white);
+  --bg-pill: transparent;
+  --border-light: var(--color-border);
+  --border-strong: var(--color-border-strong);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-muted);
+  --brand-primary: var(--color-accent);
+  --brand-text: var(--color-heading);
+
+
+}
