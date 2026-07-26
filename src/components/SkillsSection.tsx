@@ -1,8 +1,11 @@
 import { skillGroups } from "../data/skills";
+import useExclusiveDisclosure from "../hooks/useExclusiveDisclosure";
 import SectionHeader from "./SectionHeader";
 import styles from "./SkillsSection.module.css";
 
 const SkillsSection = () => {
+  const { openId, handleToggle } = useExclusiveDisclosure();
+
   return (
     <section className="skills-editorial" id="skills">
       <SectionHeader
@@ -12,49 +15,61 @@ const SkillsSection = () => {
       />
 
       <div className={styles.groups}>
-        {skillGroups.map((group, groupIndex) => (
-          <article className={styles.ledger} key={group.id}>
-            <header className={styles.header}>
-              <span className={styles.index}>
-                {String(groupIndex + 1).padStart(2, "0")}
-              </span>
-              <div>
-                <h3 className={styles.title}>{group.title}</h3>
-                <p className={styles.description}>{group.description}</p>
-              </div>
-            </header>
+        {skillGroups.map((group, groupIndex) => {
+          const detailsId = `skill-details-${group.id}`;
 
-            <div className={styles.content}>
-              <ul
-                className={styles.names}
-                aria-label={`${group.title} 기술 목록`}
-              >
-                {group.items.map((item) => (
-                  <li className={styles.name} key={`${group.id}-${item.name}`}>
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-
-              <details className={styles.details}>
-                <summary className={styles.summary}>
-                  <span>기술별 사용 범위와 근거 보기</span>
-                  <em>{group.items.length} technologies</em>
-                </summary>
-
-                <div className={styles.table}>
-                  {group.items.map((item) => (
-                    <div className={styles.row} key={`${group.id}-${item.name}`}>
-                      <strong>{item.name}</strong>
-                      <span>{item.context}</span>
-                      <p>{item.evidence}</p>
-                    </div>
-                  ))}
+          return (
+            <article className={styles.ledger} key={group.id}>
+              <header className={styles.header}>
+                <span className={styles.index}>
+                  {String(groupIndex + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <h3 className={styles.title}>{group.title}</h3>
+                  <p className={styles.description}>{group.description}</p>
                 </div>
-              </details>
-            </div>
-          </article>
-        ))}
+              </header>
+
+              <div className={styles.content}>
+                <ul
+                  className={styles.names}
+                  aria-label={`${group.title} 기술 목록`}
+                >
+                  {group.items.map((item) => (
+                    <li className={styles.name} key={`${group.id}-${item.name}`}>
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+
+                <details
+                  className={styles.details}
+                  id={detailsId}
+                  open={openId === group.id}
+                  onToggle={(event) => handleToggle(group.id, event.currentTarget.open)}
+                >
+                  <summary
+                    className={styles.summary}
+                    aria-controls={`${detailsId}-content`}
+                  >
+                    <span>기술별 사용 범위와 근거 보기</span>
+                    <em>{group.items.length} technologies</em>
+                  </summary>
+
+                  <div className={styles.table} id={`${detailsId}-content`}>
+                    {group.items.map((item) => (
+                      <div className={styles.row} key={`${group.id}-${item.name}`}>
+                        <strong>{item.name}</strong>
+                        <span>{item.context}</span>
+                        <p>{item.evidence}</p>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
