@@ -8,35 +8,6 @@ permissions:
   contents: read
 
 jobs:
-  style-cleanup:
-    if: github.event_name == 'pull_request' && github.head_ref == 'refactor/accordion-and-dead-code-cleanup'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout work branch
-        uses: actions/checkout@v4
-        with:
-          ref: refactor/accordion-and-dead-code-cleanup
-          fetch-depth: 0
-          show-progress: false
-
-      - name: Clean legacy styles
-        run: node scripts/cleanup-legacy-styles.mjs
-
-      - name: Commit cleaned styles
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/styles
-          if git diff --cached --quiet; then
-            echo "No legacy styles remain."
-          else
-            git commit -m "구형 전역 스타일 제거"
-            git push origin refactor/accordion-and-dead-code-cleanup
-          fi
-
   repository-audit:
     runs-on: ubuntu-latest
 
