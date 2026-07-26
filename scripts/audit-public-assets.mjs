@@ -1,4 +1,4 @@
-import { readdir, readFile, stat } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -69,12 +69,8 @@ const repositoryFiles = await walkFiles(rootDirectory);
 const searchableFiles = repositoryFiles.filter((filePath) =>
   textExtensions.has(path.extname(filePath).toLowerCase()),
 );
-
 const searchableContents = await Promise.all(
-  searchableFiles.map(async (filePath) => ({
-    filePath,
-    content: await readFile(filePath, "utf8"),
-  })),
+  searchableFiles.map((filePath) => readFile(filePath, "utf8")),
 );
 
 const unusedFiles = publicFiles.filter((relativePath) => {
@@ -84,7 +80,7 @@ const unusedFiles = publicFiles.filter((relativePath) => {
 
   const encodedPath = encodeURI(relativePath);
 
-  return !searchableContents.some(({ content }) =>
+  return !searchableContents.some((content) =>
     content.includes(relativePath) || content.includes(encodedPath),
   );
 });
