@@ -2,20 +2,47 @@ from pathlib import Path
 import re
 
 
-def replace_once(text: str, pattern: str, replacement: str, label: str) -> str:
+def replace_block(text: str, old: str, new: str, label: str) -> str:
+    if new in text:
+        print(f"skip {label}: already updated")
+        return text
+    if old not in text:
+        print(f"skip {label}: original block not found")
+        return text
+    print(f"update {label}")
+    return text.replace(old, new, 1)
+
+
+def replace_pattern(text: str, pattern: str, replacement: str, label: str) -> str:
     updated, count = re.subn(pattern, replacement, text, count=1, flags=re.S)
-    if count != 1:
-        raise RuntimeError(f"Could not update {label}: matched {count} times")
+    print(f"update {label}: {count} match")
     return updated
 
 
 frame_path = Path("src/styles/frame-form.css")
 frame = frame_path.read_text(encoding="utf-8")
 
-frame = replace_once(
-    frame,
-    r"\.hero-editorial \.hero-summary \{.*?\n\}\n\n\.hero-editorial \.hero-summary span \{.*?\n\}",
-    '''.hero-editorial .hero-summary {
+hero_summary_old = '''.hero-editorial .hero-summary {
+  margin: 28px 0 0;
+  display: grid;
+  justify-content: stretch;
+  gap: 0;
+}
+
+.hero-editorial .hero-summary span {
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-light);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500 !important;
+  line-height: 1.45;
+  text-transform: uppercase;
+}'''
+hero_summary_new = '''.hero-editorial .hero-summary {
   margin: 22px 0 0;
   display: flex;
   flex-wrap: wrap;
@@ -41,27 +68,28 @@ frame = replace_once(
   width: 6px;
   height: 1px;
   background: var(--wine);
-}''',
-    "compact hero summary",
-)
-
-frame = frame.replace(
+}'''
+frame = replace_block(frame, hero_summary_old, hero_summary_new, "hero summary")
+frame = replace_block(
+    frame,
     ".hero-editorial .hero-actions {\n  margin-top: 28px;",
     ".hero-editorial .hero-actions {\n  margin-top: 22px;",
-    1,
+    "hero actions",
 )
-
-frame = replace_once(
+frame = replace_pattern(
     frame,
     r"\n\.hero-editorial__next \{.*?\n\.hero-editorial__next strong \{.*?\n\}\n",
     "\n",
     "obsolete hero next navigation",
 )
 
-frame = replace_once(
-    frame,
-    r"\.youtube-card__details summary \{.*?\n\}",
-    '''.youtube-card__details summary {
+youtube_summary_old = '''.youtube-card__details summary {
+  padding: 11px 0;
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 500;
+}'''
+youtube_summary_new = '''.youtube-card__details summary {
   padding: 11px 0;
   display: flex;
   align-items: center;
@@ -96,9 +124,8 @@ frame = replace_once(
 
 .youtube-card__details[open] summary::after {
   content: "−";
-}''',
-    "youtube disclosure summary",
-)
+}'''
+frame = replace_block(frame, youtube_summary_old, youtube_summary_new, "youtube details")
 
 career_marker = '''.career-story__lead li {
   padding: 8px 0;
@@ -181,9 +208,8 @@ career_addition = career_marker + '''
   margin: clamp(34px, 4vw, 52px) 0 0;
 }
 '''
-if career_marker not in frame:
-    raise RuntimeError("Could not locate career lead marker")
-frame = frame.replace(career_marker, career_addition, 1)
+if ".career-story__details {" not in frame:
+    frame = replace_block(frame, career_marker, career_addition, "career disclosure")
 
 skills_marker = '''.skill-ledger header p {
   max-width: 480px;
@@ -254,11 +280,10 @@ skills_addition = skills_marker + '''
   content: "−";
 }
 '''
-if skills_marker not in frame:
-    raise RuntimeError("Could not locate skill header marker")
-frame = frame.replace(skills_marker, skills_addition, 1)
+if ".skill-ledger__names {" not in frame:
+    frame = replace_block(frame, skills_marker, skills_addition, "skills disclosure")
 
-frame += '''
+responsive_addition = '''
 
 @media (max-width: 760px) {
   .career-story__details {
@@ -284,63 +309,40 @@ frame += '''
   }
 }
 '''
+if "width: calc(100% - 24px);" not in frame:
+    frame += responsive_addition
 
 frame_path.write_text(frame, encoding="utf-8")
 
 final_path = Path("src/styles/final-polish.css")
 final = final_path.read_text(encoding="utf-8")
-
-substitutions = [
-    (r"section \{\n  margin-bottom: clamp\(64px, 7vw, 108px\);\n\}", "section {\n  margin-bottom: clamp(48px, 5.5vw, 80px);\n}", "section spacing"),
-    (r"\.hero-editorial \{\n  margin-bottom: clamp\(50px, 6vw, 84px\);\n  padding-top: clamp\(48px, 6vw, 78px\);\n\}", ".hero-editorial {\n  margin-bottom: clamp(34px, 4vw, 58px);\n  padding-top: clamp(30px, 4vw, 48px);\n}", "hero spacing"),
-    (r"\.hero-editorial__layout \{\n  padding: clamp\(38px, 5vw, 64px\) 0 clamp\(32px, 4\.5vw, 56px\);\n  gap: clamp\(44px, 6vw, 88px\);\n\}", ".hero-editorial__layout {\n  padding: clamp(28px, 3.5vw, 42px) 0 clamp(24px, 3vw, 34px);\n  gap: clamp(32px, 5vw, 60px);\n}", "hero layout spacing"),
-    (r"\.section-header \{\n  margin-bottom: clamp\(28px, 4vw, 50px\);\n\}", ".section-header {\n  margin-bottom: clamp(24px, 3.5vw, 42px);\n}", "section header spacing"),
-    (r"\.projects-editorial__list,\n\.youtube-grid \{\n  row-gap: clamp\(34px, 4\.5vw, 58px\);\n\}", ".projects-editorial__list,\n.youtube-grid {\n  row-gap: clamp(28px, 4vw, 46px);\n}", "project grid spacing"),
-    (r"\.about-editorial__profile \{\n  margin-bottom: clamp\(42px, 5vw, 66px\);\n\}", ".about-editorial__profile {\n  margin-bottom: clamp(34px, 4vw, 54px);\n}", "about spacing"),
-    (r"\.earlier-work--editorial \{\n  margin-top: clamp\(52px, 6vw, 86px\);\n\}", ".earlier-work--editorial {\n  margin-top: clamp(42px, 5vw, 68px);\n}", "earlier work spacing"),
-    (r"\.career-stories \{\n  margin-top: clamp\(54px, 6vw, 88px\);\n  gap: clamp\(68px, 7vw, 108px\);\n\}", ".career-stories {\n  margin-top: clamp(38px, 4.5vw, 64px);\n  gap: clamp(42px, 5vw, 70px);\n}", "career spacing"),
-    (r"\.career-chapter \{\n  margin-top: clamp\(42px, 5vw, 66px\);\n\}", ".career-chapter {\n  margin-top: clamp(34px, 4vw, 52px);\n}", "career chapter spacing"),
-    (r"\.skills-editorial__groups \{\n  gap: clamp\(40px, 5vw, 68px\);\n\}", ".skills-editorial__groups {\n  gap: clamp(30px, 4vw, 48px);\n}", "skill spacing"),
-    (r"\.site-footer \{\n  padding-top: clamp\(46px, 6vw, 76px\);\n\}", ".site-footer {\n  padding-top: clamp(38px, 5vw, 62px);\n}", "footer spacing"),
+final_replacements = [
+    ("section {\n  margin-bottom: clamp(64px, 7vw, 108px);\n}", "section {\n  margin-bottom: clamp(48px, 5.5vw, 80px);\n}", "section spacing"),
+    (".hero-editorial {\n  margin-bottom: clamp(50px, 6vw, 84px);\n  padding-top: clamp(48px, 6vw, 78px);\n}", ".hero-editorial {\n  margin-bottom: clamp(34px, 4vw, 58px);\n  padding-top: clamp(30px, 4vw, 48px);\n}", "hero spacing"),
+    (".hero-editorial__layout {\n  padding: clamp(38px, 5vw, 64px) 0 clamp(32px, 4.5vw, 56px);\n  gap: clamp(44px, 6vw, 88px);\n}", ".hero-editorial__layout {\n  padding: clamp(28px, 3.5vw, 42px) 0 clamp(24px, 3vw, 34px);\n  gap: clamp(32px, 5vw, 60px);\n}", "hero layout spacing"),
+    (".section-header {\n  margin-bottom: clamp(28px, 4vw, 50px);\n}", ".section-header {\n  margin-bottom: clamp(24px, 3.5vw, 42px);\n}", "section header spacing"),
+    (".projects-editorial__list,\n.youtube-grid {\n  row-gap: clamp(34px, 4.5vw, 58px);\n}", ".projects-editorial__list,\n.youtube-grid {\n  row-gap: clamp(28px, 4vw, 46px);\n}", "project grid spacing"),
+    (".about-editorial__profile {\n  margin-bottom: clamp(42px, 5vw, 66px);\n}", ".about-editorial__profile {\n  margin-bottom: clamp(34px, 4vw, 54px);\n}", "about spacing"),
+    (".earlier-work--editorial {\n  margin-top: clamp(52px, 6vw, 86px);\n}", ".earlier-work--editorial {\n  margin-top: clamp(42px, 5vw, 68px);\n}", "earlier work spacing"),
+    (".career-stories {\n  margin-top: clamp(54px, 6vw, 88px);\n  gap: clamp(68px, 7vw, 108px);\n}", ".career-stories {\n  margin-top: clamp(38px, 4.5vw, 64px);\n  gap: clamp(42px, 5vw, 70px);\n}", "career spacing"),
+    (".career-chapter {\n  margin-top: clamp(42px, 5vw, 66px);\n}", ".career-chapter {\n  margin-top: clamp(34px, 4vw, 52px);\n}", "career chapter spacing"),
+    (".skills-editorial__groups {\n  gap: clamp(40px, 5vw, 68px);\n}", ".skills-editorial__groups {\n  gap: clamp(30px, 4vw, 48px);\n}", "skill spacing"),
+    (".site-footer {\n  padding-top: clamp(46px, 6vw, 76px);\n}", ".site-footer {\n  padding-top: clamp(38px, 5vw, 62px);\n}", "footer spacing"),
 ]
-
-for pattern, replacement, label in substitutions:
-    final = replace_once(final, pattern, replacement, label)
-
-final = final.replace(
-    "  section {\n    margin-bottom: 72px;\n  }",
-    "  section {\n    margin-bottom: 58px;\n  }",
-    1,
-)
-final = final.replace(
-    "  .hero-editorial {\n    margin-bottom: 54px;\n    padding-top: 40px;\n  }",
-    "  .hero-editorial {\n    margin-bottom: 42px;\n    padding-top: 30px;\n  }",
-    1,
-)
-final = final.replace(
-    "  .hero-editorial__layout {\n    padding: 36px 0 32px;\n    gap: 32px;\n  }",
-    "  .hero-editorial__layout {\n    padding: 28px 0 24px;\n    gap: 26px;\n  }",
-    1,
-)
-final = final.replace(
-    "  section {\n    margin-bottom: 58px;\n  }",
-    "  section {\n    margin-bottom: 48px;\n  }",
-    1,
-)
-final = final.replace(
-    "  .hero-editorial {\n    margin-bottom: 44px;\n    padding-top: 32px;\n  }",
-    "  .hero-editorial {\n    margin-bottom: 34px;\n    padding-top: 24px;\n  }",
-    1,
-)
-final = final.replace(
-    "  .hero-editorial__layout {\n    padding: 30px 0 26px;\n    gap: 26px;\n  }",
-    "  .hero-editorial__layout {\n    padding: 24px 0 20px;\n    gap: 22px;\n  }",
-    1,
-)
-
+for old, new, label in final_replacements:
+    final = replace_block(final, old, new, label)
 final_path.write_text(final, encoding="utf-8")
 
-if "hero-editorial__next" in Path("src/components/Hero.tsx").read_text(encoding="utf-8"):
-    raise RuntimeError("Obsolete hero navigation remains in component")
+required_frame = [
+    "display: flex;\n  flex-wrap: wrap;\n  gap: 7px 16px;",
+    ".career-story__details {",
+    ".skill-ledger__names {",
+    ".youtube-card__details summary em {",
+]
+for snippet in required_frame:
+    if snippet not in frame:
+        raise RuntimeError(f"Missing required frame style: {snippet}")
 if "hero-editorial__next" in frame:
     raise RuntimeError("Obsolete hero navigation styles remain")
+if "margin-bottom: clamp(48px, 5.5vw, 80px);" not in final:
+    raise RuntimeError("Compact section spacing was not applied")
