@@ -76,6 +76,12 @@
   border-top: 1px solid var(--border-light);
 }
 
+/* Keep every project case-study cell on the same content axis. */
+.project-case-study .project-case-study__grid > section {
+  padding: 18px;
+  border-left: 0;
+}
+
 /* Give complete questions enough width and keep Korean words together. */
 .ask-eun-explorer {
   grid-template-columns: minmax(210px, 0.3fr) minmax(330px, 0.46fr) minmax(0, 1.25fr);
