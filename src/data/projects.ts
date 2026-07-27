@@ -84,9 +84,9 @@ export const projects: Project[] = [
     ],
     status: "core-complete",
     statusLabel: "핵심 서비스 구현 완료",
-    scopeLabel: "결제 연동 예정",
+    scopeLabel: "사주 학습과 함께 개발 중",
     scopeNote:
-      "핵심 콘텐츠, 계정, 결과 저장과 리포트 기능은 구현 완료 상태입니다. 실제 유료 결제를 처리하는 결제 시스템은 아직 연동하지 않았습니다.",
+      "사주를 직접 공부하며 해석 기준과 콘텐츠를 계속 다듬고 있으며, 서비스 완성도를 높이기 위한 개발을 이어가고 있습니다.",
     presentation: "featured",
     order: 1,
     demo: "https://moment-on.vercel.app/",
@@ -131,9 +131,9 @@ export const projects: Project[] = [
     ],
     status: "core-complete",
     statusLabel: "핵심 서비스 구현 완료",
-    scopeLabel: "결제·수익화 연동 예정",
+    scopeLabel: "모바일 앱 출시 준비 중",
     scopeNote:
-      "게임 플레이, 회원 기능, 랭킹, 친구와 초대 등 핵심 게임 서비스는 구현 완료 상태입니다. 실제 결제 또는 수익화 시스템은 아직 연동하지 않았습니다.",
+      "현재 웹 서비스로 제공하고 있으며, 모바일 앱으로 출시하기 위한 준비를 진행하고 있습니다.",
     presentation: "featured",
     order: 2,
     demo: "https://coffee-and.github.io/moment-play/",
