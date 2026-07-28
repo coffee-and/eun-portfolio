@@ -267,8 +267,8 @@ export const projects: Project[] = [
     presentation: "video-demo",
     order: 5,
     repositoryNote: "Private Repository",
-    youtubeUrl: "https://youtu.be/cjDAYArjCys",
-    youtubeId: "cjDAYArjCys",
+    youtubeUrl: "https://youtu.be/Eo_wazZJFYc",
+    youtubeId: "Eo_wazZJFYc",
     videoDescription:
       "학생·수업·출결·평가·소통 데이터를 연결하고 원장, 강사, 학부모, 학생의 화면을 역할별로 구성한 학원 운영 프로토타입입니다.",
     previewLabel: "academy roles · attendance · growth story",
