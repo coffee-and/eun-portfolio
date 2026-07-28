@@ -67,7 +67,7 @@
 | --- | --- | --- |
 | Local Job Match | 구직자·고용주 모바일 앱과 운영 관리자 웹 | [YouTube](https://youtu.be/KdzZpGbRIEc) |
 | CoachHub | 관리자·PM·코치·참여자의 목표·실행·피드백·성과 관리 | [YouTube](https://youtu.be/i5ytN54c1AE) |
-| Classory | 원장·관리자·강사·학부모·학생의 학원 운영 기능 | [YouTube](https://youtu.be/cjDAYArjCys) |
+| Classory | 원장·관리자·강사·학부모·학생의 학원 운영 기능 | [YouTube](https://youtu.be/Eo_wazZJFYc) |
 | Code Bridge | 블록·JavaScript 코드·도형 실행 결과를 연결한 코딩 학습 | [YouTube](https://youtu.be/pV1YFJQPUEg) |
 
 ## Career
